@@ -97,6 +97,10 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+	SetParent(GetDesktopWindow());
+	CRect rect;
+	GetDesktopWindow()->GetWindowRect(&rect);
+	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
