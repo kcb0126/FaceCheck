@@ -59,5 +59,8 @@
     <Image Include="res\FaceCheck.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\home.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

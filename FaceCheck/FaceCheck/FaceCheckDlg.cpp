@@ -62,6 +62,7 @@ BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -97,6 +98,7 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+	m_bmpHome.LoadBitmap(IDB_HOME);
 	SetParent(GetDesktopWindow());
 	CRect rect;
 	GetDesktopWindow()->GetWindowRect(&rect);
@@ -154,3 +156,23 @@ HCURSOR CFaceCheckDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+BOOL CFaceCheckDlg::OnEraseBkgnd(CDC* pDC)
+{
+	CDialogEx::OnEraseBkgnd(pDC);
+
+	CRect rect;
+	GetClientRect(&rect);
+	CDC dc;
+	dc.CreateCompatibleDC(pDC);
+	CBitmap* pOldBitmap = dc.SelectObject(&m_bmpHome);
+	int bmw, bmh;
+	BITMAP bmap;
+	m_bmpHome.GetBitmap(&bmap);
+	bmw = bmap.bmWidth;
+	bmh = bmap.bmHeight;
+	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, bmw, bmh, SRCCOPY);
+	dc.SelectObject(pOldBitmap);
+	return true;
+}
