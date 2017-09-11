@@ -62,5 +62,23 @@
     <Image Include="res\home.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\black.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\white.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\power.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\power_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\power_down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\title.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

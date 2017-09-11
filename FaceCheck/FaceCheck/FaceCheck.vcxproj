@@ -122,8 +122,14 @@
     <None Include="res\FaceCheck.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\black.bmp" />
     <Image Include="res\FaceCheck.ico" />
     <Image Include="res\home.bmp" />
+    <Image Include="res\power.bmp" />
+    <Image Include="res\power_down.bmp" />
+    <Image Include="res\power_hover.bmp" />
+    <Image Include="res\title.bmp" />
+    <Image Include="res\white.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
