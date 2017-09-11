@@ -56,6 +56,7 @@ CFaceCheckDlg::CFaceCheckDlg(CWnd* pParent /*=NULL*/)
 void CFaceCheckDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_BTN_POWER, m_btnPower);
 }
 
 BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
@@ -103,6 +104,12 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	CRect rect;
 	GetDesktopWindow()->GetWindowRect(&rect);
 	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
+
+	m_btnPower.OnSet();
+	m_btnPower.LoadBitmaps(IDB_POWER, IDB_POWERDOWN, IDB_POWER, IDB_POWER);
+	m_btnPower.SetHoverBitmapID(IDB_POWERHOVER);
+	m_btnPower.SizeToContent();
+	m_btnPower.SetWindowPos(NULL, rect.Width() - 76, 0, 76, 85, SWP_NOZORDER);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }

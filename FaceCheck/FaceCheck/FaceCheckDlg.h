@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "BitmapButtonPlus.h"
 
 
 // CFaceCheckDlg dialog
@@ -35,4 +36,6 @@ public:
 // Background bitmap
 private:
 	CBitmap m_bmpHome;
+public:
+	CBitmapButtonPlus m_btnPower;
 };
