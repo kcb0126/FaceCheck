@@ -118,7 +118,7 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	m_bmpHome.LoadBitmap(IDB_HOME);
 	//	SetParent(GetDesktopWindow());
 
-	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
+	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_NOZORDER);
 
 	this->RedrawWindow();
 
