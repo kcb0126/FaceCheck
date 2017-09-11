@@ -99,7 +99,7 @@ BOOL CFaceCheckDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 	m_bmpHome.LoadBitmap(IDB_HOME);
-	SetParent(GetDesktopWindow());
+//	SetParent(GetDesktopWindow());
 	CRect rect;
 	GetDesktopWindow()->GetWindowRect(&rect);
 	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
