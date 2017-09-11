@@ -174,5 +174,16 @@ BOOL CFaceCheckDlg::OnEraseBkgnd(CDC* pDC)
 	bmh = bmap.bmHeight;
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, bmw, bmh, SRCCOPY);
 	dc.SelectObject(pOldBitmap);
+
+	CBitmap bmpBlack;
+	bmpBlack.LoadBitmap(IDB_BLACK);
+	pOldBitmap = dc.SelectObject(&bmpBlack);
+	pDC->StretchBlt(0, 0, rect.Width(), 85, &dc, 0, 0, 100, 100, SRCCOPY);
+
+	CBitmap bmpTitle;
+	bmpTitle.LoadBitmap(IDB_TITLE);
+	pOldBitmap = dc.SelectObject(&bmpTitle);
+	pDC->StretchBlt(0, 0, 200, 85, &dc, 0, 0, 200, 85, SRCCOPY);
+
 	return true;
 }
