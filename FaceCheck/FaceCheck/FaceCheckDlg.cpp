@@ -57,6 +57,7 @@ void CFaceCheckDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_BTN_POWER, m_btnPower);
+	DDX_Control(pDX, IDC_STATIC_TODO, m_lblTodo);
 }
 
 BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
@@ -99,17 +100,27 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	m_bmpHome.LoadBitmap(IDB_HOME);
-//	SetParent(GetDesktopWindow());
 	CRect rect;
 	GetDesktopWindow()->GetWindowRect(&rect);
-	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
 
 	m_btnPower.OnSet();
 	m_btnPower.LoadBitmaps(IDB_POWER, IDB_POWERDOWN, IDB_POWER, IDB_POWER);
 	m_btnPower.SetHoverBitmapID(IDB_POWERHOVER);
 	m_btnPower.SizeToContent();
 	m_btnPower.SetWindowPos(NULL, rect.Width() - 76, 0, 76, 85, SWP_NOZORDER);
+
+	m_lblTodo.SetTextColor(RGB(255, 255, 255));
+	m_lblTodo.SetFontSize(24);
+	m_lblTodo.SetFontName(L"Times New Roman");
+	m_lblTodo.SetText(L"All right reserved");
+	m_lblTodo.SetRedraw();
+
+	m_bmpHome.LoadBitmap(IDB_HOME);
+	//	SetParent(GetDesktopWindow());
+
+	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
+
+	this->RedrawWindow();
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -191,6 +202,22 @@ BOOL CFaceCheckDlg::OnEraseBkgnd(CDC* pDC)
 	bmpTitle.LoadBitmap(IDB_TITLE);
 	pOldBitmap = dc.SelectObject(&bmpTitle);
 	pDC->StretchBlt(0, 0, 200, 85, &dc, 0, 0, 200, 85, SRCCOPY);
+
+	CBitmap bmpWhite;
+	bmpWhite.LoadBitmap(IDB_WHITE);
+	pOldBitmap = dc.SelectObject(&bmpWhite);
+	int boxX, boxY, boxW, boxH;
+	boxX = rect.Width() / 4;
+	boxW = rect.Width() / 2;
+	boxY = rect.Height() / 4 * 3;
+	boxH = rect.Height() / 12;
+
+	BLENDFUNCTION bf;
+	bf.AlphaFormat = AC_SRC_ALPHA;
+	bf.BlendFlags = 0;
+	bf.BlendOp = AC_SRC_OVER;
+	bf.SourceConstantAlpha = 96;
+	pDC->AlphaBlend(boxX, boxY, boxW, boxH, &dc, 0, 0, 100, 100, bf);
 
 	return true;
 }

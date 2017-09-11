@@ -4,6 +4,7 @@
 
 #pragma once
 #include "BitmapButtonPlus.h"
+#include "LabelTrans.h"
 
 
 // CFaceCheckDlg dialog
@@ -38,4 +39,5 @@ private:
 	CBitmap m_bmpHome;
 public:
 	CBitmapButtonPlus m_btnPower;
+	CLabelTrans m_lblTodo;
 };

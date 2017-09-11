@@ -104,6 +104,7 @@
     <ClInclude Include="BitmapButtonPlus.h" />
     <ClInclude Include="FaceCheck.h" />
     <ClInclude Include="FaceCheckDlg.h" />
+    <ClInclude Include="LabelTrans.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -112,6 +113,7 @@
     <ClCompile Include="BitmapButtonPlus.cpp" />
     <ClCompile Include="FaceCheck.cpp" />
     <ClCompile Include="FaceCheckDlg.cpp" />
+    <ClCompile Include="LabelTrans.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
