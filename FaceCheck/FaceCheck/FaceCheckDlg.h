@@ -5,6 +5,7 @@
 #pragma once
 #include "BitmapButtonPlus.h"
 #include "LabelTrans.h"
+#include "afxwin.h"
 
 
 // CFaceCheckDlg dialog
@@ -40,4 +41,8 @@ private:
 public:
 	CBitmapButtonPlus m_btnPower;
 	CLabelTrans m_lblTodo;
+	CLabelTrans m_lblUsername;
+	CLabelTrans m_lblPassword;
+	CEdit m_edtUsername;
+	CEdit m_edtPassword;
 };

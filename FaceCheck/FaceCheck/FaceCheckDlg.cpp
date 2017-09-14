@@ -58,6 +58,10 @@ void CFaceCheckDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_BTN_POWER, m_btnPower);
 	DDX_Control(pDX, IDC_STATIC_TODO, m_lblTodo);
+	DDX_Control(pDX, IDC_STATIC_USERNAME, m_lblUsername);
+	DDX_Control(pDX, IDC_STATIC_PASSWORD, m_lblPassword);
+	DDX_Control(pDX, IDC_EDIT_USERNAME, m_edtUsername);
+	DDX_Control(pDX, IDC_EDIT_PASSWORD, m_edtPassword);
 }
 
 BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
@@ -114,6 +118,46 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	m_lblTodo.SetFontName(L"Times New Roman");
 	m_lblTodo.SetText(L"All right reserved");
 	m_lblTodo.SetRedraw();
+
+	m_lblUsername.SetTextColor(RGB(255, 255, 255));
+	m_lblUsername.SetFontSize(32);
+	m_lblUsername.SetFontName(L"Times New Roman");
+	m_lblUsername.SetText(L"Username:");
+	m_lblUsername.Invalidate();
+	int usernameX, usernameY, usernameW, usernameH;
+	usernameX = rect.Width() / 2 - 500;
+	usernameY = rect.Height() * 3 / 4 + 24;
+	usernameW = 200;
+	usernameH = 32;
+	m_lblUsername.SetWindowPos(NULL, usernameX, usernameY, usernameW, usernameH, SWP_NOZORDER);
+	m_lblUsername.SetRedraw();
+
+	int usernameX_, usernameY_, usernameW_, usernameH_;
+	usernameX_ = usernameX + usernameW;
+	usernameY_ = usernameY - 4;
+	usernameW_ = 200;
+	usernameH_ = 40;
+	m_edtUsername.SetWindowPos(NULL, usernameX_, usernameY_, usernameW_, usernameH_, SWP_NOZORDER);
+
+	m_lblPassword.SetTextColor(RGB(255, 255, 255));
+	m_lblPassword.SetFontSize(32);
+	m_lblPassword.SetFontName(L"Times New Roman");
+	m_lblPassword.SetText(L"Password:");
+	m_lblPassword.Invalidate();
+	int passwordX, passwordY, passwordW, passwordH;
+	passwordX = usernameX_ + usernameW_;
+	passwordY = usernameY;
+	passwordW = usernameW;
+	passwordH = usernameH;
+	m_lblPassword.SetWindowPos(NULL, passwordX, passwordY, passwordW, passwordH, SWP_NOZORDER);
+	m_lblPassword.SetRedraw();
+
+	int passwordX_, passwordY_, passwordW_, passwordH_;
+	passwordX_ = passwordX + passwordW;
+	passwordY_ = usernameY_;
+	passwordW_ = usernameW_;
+	passwordH_ = usernameH_;
+	m_edtPassword.SetWindowPos(NULL, passwordX_, passwordY_, passwordW_, passwordH_, SWP_NOZORDER);
 
 	m_bmpHome.LoadBitmap(IDB_HOME);
 	//	SetParent(GetDesktopWindow());
@@ -207,10 +251,10 @@ BOOL CFaceCheckDlg::OnEraseBkgnd(CDC* pDC)
 	bmpWhite.LoadBitmap(IDB_WHITE);
 	pOldBitmap = dc.SelectObject(&bmpWhite);
 	int boxX, boxY, boxW, boxH;
-	boxX = rect.Width() / 4;
-	boxW = rect.Width() / 2;
+	boxX = rect.Width() / 2 - 500;
+	boxW = 1000;
 	boxY = rect.Height() / 4 * 3;
-	boxH = rect.Height() / 12;
+	boxH = 80;
 
 	BLENDFUNCTION bf;
 	bf.AlphaFormat = AC_SRC_ALPHA;
