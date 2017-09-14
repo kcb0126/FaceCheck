@@ -62,6 +62,7 @@ void CFaceCheckDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_PASSWORD, m_lblPassword);
 	DDX_Control(pDX, IDC_EDIT_USERNAME, m_edtUsername);
 	DDX_Control(pDX, IDC_EDIT_PASSWORD, m_edtPassword);
+	DDX_Control(pDX, IDC_BUTTON1, m_btnLogin);
 }
 
 BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
@@ -158,6 +159,17 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	passwordW_ = usernameW_;
 	passwordH_ = usernameH_;
 	m_edtPassword.SetWindowPos(NULL, passwordX_, passwordY_, passwordW_, passwordH_, SWP_NOZORDER);
+
+	m_btnLogin.OnSet();
+	m_btnLogin.LoadBitmaps(IDB_LOGIN, IDB_LOGINDOWN, IDB_LOGIN, IDB_LOGIN);
+	m_btnLogin.SetHoverBitmapID(IDB_LOGINHOVER);
+	m_btnLogin.SizeToContent();
+	int loginX, loginY, loginW, loginH;
+	loginX = passwordX_ + passwordW_ + 40;
+	loginY = passwordY_;
+	loginW = 120;
+	loginH = passwordH_;
+	m_btnLogin.SetWindowPos(NULL, loginX, loginY, loginW, loginH, SWP_NOZORDER);
 
 	m_bmpHome.LoadBitmap(IDB_HOME);
 	//	SetParent(GetDesktopWindow());

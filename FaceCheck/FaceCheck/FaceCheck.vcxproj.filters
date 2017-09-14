@@ -92,5 +92,14 @@
     <Image Include="res\title.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\login.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\login_down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\login_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

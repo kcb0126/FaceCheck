@@ -45,4 +45,5 @@ public:
 	CLabelTrans m_lblPassword;
 	CEdit m_edtUsername;
 	CEdit m_edtPassword;
+	CBitmapButtonPlus m_btnLogin;
 };

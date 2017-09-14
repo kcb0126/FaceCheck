@@ -129,6 +129,9 @@
     <Image Include="res\black.bmp" />
     <Image Include="res\FaceCheck.ico" />
     <Image Include="res\home.bmp" />
+    <Image Include="res\login.bmp" />
+    <Image Include="res\login_down.bmp" />
+    <Image Include="res\login_hover.bmp" />
     <Image Include="res\power.bmp" />
     <Image Include="res\power_down.bmp" />
     <Image Include="res\power_hover.bmp" />
