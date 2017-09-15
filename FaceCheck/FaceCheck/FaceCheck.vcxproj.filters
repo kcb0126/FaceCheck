@@ -39,6 +39,9 @@
     <ClInclude Include="LabelTrans.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DlgMain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaceCheck.cpp">
@@ -54,6 +57,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LabelTrans.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

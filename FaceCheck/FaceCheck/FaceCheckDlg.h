@@ -46,4 +46,5 @@ public:
 	CEdit m_edtUsername;
 	CEdit m_edtPassword;
 	CBitmapButtonPlus m_btnLogin;
+	afx_msg void OnBnClickedButton1();
 };

@@ -7,6 +7,8 @@
 #include "FaceCheckDlg.h"
 #include "afxdialogex.h"
 
+#include "DlgMain.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -70,6 +72,7 @@ BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_WM_ERASEBKGND()
+	ON_BN_CLICKED(IDC_BUTTON1, &CFaceCheckDlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -276,4 +279,11 @@ BOOL CFaceCheckDlg::OnEraseBkgnd(CDC* pDC)
 	pDC->AlphaBlend(boxX, boxY, boxW, boxH, &dc, 0, 0, 100, 100, bf);
 
 	return true;
+}
+
+
+void CFaceCheckDlg::OnBnClickedButton1()
+{
+	CDlgMain dlgMain = new CDlgMain();
+	dlgMain.DoModal();
 }
