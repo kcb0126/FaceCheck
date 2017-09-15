@@ -140,15 +140,13 @@ void CBitmapButtonPlus::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	CBitmap * pBitmap = &m_bitmap;
 	UINT state = lpDrawItemStruct->itemState;
 	if ((state & ODS_SELECTED) && m_bitmapSel.m_hObject != NULL)
-		pBitmap = &m_bitmap;
-	else if ((state & ODS_FOCUS) && m_bitmapFocus.m_hObject != NULL)
-		pBitmap = &m_bitmapFocus;			// third image for focused
+		pBitmap = &m_bitmapSel;
+//	else if ((state & ODS_FOCUS) && m_bitmapFocus.m_hObject != NULL)
+//		pBitmap = &m_bitmapFocus;			// third image for focused
 	else if ((state & ODS_DISABLED) && m_bitmapDisabled.m_hObject != NULL)
 		pBitmap = &m_bitmapDisabled;		// last image for disabled
-	if ((TRUE == m_bMouseHover) && NULL != m_cBitmapHover.GetSafeHandle())
-	{
+	else if ((TRUE == m_bMouseHover) && NULL != m_cBitmapHover.GetSafeHandle())
 		pBitmap = &m_cBitmapHover;
-	}
 
 	// draw the whole button
 	CDC* pDC = CDC::FromHandle(lpDrawItemStruct->hDC);
