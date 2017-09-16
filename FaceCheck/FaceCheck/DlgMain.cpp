@@ -35,6 +35,12 @@ void CDlgMain::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CDlgMain, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_BN_CLICKED(IDC_BTN_MONITOR, &CDlgMain::OnBnClickedBtnMonitor)
+	ON_BN_CLICKED(IDC_BTN_PERSONMANAGE, &CDlgMain::OnBnClickedBtnPersonmanage)
+	ON_BN_CLICKED(IDC_BTN_PERSONHISTORY, &CDlgMain::OnBnClickedBtnPersonhistory)
+	ON_BN_CLICKED(IDC_BTN_USERMANGE, &CDlgMain::OnBnClickedBtnUsermange)
+	ON_BN_CLICKED(IDC_BTN_USERHISTORY, &CDlgMain::OnBnClickedBtnUserhistory)
+	ON_BN_CLICKED(IDC_BTN_SETTINGS, &CDlgMain::OnBnClickedBtnSettings)
 END_MESSAGE_MAP()
 
 
@@ -160,4 +166,74 @@ BOOL CDlgMain::OnEraseBkgnd(CDC* pDC)
 	pDC->StretchBlt(restbarX, restbarY, restbarW, restbarH, &dc, 0, 0, 100, 100, SRCCOPY);
 
 	return true;
+}
+
+void CDlgMain::SetTab(int nTabIndex)
+{
+	m_btnMonitor.EnableWindow(true);
+	m_btnPersonmanage.EnableWindow(true);
+	m_btnPersonhistory.EnableWindow(true);
+	m_btnUsermanage.EnableWindow(true);
+	m_btnUserhistory.EnableWindow(true);
+	m_btnSettings.EnableWindow(true);
+
+	switch (nTabIndex)
+	{
+	case TAB_MONITOR:
+		m_btnMonitor.EnableWindow(false);
+		break;
+	case TAB_PERSONMANAGE:
+		m_btnPersonmanage.EnableWindow(false);
+		break;
+	case TAB_PERSONHISTORY:
+		m_btnPersonhistory.EnableWindow(false);
+		break;
+	case TAB_USERMANAGE:
+		m_btnUsermanage.EnableWindow(false);
+		break;
+	case TAB_USERHISTORY:
+		m_btnUserhistory.EnableWindow(false);
+		break;
+	case TAB_SETTINGS:
+		m_btnSettings.EnableWindow(false);
+		break;
+	default:
+		break;
+	}
+
+}
+
+void CDlgMain::OnBnClickedBtnMonitor()
+{
+	SetTab(TAB_MONITOR);
+}
+
+
+void CDlgMain::OnBnClickedBtnPersonmanage()
+{
+	SetTab(TAB_PERSONMANAGE);
+}
+
+
+void CDlgMain::OnBnClickedBtnPersonhistory()
+{
+	SetTab(TAB_PERSONHISTORY);
+}
+
+
+void CDlgMain::OnBnClickedBtnUsermange()
+{
+	SetTab(TAB_USERMANAGE);
+}
+
+
+void CDlgMain::OnBnClickedBtnUserhistory()
+{
+	SetTab(TAB_USERHISTORY);
+}
+
+
+void CDlgMain::OnBnClickedBtnSettings()
+{
+	SetTab(TAB_SETTINGS);
 }

@@ -4,6 +4,13 @@
 
 // CDlgMain dialog
 
+#define TAB_MONITOR			0
+#define TAB_PERSONMANAGE	1
+#define TAB_PERSONHISTORY	2
+#define TAB_USERMANAGE		3
+#define TAB_USERHISTORY		4
+#define TAB_SETTINGS		5
+
 class CDlgMain : public CDialogEx
 {
 	DECLARE_DYNAMIC(CDlgMain)
@@ -29,4 +36,13 @@ public:
 	CBitmapButtonPlus m_btnUsermanage;
 	CBitmapButtonPlus m_btnUserhistory;
 	CBitmapButtonPlus m_btnSettings;
+
+public:
+	void SetTab(int nTabIndex);
+	afx_msg void OnBnClickedBtnMonitor();
+	afx_msg void OnBnClickedBtnPersonmanage();
+	afx_msg void OnBnClickedBtnPersonhistory();
+	afx_msg void OnBnClickedBtnUsermange();
+	afx_msg void OnBnClickedBtnUserhistory();
+	afx_msg void OnBnClickedBtnSettings();
 };
