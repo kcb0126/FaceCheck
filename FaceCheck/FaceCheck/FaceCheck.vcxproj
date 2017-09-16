@@ -129,15 +129,35 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\black.bmp" />
+    <Image Include="res\darkgray.bmp" />
     <Image Include="res\FaceCheck.ico" />
     <Image Include="res\home.bmp" />
+    <Image Include="res\lightgray.bmp" />
     <Image Include="res\login.bmp" />
     <Image Include="res\login_down.bmp" />
     <Image Include="res\login_hover.bmp" />
+    <Image Include="res\monitor.bmp" />
+    <Image Include="res\monitor_disabled.bmp" />
+    <Image Include="res\monitor_hover.bmp" />
+    <Image Include="res\personhistory.bmp" />
+    <Image Include="res\personhistory_disabled.bmp" />
+    <Image Include="res\personhistory_hover.bmp" />
+    <Image Include="res\personmanage.bmp" />
+    <Image Include="res\personmanage_disabled.bmp" />
+    <Image Include="res\personmanage_hover.bmp" />
     <Image Include="res\power.bmp" />
     <Image Include="res\power_down.bmp" />
     <Image Include="res\power_hover.bmp" />
+    <Image Include="res\settings.bmp" />
+    <Image Include="res\settings_disabled.bmp" />
+    <Image Include="res\settings_hover.bmp" />
     <Image Include="res\title.bmp" />
+    <Image Include="res\userhistory.bmp" />
+    <Image Include="res\userhistory_disabled.bmp" />
+    <Image Include="res\userhistory_hover.bmp" />
+    <Image Include="res\usermanage.bmp" />
+    <Image Include="res\usermanage_disabled.bmp" />
+    <Image Include="res\usermanage_hover.bmp" />
     <Image Include="res\white.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

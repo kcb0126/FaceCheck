@@ -107,5 +107,65 @@
     <Image Include="res\login_hover.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\darkgray.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lightgray.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\monitor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\monitor_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\monitor_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\personhistory.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\personhistory_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\personhistory_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\personmanage.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\personmanage_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\personmanage_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\settings.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\settings_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\settings_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\userhistory.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\userhistory_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\userhistory_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\usermanage.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\usermanage_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\usermanage_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

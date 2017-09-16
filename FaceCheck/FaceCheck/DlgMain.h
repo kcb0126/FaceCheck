@@ -1,4 +1,5 @@
 #pragma once
+#include "BitmapButtonPlus.h"
 
 
 // CDlgMain dialog
@@ -22,4 +23,10 @@ public:
 	virtual BOOL OnInitDialog();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 
+	CBitmapButtonPlus m_btnMonitor;
+	CBitmapButtonPlus m_btnPersonmanage;
+	CBitmapButtonPlus m_btnPersonhistory;
+	CBitmapButtonPlus m_btnUsermanage;
+	CBitmapButtonPlus m_btnUserhistory;
+	CBitmapButtonPlus m_btnSettings;
 };
