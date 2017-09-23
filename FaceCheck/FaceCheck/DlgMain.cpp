@@ -30,6 +30,8 @@ void CDlgMain::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BTN_USERMANGE, m_btnUsermanage);
 	DDX_Control(pDX, IDC_BTN_USERHISTORY, m_btnUserhistory);
 	DDX_Control(pDX, IDC_BTN_SETTINGS, m_btnSettings);
+	DDX_Control(pDX, IDC_BTN_POWER, m_btnPower);
+	DDX_Control(pDX, IDC_BTN_PREFERENCES, m_btnPreferences);
 }
 
 
@@ -54,6 +56,18 @@ BOOL CDlgMain::OnInitDialog()
 	// TODO:  Add extra initialization here
 	CRect rect;
 	GetDesktopWindow()->GetWindowRect(&rect);
+
+	m_btnPower.OnSet();
+	m_btnPower.LoadBitmaps(IDB_POWER, IDB_POWERDOWN, IDB_POWER, IDB_POWER);
+	m_btnPower.SetHoverBitmapID(IDB_POWERHOVER);
+	m_btnPower.SizeToContent();
+	m_btnPower.SetWindowPos(NULL, rect.Width() - 76, 0, 76, 85, SWP_NOZORDER);
+
+	m_btnPreferences.OnSet();
+	m_btnPreferences.LoadBitmaps(IDB_PREFERENCES, IDB_PREFERENCESDOWN, IDB_PREFERENCES, IDB_PREFERENCES);
+	m_btnPreferences.SetHoverBitmapID(IDB_PREFERENCESHOVER);
+	m_btnPreferences.SizeToContent();
+	m_btnPreferences.SetWindowPos(NULL, rect.Width() - 152, 0, 76, 85, SWP_NOZORDER);
 
 	m_btnMonitor.OnSet();
 	m_btnMonitor.LoadBitmaps(IDB_MONITOR, IDB_MONITOR_HOVER, IDB_MONITOR, IDB_MONITOR_DISABLED);
@@ -124,6 +138,8 @@ BOOL CDlgMain::OnInitDialog()
 	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_NOZORDER);
 	this->RedrawWindow();
 
+	SetTab(TAB_MONITOR);
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -144,6 +160,11 @@ BOOL CDlgMain::OnEraseBkgnd(CDC* pDC)
 	pOldBitmap = dc.SelectObject(&bmpBlack);
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
 	
+	CBitmap bmpTitle;
+	bmpTitle.LoadBitmap(IDB_TITLE);
+	pOldBitmap = dc.SelectObject(&bmpTitle);
+	pDC->StretchBlt(0, 0, 200, 85, &dc, 0, 0, 200, 80, SRCCOPY);
+
 	CBitmap bmpDarkgray;
 	bmpDarkgray.LoadBitmap(IDB_DARKGRAY);
 	pOldBitmap = dc.SelectObject(&bmpDarkgray);
@@ -153,6 +174,11 @@ BOOL CDlgMain::OnEraseBkgnd(CDC* pDC)
 	bmpWhite.LoadBitmap(IDB_WHITE);
 	pOldBitmap = dc.SelectObject(&bmpWhite);
 	pDC->StretchBlt(0, 85, rect.Width(), 65, &dc, 0, 0, 100, 100, SRCCOPY);
+
+	CBitmap bmpBottom;
+	bmpBottom.LoadBitmap(IDB_BOTTOM);
+	pOldBitmap = dc.SelectObject(&bmpBottom);
+	pDC->StretchBlt(rect.Width() / 2 - 400, rect.Height() - 85, 800, 85, &dc, 0, 0, 800, 85, SRCCOPY);
 
 	CRect rcSettings;
 	m_btnSettings.GetWindowRect(&rcSettings);

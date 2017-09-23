@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\black.bmp" />
+    <Image Include="res\bottom.bmp" />
     <Image Include="res\darkgray.bmp" />
     <Image Include="res\FaceCheck.ico" />
     <Image Include="res\home.bmp" />
@@ -148,6 +149,9 @@
     <Image Include="res\power.bmp" />
     <Image Include="res\power_down.bmp" />
     <Image Include="res\power_hover.bmp" />
+    <Image Include="res\preferences.bmp" />
+    <Image Include="res\preferences_down.bmp" />
+    <Image Include="res\preferences_hover.bmp" />
     <Image Include="res\settings.bmp" />
     <Image Include="res\settings_disabled.bmp" />
     <Image Include="res\settings_hover.bmp" />

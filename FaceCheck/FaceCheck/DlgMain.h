@@ -45,4 +45,6 @@ public:
 	afx_msg void OnBnClickedBtnUsermange();
 	afx_msg void OnBnClickedBtnUserhistory();
 	afx_msg void OnBnClickedBtnSettings();
+	CBitmapButtonPlus m_btnPower;
+	CBitmapButtonPlus m_btnPreferences;
 };

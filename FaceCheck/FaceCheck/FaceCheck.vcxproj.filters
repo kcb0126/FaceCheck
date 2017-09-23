@@ -167,5 +167,17 @@
     <Image Include="res\usermanage_hover.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\preferences.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\preferences_down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\preferences_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bottom.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
