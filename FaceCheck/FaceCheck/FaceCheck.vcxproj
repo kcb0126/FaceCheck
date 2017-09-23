@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapButtonPlus.h" />
+    <ClInclude Include="CustomListView.h" />
     <ClInclude Include="DlgMain.h" />
     <ClInclude Include="FaceCheck.h" />
     <ClInclude Include="FaceCheckDlg.h" />
@@ -112,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitmapButtonPlus.cpp" />
+    <ClCompile Include="CustomListView.cpp" />
     <ClCompile Include="DlgMain.cpp" />
     <ClCompile Include="FaceCheck.cpp" />
     <ClCompile Include="FaceCheckDlg.cpp" />
