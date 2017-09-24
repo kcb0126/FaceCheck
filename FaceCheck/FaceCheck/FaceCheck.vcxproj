@@ -54,10 +54,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../Utilities/curl/include/curl;../Utilities/CxImage/include;../Utilities/KIP/Include;../Utilities/MySql/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../Utilities/curl;../Utilities/zlib/ZlibDllDebug/;../Utilities/CxImage/Lib;../Utilities/KIP/Lib;../Utilities/MySql/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gdiplus.lib;libmysql.lib;libmysqld.lib;cximagecrtu.lib;KipCameraManager10.lib;KipFaceDetector11.lib;KipAgeEstimator11.lib;KipGenderEstimator11.lib;KipHeadPosition11.lib;libcurl_debug.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -79,12 +82,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../Utilities/curl/include/curl;../Utilities/CxImage/include;../Utilities/KIP/Include;../Utilities/MySql/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../Utilities/curl;../Utilities/zlib/ZlibDllDebug/;../Utilities/CxImage/Lib;../Utilities/KIP/Lib;../Utilities/MySql/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gdiplus.lib;libmysql.lib;libmysqld.lib;cximagecrtu.lib;KipCameraManager10.lib;KipFaceDetector11.lib;KipAgeEstimator11.lib;KipGenderEstimator11.lib;KipHeadPosition11.lib;libcurl.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
