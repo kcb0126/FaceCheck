@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapButtonPlus.h" />
+    <ClInclude Include="CameraView.h" />
     <ClInclude Include="CustomListView.h" />
     <ClInclude Include="DlgMain.h" />
     <ClInclude Include="EasySize.h" />
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitmapButtonPlus.cpp" />
+    <ClCompile Include="CameraView.cpp" />
     <ClCompile Include="CustomListView.cpp" />
     <ClCompile Include="DlgMain.cpp" />
     <ClCompile Include="EmbeddedMySQL.cpp" />
