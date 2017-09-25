@@ -90,6 +90,12 @@
     <ClInclude Include="CameraView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CameraViewContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaceCheck.cpp">
@@ -138,6 +144,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CameraView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraViewContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
