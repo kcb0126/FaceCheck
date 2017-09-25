@@ -110,30 +110,53 @@
     <ClInclude Include="BitmapButtonPlus.h" />
     <ClInclude Include="CustomListView.h" />
     <ClInclude Include="DlgMain.h" />
+    <ClInclude Include="EasySize.h" />
+    <ClInclude Include="EmbeddedMySQL.h" />
+    <ClInclude Include="ExecutablePathInfo.h" />
     <ClInclude Include="FaceCheck.h" />
     <ClInclude Include="FaceCheckDlg.h" />
+    <ClInclude Include="FaceProcessor.h" />
+    <ClInclude Include="FaceRecogEngine.h" />
+    <ClInclude Include="face_tracker.h" />
+    <ClInclude Include="FrameProcessor.h" />
     <ClInclude Include="LabelTrans.h" />
+    <ClInclude Include="licenseDef.h" />
+    <ClInclude Include="myDef.h" />
+    <ClInclude Include="myGlobal.h" />
+    <ClInclude Include="PersonDB.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SoundPlayer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TrackingFace.h" />
+    <ClInclude Include="types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitmapButtonPlus.cpp" />
     <ClCompile Include="CustomListView.cpp" />
     <ClCompile Include="DlgMain.cpp" />
+    <ClCompile Include="EmbeddedMySQL.cpp" />
+    <ClCompile Include="ExecutablePathInfo.cpp" />
     <ClCompile Include="FaceCheck.cpp" />
     <ClCompile Include="FaceCheckDlg.cpp" />
+    <ClCompile Include="FaceProcessor.cpp" />
+    <ClCompile Include="FaceRecogEngine.cpp" />
+    <ClCompile Include="FrameProcessor.cpp" />
     <ClCompile Include="LabelTrans.cpp" />
+    <ClCompile Include="PersonDB.cpp" />
+    <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TrackingFace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FaceCheck.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\FaceCheck.rc2" />
+    <None Include="res\wave1.bin" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\black.bmp" />
@@ -171,6 +194,9 @@
     <Image Include="res\usermanage_disabled.bmp" />
     <Image Include="res\usermanage_hover.bmp" />
     <Image Include="res\white.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\Warning.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

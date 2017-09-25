@@ -9,7 +9,7 @@
 #endif
 
 #include "resource.h"		// main symbols
-
+#include "EmbeddedMySQL.h"
 
 // CFaceCheckApp:
 // See FaceCheck.cpp for the implementation of this class
