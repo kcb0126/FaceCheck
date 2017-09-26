@@ -20,6 +20,8 @@ class CFaceCheckApp : public CWinApp
 public:
 	CFaceCheckApp();
 
+	ULONG_PTR m_gdiplusToken;
+
 // Overrides
 public:
 	virtual BOOL InitInstance();

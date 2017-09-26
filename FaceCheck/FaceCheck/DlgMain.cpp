@@ -56,6 +56,7 @@ BOOL CDlgMain::OnInitDialog()
 	// TODO:  Add extra initialization here
 	CRect rect;
 	GetDesktopWindow()->GetWindowRect(&rect);
+	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_NOZORDER);
 
 	m_btnPower.OnSet();
 	m_btnPower.LoadBitmaps(IDB_POWER, IDB_POWERDOWN, IDB_POWER, IDB_POWER);
@@ -135,7 +136,16 @@ BOOL CDlgMain::OnInitDialog()
 	settingsH = userhistoryH;
 	m_btnSettings.SetWindowPos(NULL, settingsX, settingsY, settingsW, settingsH, SWP_NOZORDER);
 
-	SetWindowPos(&wndTopMost, rect.left, rect.top, rect.right, rect.bottom, SWP_NOZORDER);
+	int pageMonitorX, pageMonitorY, pageMonitorW, pageMonitorH;
+	pageMonitorX = monitorX;
+	pageMonitorY = monitorY + monitorH + 5;
+	pageMonitorW = rect.Width() - pageMonitorX * 2;
+	pageMonitorH = rect.Height() - pageMonitorY - 90;
+
+	m_pageMonitor.Create(CPageOfMonitor::IDD, this);
+	m_pageMonitor.SetWindowPos(NULL, pageMonitorX, pageMonitorY, pageMonitorW, pageMonitorH, SWP_NOZORDER);
+	m_pageMonitor.ShowWindow(SW_HIDE);
+
 	this->RedrawWindow();
 
 	SetTab(TAB_MONITOR);
@@ -203,10 +213,13 @@ void CDlgMain::SetTab(int nTabIndex)
 	m_btnUserhistory.EnableWindow(true);
 	m_btnSettings.EnableWindow(true);
 
+	m_pageMonitor.ShowWindow(SW_HIDE);
+
 	switch (nTabIndex)
 	{
 	case TAB_MONITOR:
 		m_btnMonitor.EnableWindow(false);
+		m_pageMonitor.ShowWindow(SW_SHOW);
 		break;
 	case TAB_PERSONMANAGE:
 		m_btnPersonmanage.EnableWindow(false);

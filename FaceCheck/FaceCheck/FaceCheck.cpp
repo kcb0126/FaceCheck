@@ -54,6 +54,9 @@ BOOL CFaceCheckApp::InitInstance()
 
 	AfxEnableControlContainer();
 
+	GdiplusStartupInput gdiplusStartupInput;
+	GdiplusStartup(&m_gdiplusToken, &gdiplusStartupInput, NULL);
+
 	// Create the shell manager, in case the dialog contains
 	// any shell tree view or shell list view controls.
 	CShellManager *pShellManager = new CShellManager;

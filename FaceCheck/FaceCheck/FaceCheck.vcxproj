@@ -126,6 +126,7 @@
     <ClInclude Include="licenseDef.h" />
     <ClInclude Include="myDef.h" />
     <ClInclude Include="myGlobal.h" />
+    <ClInclude Include="PageOfMonitor.h" />
     <ClInclude Include="PersonDB.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SoundPlayer.h" />
@@ -149,6 +150,7 @@
     <ClCompile Include="FaceRecogEngine.cpp" />
     <ClCompile Include="FrameProcessor.cpp" />
     <ClCompile Include="LabelTrans.cpp" />
+    <ClCompile Include="PageOfMonitor.cpp" />
     <ClCompile Include="PersonDB.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="stdafx.cpp">
