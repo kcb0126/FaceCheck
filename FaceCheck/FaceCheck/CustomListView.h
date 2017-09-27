@@ -33,6 +33,9 @@ private:
 	void drawContents();
 
 public:
+	void refresh();
+
+public:
 	virtual int getCellCount() { return 0; };
 	virtual CWnd* getCellAt(int nIndex) { return NULL; };
 };

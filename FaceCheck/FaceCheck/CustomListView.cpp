@@ -69,6 +69,12 @@ void CCustomListView::Dump(CDumpContext& dc) const
 
 void CCustomListView::drawContents()
 {
+	this->SetScrollPos(SB_HORZ, 0);
+	this->SetScrollPos(SB_VERT, 0);
+	for (int i = 0; i < m_cells.size(); i++)
+	{
+		m_cells[i]->DestroyWindow();
+	}
 	m_cells.clear();
 	int nCount = this->getCellCount();
 	int nWidth = 0, nHeight = 0;
@@ -89,5 +95,8 @@ void CCustomListView::drawContents()
 	this->SetScrollSizes(MM_TEXT, sizeTotal);
 }
 
-
+void CCustomListView::refresh()
+{
+	drawContents();
+}
 // CCustomListView message handlers

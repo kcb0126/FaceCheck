@@ -102,6 +102,9 @@
     <ClInclude Include="MonitorHistoryCell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MonitorHistory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaceCheck.cpp">
@@ -162,6 +165,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonitorHistoryCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonitorHistory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
