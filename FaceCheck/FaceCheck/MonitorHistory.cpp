@@ -63,5 +63,8 @@ void CMonitorHistory::OnSize(UINT nType, int cx, int cy)
 {
 	CPropertyPage::OnSize(nType, cx, cy);
 
-	// TODO: Add your message handler code here
+	CRect rect;
+	GetClientRect(&rect);
+	
+	m_pListOfMonitorHistory->SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height() - 100, SWP_NOZORDER);
 }
