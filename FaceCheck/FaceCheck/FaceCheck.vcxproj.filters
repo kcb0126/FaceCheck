@@ -99,9 +99,6 @@
     <ClInclude Include="PageOfMonitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonitorHistoryCell.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MonitorHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -162,9 +159,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PageOfMonitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MonitorHistoryCell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonitorHistory.cpp">

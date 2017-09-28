@@ -124,8 +124,6 @@
     <ClInclude Include="FrameProcessor.h" />
     <ClInclude Include="LabelTrans.h" />
     <ClInclude Include="licenseDef.h" />
-    <ClInclude Include="MonitorHistory.h" />
-    <ClInclude Include="MonitorHistoryCell.h" />
     <ClInclude Include="myDef.h" />
     <ClInclude Include="myGlobal.h" />
     <ClInclude Include="PageOfMonitor.h" />
@@ -152,8 +150,6 @@
     <ClCompile Include="FaceRecogEngine.cpp" />
     <ClCompile Include="FrameProcessor.cpp" />
     <ClCompile Include="LabelTrans.cpp" />
-    <ClCompile Include="MonitorHistory.cpp" />
-    <ClCompile Include="MonitorHistoryCell.cpp" />
     <ClCompile Include="PageOfMonitor.cpp" />
     <ClCompile Include="PersonDB.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />

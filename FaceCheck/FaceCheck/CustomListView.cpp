@@ -76,6 +76,7 @@ void CCustomListView::drawContents()
 		m_cells[i]->DestroyWindow();
 	}
 	m_cells.clear();
+
 	int nCount = this->getCellCount();
 	int nWidth = 0, nHeight = 0;
 	CRect rect;
@@ -99,4 +100,5 @@ void CCustomListView::refresh()
 {
 	drawContents();
 }
+
 // CCustomListView message handlers
