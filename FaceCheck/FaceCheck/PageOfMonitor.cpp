@@ -5,7 +5,6 @@
 #include "FaceCheck.h"
 #include "PageOfMonitor.h"
 #include "afxdialogex.h"
-#include "MonitorHistoryCell.h"
 
 // CPageOfMonitor dialog
 
