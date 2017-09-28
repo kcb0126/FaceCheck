@@ -51,13 +51,12 @@ void CPageOfMonitor::OnSize(UINT nType, int cx, int cy)
 {
 	CPropertyPage::OnSize(nType, cx, cy);
 
-	if (m_cameraViewContainer.m_hWnd == NULL) {
-		return;
-	}
-	CRect rect;
-	GetClientRect(&rect);
+	if (m_cameraViewContainer.m_hWnd != NULL) {
+		CRect rect;
+		GetClientRect(&rect);
 
-	m_cameraViewContainer.SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height(), SWP_NOZORDER);
-	m_cameraViewContainer.SetScreenMode(0);
-	m_cameraViewContainer.UpdateWindow();
+		m_cameraViewContainer.SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height(), SWP_NOZORDER);
+		m_cameraViewContainer.SetScreenMode(0);
+		m_cameraViewContainer.UpdateWindow();
+	}
 }

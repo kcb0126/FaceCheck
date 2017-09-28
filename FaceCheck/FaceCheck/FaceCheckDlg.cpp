@@ -284,6 +284,6 @@ BOOL CFaceCheckDlg::OnEraseBkgnd(CDC* pDC)
 
 void CFaceCheckDlg::OnBnClickedButton1()
 {
-	CDlgMain dlgMain = new CDlgMain();
+	CDlgMain dlgMain;
 	dlgMain.DoModal();
 }

@@ -111,6 +111,7 @@
     <ClInclude Include="CameraLayout.h" />
     <ClInclude Include="CameraView.h" />
     <ClInclude Include="CameraViewContainer.h" />
+    <ClInclude Include="CellOfMonitorHistory.h" />
     <ClInclude Include="CustomListView.h" />
     <ClInclude Include="DlgMain.h" />
     <ClInclude Include="EasySize.h" />
@@ -124,6 +125,8 @@
     <ClInclude Include="FrameProcessor.h" />
     <ClInclude Include="LabelTrans.h" />
     <ClInclude Include="licenseDef.h" />
+    <ClInclude Include="ListOfMonitorHistory.h" />
+    <ClInclude Include="MonitorHistory.h" />
     <ClInclude Include="myDef.h" />
     <ClInclude Include="myGlobal.h" />
     <ClInclude Include="PageOfMonitor.h" />
@@ -140,6 +143,7 @@
     <ClCompile Include="CameraLayout.cpp" />
     <ClCompile Include="CameraView.cpp" />
     <ClCompile Include="CameraViewContainer.cpp" />
+    <ClCompile Include="CellOfMonitorHistory.cpp" />
     <ClCompile Include="CustomListView.cpp" />
     <ClCompile Include="DlgMain.cpp" />
     <ClCompile Include="EmbeddedMySQL.cpp" />
@@ -150,6 +154,8 @@
     <ClCompile Include="FaceRecogEngine.cpp" />
     <ClCompile Include="FrameProcessor.cpp" />
     <ClCompile Include="LabelTrans.cpp" />
+    <ClCompile Include="ListOfMonitorHistory.cpp" />
+    <ClCompile Include="MonitorHistory.cpp" />
     <ClCompile Include="PageOfMonitor.cpp" />
     <ClCompile Include="PersonDB.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
