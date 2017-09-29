@@ -42,6 +42,10 @@ BOOL CPageOfMonitor::OnInitDialog()
 	m_cameraViewContainer.ShowWindow(SW_SHOW);
 	m_cameraViewContainer.UpdateWindow();
 
+	m_monitorHistory.Create(CMonitorHistory::IDD, this);
+	m_monitorHistory.ShowWindow(SW_SHOW);
+	m_monitorHistory.UpdateWindow();
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -51,12 +55,19 @@ void CPageOfMonitor::OnSize(UINT nType, int cx, int cy)
 {
 	CPropertyPage::OnSize(nType, cx, cy);
 
-	if (m_cameraViewContainer.m_hWnd != NULL) {
-		CRect rect;
-		GetClientRect(&rect);
+	CRect rect;
+	GetClientRect(&rect);
 
-		m_cameraViewContainer.SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height(), SWP_NOZORDER);
+	if (m_cameraViewContainer.m_hWnd != NULL)
+	{
+		m_cameraViewContainer.SetWindowPos(NULL, 0, 0, rect.Width() - 480, rect.Height(), SWP_NOZORDER);
 		m_cameraViewContainer.SetScreenMode(0);
 		m_cameraViewContainer.UpdateWindow();
+	}
+
+	if (m_monitorHistory.m_hWnd != NULL)
+	{
+		m_monitorHistory.SetWindowPos(NULL, rect.Width() - 480, 0, 480, rect.Height(), SWP_NOZORDER);
+		m_monitorHistory.UpdateWindow();
 	}
 }

@@ -141,10 +141,54 @@ BOOL CDlgMain::OnInitDialog()
 	pageMonitorY = monitorY + monitorH + 5;
 	pageMonitorW = rect.Width() - pageMonitorX * 2;
 	pageMonitorH = rect.Height() - pageMonitorY - 90;
-
 	m_pageMonitor.Create(CPageOfMonitor::IDD, this);
 	m_pageMonitor.SetWindowPos(NULL, pageMonitorX, pageMonitorY, pageMonitorW, pageMonitorH, SWP_NOZORDER);
 	m_pageMonitor.ShowWindow(SW_HIDE);
+
+	int pagePersonManageX, pagePersonManageY, pagePersonManageW, pagePersonManageH;
+	pagePersonManageX = pageMonitorX;
+	pagePersonManageY = pageMonitorY;
+	pagePersonManageW = pageMonitorW;
+	pagePersonManageH = pageMonitorH;
+	m_pagePersonManage.Create(CPageOfPersonManage::IDD, this);
+	m_pagePersonManage.SetWindowPos(NULL, pagePersonManageX, pagePersonManageY, pagePersonManageW, pagePersonManageH, SWP_NOZORDER);
+	m_pagePersonManage.ShowWindow(SW_HIDE);
+
+	int pagePersonHistoryX, pagePersonHistoryY, pagePersonHistoryW, pagePersonHistoryH;
+	pagePersonHistoryX = pageMonitorX;
+	pagePersonHistoryY = pageMonitorY;
+	pagePersonHistoryW = pageMonitorW;
+	pagePersonHistoryH = pageMonitorH;
+	m_pagePersonHistory.Create(CPageOfPersonHistory::IDD, this);
+	m_pagePersonHistory.SetWindowPos(NULL, pagePersonHistoryX, pagePersonHistoryY, pagePersonHistoryW, pagePersonHistoryH, SWP_NOZORDER);
+	m_pagePersonHistory.ShowWindow(SW_HIDE);
+
+	int pageUserManageX, pageUserManageY, pageUserManageW, pageUserManageH;
+	pageUserManageX = pageMonitorX;
+	pageUserManageY = pageMonitorY;
+	pageUserManageW = pageMonitorW;
+	pageUserManageH = pageMonitorH;
+	m_pageUserManage.Create(CPageOfUserManage::IDD, this);
+	m_pageUserManage.SetWindowPos(NULL, pageUserManageX, pageUserManageY, pageUserManageW, pageUserManageH, SWP_NOZORDER);
+	m_pageUserManage.ShowWindow(SW_HIDE);
+
+	int pageUserHistoryX, pageUserHistoryY, pageUserHistoryW, pageUserHistoryH;
+	pageUserHistoryX = pageMonitorX;
+	pageUserHistoryY = pageMonitorY;
+	pageUserHistoryW = pageMonitorW;
+	pageUserHistoryH = pageMonitorH;
+	m_pageUserHistory.Create(CPageOfUserHistory::IDD, this);
+	m_pageUserHistory.SetWindowPos(NULL, pageUserHistoryX, pageUserHistoryY, pageUserHistoryW, pageUserHistoryH, SWP_NOZORDER);
+	m_pageUserHistory.ShowWindow(SW_HIDE);
+
+	int pageSettingsX, pageSettingsY, pageSettingsW, pageSettingsH;
+	pageSettingsX = pageMonitorX;
+	pageSettingsY = pageMonitorY;
+	pageSettingsW = pageMonitorW;
+	pageSettingsH = pageMonitorH;
+	m_pageSettings.Create(CPageOfSettings::IDD, this);
+	m_pageSettings.SetWindowPos(NULL, pageSettingsX, pageSettingsY, pageSettingsW, pageSettingsH, SWP_NOZORDER);
+	m_pageSettings.ShowWindow(SW_HIDE);
 
 	this->RedrawWindow();
 
@@ -214,6 +258,11 @@ void CDlgMain::SetTab(int nTabIndex)
 	m_btnSettings.EnableWindow(true);
 
 	m_pageMonitor.ShowWindow(SW_HIDE);
+	m_pagePersonManage.ShowWindow(SW_HIDE);
+	m_pagePersonHistory.ShowWindow(SW_HIDE);
+	m_pageUserManage.ShowWindow(SW_HIDE);
+	m_pageUserHistory.ShowWindow(SW_HIDE);
+	m_pageSettings.ShowWindow(SW_HIDE);
 
 	switch (nTabIndex)
 	{
@@ -223,18 +272,23 @@ void CDlgMain::SetTab(int nTabIndex)
 		break;
 	case TAB_PERSONMANAGE:
 		m_btnPersonmanage.EnableWindow(false);
+		m_pagePersonManage.ShowWindow(SW_SHOW);
 		break;
 	case TAB_PERSONHISTORY:
 		m_btnPersonhistory.EnableWindow(false);
+		m_pagePersonHistory.ShowWindow(SW_SHOW);
 		break;
 	case TAB_USERMANAGE:
 		m_btnUsermanage.EnableWindow(false);
+		m_pageUserManage.ShowWindow(SW_SHOW);
 		break;
 	case TAB_USERHISTORY:
 		m_btnUserhistory.EnableWindow(false);
+		m_pageUserHistory.ShowWindow(SW_SHOW);
 		break;
 	case TAB_SETTINGS:
 		m_btnSettings.EnableWindow(false);
+		m_pageSettings.ShowWindow(SW_SHOW);
 		break;
 	default:
 		break;

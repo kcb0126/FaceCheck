@@ -1,6 +1,6 @@
 #pragma once
 #include "CameraViewContainer.h"
-
+#include "MonitorHistory.h"
 
 // CPageOfMonitor dialog
 
@@ -22,6 +22,8 @@ protected:
 
 public:
 	CCameraViewContainer m_cameraViewContainer;
+	CMonitorHistory m_monitorHistory;
+
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 };

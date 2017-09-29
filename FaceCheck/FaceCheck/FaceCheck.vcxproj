@@ -130,6 +130,11 @@
     <ClInclude Include="myDef.h" />
     <ClInclude Include="myGlobal.h" />
     <ClInclude Include="PageOfMonitor.h" />
+    <ClInclude Include="PageOfPersonHistory.h" />
+    <ClInclude Include="PageOfPersonManage.h" />
+    <ClInclude Include="PageOfSettings.h" />
+    <ClInclude Include="PageOfUserHistory.h" />
+    <ClInclude Include="PageOfUserManage.h" />
     <ClInclude Include="PersonDB.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SoundPlayer.h" />
@@ -157,6 +162,11 @@
     <ClCompile Include="ListOfMonitorHistory.cpp" />
     <ClCompile Include="MonitorHistory.cpp" />
     <ClCompile Include="PageOfMonitor.cpp" />
+    <ClCompile Include="PageOfPersonHistory.cpp" />
+    <ClCompile Include="PageOfPersonManage.cpp" />
+    <ClCompile Include="PageOfSettings.cpp" />
+    <ClCompile Include="PageOfUserHistory.cpp" />
+    <ClCompile Include="PageOfUserManage.cpp" />
     <ClCompile Include="PersonDB.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="stdafx.cpp">

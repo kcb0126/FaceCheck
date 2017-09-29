@@ -21,8 +21,8 @@ CMonitorHistory::~CMonitorHistory()
 {
 	if (m_pListOfMonitorHistory != NULL)
 	{
-		delete m_pListOfMonitorHistory;
-		m_pListOfMonitorHistory = NULL;
+//		delete m_pListOfMonitorHistory;
+//		m_pListOfMonitorHistory = NULL;
 	}
 }
 
@@ -34,6 +34,7 @@ void CMonitorHistory::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CMonitorHistory, CPropertyPage)
 	ON_WM_SIZE()
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 
@@ -44,15 +45,6 @@ BOOL CMonitorHistory::OnInitDialog()
 {
 	CPropertyPage::OnInitDialog();
 
-	CRuntimeClass *pObject;
-	pObject = RUNTIME_CLASS(CListOfMonitorHistory);
-	m_pListOfMonitorHistory = (CListOfMonitorHistory*)pObject->CreateObject();
-
-	if (!m_pListOfMonitorHistory->Create(NULL, NULL, AFX_WS_DEFAULT_VIEW, CRect(0, 0, 100, 100), this, AFX_IDW_PANE_FIRST, NULL))
-	{
-		TRACE0("Failed to create ListOfMonitorHistory");
-		return FALSE;
-	}
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
@@ -65,6 +57,30 @@ void CMonitorHistory::OnSize(UINT nType, int cx, int cy)
 
 	CRect rect;
 	GetClientRect(&rect);
-	
-	m_pListOfMonitorHistory->SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height() - 100, SWP_NOZORDER);
+	if (m_pListOfMonitorHistory != NULL)
+	{
+		m_pListOfMonitorHistory->SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height() - 100, SWP_NOZORDER);
+	}
+}
+
+
+int CMonitorHistory::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CPropertyPage::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	CRuntimeClass *pObject;
+	pObject = RUNTIME_CLASS(CListOfMonitorHistory);
+	m_pListOfMonitorHistory = (CListOfMonitorHistory*)pObject->CreateObject();
+	//	m_pListOfMonitorHistory = new CListOfMonitorHistory;
+	if (!m_pListOfMonitorHistory->Create(NULL, NULL, AFX_WS_DEFAULT_VIEW, CRect(0, 0, 100, 100), this, AFX_IDW_PANE_FIRST, NULL))
+	{
+		TRACE0("Failed to create ListOfMonitorHistory");
+		return FALSE;
+	}
+
+	m_pListOfMonitorHistory->ShowWindow(SW_SHOW);
+	m_pListOfMonitorHistory->UpdateWindow();
+
+	return 0;
 }

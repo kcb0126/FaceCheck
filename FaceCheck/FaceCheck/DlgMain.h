@@ -1,6 +1,11 @@
 #pragma once
 #include "BitmapButtonPlus.h"
 #include "PageOfMonitor.h"
+#include "PageOfPersonManage.h"
+#include "PageOfPersonHistory.h"
+#include "PageOfUserManage.h"
+#include "PageOfUserHistory.h"
+#include "PageOfSettings.h"
 
 // CDlgMain dialog
 
@@ -38,6 +43,11 @@ public:
 	CBitmapButtonPlus m_btnSettings;
 
 	CPageOfMonitor m_pageMonitor;
+	CPageOfPersonManage m_pagePersonManage;
+	CPageOfPersonHistory m_pagePersonHistory;
+	CPageOfUserManage m_pageUserManage;
+	CPageOfUserHistory m_pageUserHistory;
+	CPageOfSettings m_pageSettings;
 
 public:
 	void SetTab(int nTabIndex);

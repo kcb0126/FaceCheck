@@ -108,6 +108,21 @@
     <ClInclude Include="ListOfMonitorHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PageOfPersonManage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PageOfPersonHistory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PageOfUserManage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PageOfUserHistory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PageOfSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaceCheck.cpp">
@@ -174,6 +189,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListOfMonitorHistory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PageOfPersonManage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PageOfPersonHistory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PageOfUserManage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PageOfUserHistory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PageOfSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
