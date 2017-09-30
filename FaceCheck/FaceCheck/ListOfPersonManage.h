@@ -1,13 +1,13 @@
 #pragma once
 #include "CustomListView.h"
-class CListOfMonitorHistory :
+class CListOfPersonManage :
 	public CCustomListView
 {
-	DECLARE_DYNCREATE(CListOfMonitorHistory)
+	DECLARE_DYNCREATE(CListOfPersonManage)
 
 public:
-	CListOfMonitorHistory();
-	~CListOfMonitorHistory();
+	CListOfPersonManage();
+	~CListOfPersonManage();
 
 public:
 	int m_nCount = 5;

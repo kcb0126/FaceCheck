@@ -77,13 +77,13 @@ void CCustomListView::drawContents()
 	}
 	m_cells.clear();
 
-	int nCount = this->getCellCount();
+	int nCount = this->GetCellCount();
 	int nWidth = 0, nHeight = 0;
 	CRect rect;
 	CWnd* pCell;
 	for (int i = 0; i < nCount; i++)
 	{
-		pCell = this->getCellAt(i);
+		pCell = this->GetCellAt(i);
 		pCell->GetWindowRect(&rect);
 		pCell->SetWindowPos(NULL, 0, nHeight, rect.Width(), rect.Height(), SWP_NOZORDER);
 		nWidth = (nWidth > rect.Width()) ? nWidth : rect.Width();

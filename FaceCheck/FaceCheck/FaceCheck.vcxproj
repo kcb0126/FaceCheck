@@ -112,6 +112,8 @@
     <ClInclude Include="CameraView.h" />
     <ClInclude Include="CameraViewContainer.h" />
     <ClInclude Include="CellOfMonitorHistory.h" />
+    <ClInclude Include="CellOfPersonHistory.h" />
+    <ClInclude Include="CellOfPersonManage.h" />
     <ClInclude Include="CustomListView.h" />
     <ClInclude Include="DlgMain.h" />
     <ClInclude Include="EasySize.h" />
@@ -126,6 +128,7 @@
     <ClInclude Include="LabelTrans.h" />
     <ClInclude Include="licenseDef.h" />
     <ClInclude Include="ListOfMonitorHistory.h" />
+    <ClInclude Include="ListOfPersonManage.h" />
     <ClInclude Include="MonitorHistory.h" />
     <ClInclude Include="myDef.h" />
     <ClInclude Include="myGlobal.h" />
@@ -136,6 +139,8 @@
     <ClInclude Include="PageOfUserHistory.h" />
     <ClInclude Include="PageOfUserManage.h" />
     <ClInclude Include="PersonDB.h" />
+    <ClInclude Include="PersonInfo.h" />
+    <ClInclude Include="PersonManageList.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SoundPlayer.h" />
     <ClInclude Include="stdafx.h" />
@@ -149,6 +154,8 @@
     <ClCompile Include="CameraView.cpp" />
     <ClCompile Include="CameraViewContainer.cpp" />
     <ClCompile Include="CellOfMonitorHistory.cpp" />
+    <ClCompile Include="CellOfPersonHistory.cpp" />
+    <ClCompile Include="CellOfPersonManage.cpp" />
     <ClCompile Include="CustomListView.cpp" />
     <ClCompile Include="DlgMain.cpp" />
     <ClCompile Include="EmbeddedMySQL.cpp" />
@@ -160,6 +167,7 @@
     <ClCompile Include="FrameProcessor.cpp" />
     <ClCompile Include="LabelTrans.cpp" />
     <ClCompile Include="ListOfMonitorHistory.cpp" />
+    <ClCompile Include="ListOfPersonManage.cpp" />
     <ClCompile Include="MonitorHistory.cpp" />
     <ClCompile Include="PageOfMonitor.cpp" />
     <ClCompile Include="PageOfPersonHistory.cpp" />
@@ -168,6 +176,8 @@
     <ClCompile Include="PageOfUserHistory.cpp" />
     <ClCompile Include="PageOfUserManage.cpp" />
     <ClCompile Include="PersonDB.cpp" />
+    <ClCompile Include="PersonInfo.cpp" />
+    <ClCompile Include="PersonManageList.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

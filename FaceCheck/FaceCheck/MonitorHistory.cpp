@@ -19,11 +19,7 @@ CMonitorHistory::CMonitorHistory()
 
 CMonitorHistory::~CMonitorHistory()
 {
-	if (m_pListOfMonitorHistory != NULL)
-	{
-//		delete m_pListOfMonitorHistory;
-//		m_pListOfMonitorHistory = NULL;
-	}
+	// Don't need to delete m_pListOfMonitorHistory;
 }
 
 void CMonitorHistory::DoDataExchange(CDataExchange* pDX)
@@ -76,7 +72,7 @@ int CMonitorHistory::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (!m_pListOfMonitorHistory->Create(NULL, NULL, AFX_WS_DEFAULT_VIEW, CRect(0, 0, 100, 100), this, AFX_IDW_PANE_FIRST, NULL))
 	{
 		TRACE0("Failed to create ListOfMonitorHistory");
-		return FALSE;
+		return -1;
 	}
 
 	m_pListOfMonitorHistory->ShowWindow(SW_SHOW);

@@ -1,5 +1,6 @@
 #pragma once
-
+#include "PersonManageList.h"
+#include "PersonInfo.h"
 
 // CPageOfPersonManage dialog
 
@@ -18,4 +19,10 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+
+public:
+	CPersonManageList m_personManageList;
+	CPersonInfo m_personInfo;
+	virtual BOOL OnInitDialog();
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };

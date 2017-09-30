@@ -14,12 +14,12 @@ CListOfMonitorHistory::~CListOfMonitorHistory()
 {
 }
 
-int CListOfMonitorHistory::getCellCount()
+int CListOfMonitorHistory::GetCellCount()
 {
 	return m_nCount;
 }
 
-CWnd* CListOfMonitorHistory::getCellAt(int nIndex)
+CWnd* CListOfMonitorHistory::GetCellAt(int nIndex)
 {
 	CCellOfMonitorHistory* pCell;
 	pCell = new CCellOfMonitorHistory;

@@ -36,8 +36,8 @@ public:
 	void refresh();
 
 public:
-	virtual int getCellCount() { return 0; };
-	virtual CWnd* getCellAt(int nIndex) { return NULL; };
+	virtual int GetCellCount() { return 0; };
+	virtual CWnd* GetCellAt(int nIndex) { return NULL; };
 };
 
 
