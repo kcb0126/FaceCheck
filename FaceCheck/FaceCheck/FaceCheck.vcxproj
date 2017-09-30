@@ -139,6 +139,7 @@
     <ClInclude Include="PageOfUserHistory.h" />
     <ClInclude Include="PageOfUserManage.h" />
     <ClInclude Include="PersonDB.h" />
+    <ClInclude Include="PersonHistoryList.h" />
     <ClInclude Include="PersonInfo.h" />
     <ClInclude Include="PersonManageList.h" />
     <ClInclude Include="Resource.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="PageOfUserHistory.cpp" />
     <ClCompile Include="PageOfUserManage.cpp" />
     <ClCompile Include="PersonDB.cpp" />
+    <ClCompile Include="PersonHistoryList.cpp" />
     <ClCompile Include="PersonInfo.cpp" />
     <ClCompile Include="PersonManageList.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
