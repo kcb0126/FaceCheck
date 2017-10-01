@@ -128,6 +128,7 @@
     <ClInclude Include="LabelTrans.h" />
     <ClInclude Include="licenseDef.h" />
     <ClInclude Include="ListOfMonitorHistory.h" />
+    <ClInclude Include="ListOfPersonHistory.h" />
     <ClInclude Include="ListOfPersonManage.h" />
     <ClInclude Include="MonitorHistory.h" />
     <ClInclude Include="myDef.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="FrameProcessor.cpp" />
     <ClCompile Include="LabelTrans.cpp" />
     <ClCompile Include="ListOfMonitorHistory.cpp" />
+    <ClCompile Include="ListOfPersonHistory.cpp" />
     <ClCompile Include="ListOfPersonManage.cpp" />
     <ClCompile Include="MonitorHistory.cpp" />
     <ClCompile Include="PageOfMonitor.cpp" />
