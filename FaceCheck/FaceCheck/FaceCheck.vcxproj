@@ -114,6 +114,7 @@
     <ClInclude Include="CellOfMonitorHistory.h" />
     <ClInclude Include="CellOfPersonHistory.h" />
     <ClInclude Include="CellOfPersonManage.h" />
+    <ClInclude Include="CellOfUserHistory.h" />
     <ClInclude Include="CellOfUserManage.h" />
     <ClInclude Include="CustomListView.h" />
     <ClInclude Include="DlgMain.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="CellOfMonitorHistory.cpp" />
     <ClCompile Include="CellOfPersonHistory.cpp" />
     <ClCompile Include="CellOfPersonManage.cpp" />
+    <ClCompile Include="CellOfUserHistory.cpp" />
     <ClCompile Include="CellOfUserManage.cpp" />
     <ClCompile Include="CustomListView.cpp" />
     <ClCompile Include="DlgMain.cpp" />
