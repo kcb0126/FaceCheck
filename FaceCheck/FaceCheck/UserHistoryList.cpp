@@ -63,7 +63,7 @@ void CUserHistoryList::OnSize(UINT nType, int cx, int cy)
 
 	CRect rect;
 	GetClientRect(&rect);
-	if (!m_pListOfUserHistory != NULL)
+	if (m_pListOfUserHistory != NULL)
 	{
 		m_pListOfUserHistory->SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height(), SWP_NOZORDER);
 	}
