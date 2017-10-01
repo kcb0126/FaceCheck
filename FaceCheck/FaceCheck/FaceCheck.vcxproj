@@ -151,6 +151,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TrackingFace.h" />
     <ClInclude Include="types.h" />
+    <ClInclude Include="UserManageList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitmapButtonPlus.cpp" />
@@ -192,6 +193,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TrackingFace.cpp" />
+    <ClCompile Include="UserManageList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FaceCheck.rc" />
