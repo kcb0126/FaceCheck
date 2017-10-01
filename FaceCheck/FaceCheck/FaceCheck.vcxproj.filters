@@ -159,6 +159,9 @@
     <ClInclude Include="ListOfUserHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UserHistoryList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaceCheck.cpp">
@@ -276,6 +279,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListOfUserHistory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserHistoryList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
