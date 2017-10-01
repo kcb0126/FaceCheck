@@ -132,6 +132,7 @@
     <ClInclude Include="ListOfMonitorHistory.h" />
     <ClInclude Include="ListOfPersonHistory.h" />
     <ClInclude Include="ListOfPersonManage.h" />
+    <ClInclude Include="ListOfUserHistory.h" />
     <ClInclude Include="ListOfUserManage.h" />
     <ClInclude Include="MonitorHistory.h" />
     <ClInclude Include="myDef.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="ListOfMonitorHistory.cpp" />
     <ClCompile Include="ListOfPersonHistory.cpp" />
     <ClCompile Include="ListOfPersonManage.cpp" />
+    <ClCompile Include="ListOfUserHistory.cpp" />
     <ClCompile Include="ListOfUserManage.cpp" />
     <ClCompile Include="MonitorHistory.cpp" />
     <ClCompile Include="PageOfMonitor.cpp" />
