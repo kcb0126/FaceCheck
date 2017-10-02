@@ -6,10 +6,13 @@
 #include "FaceCheck.h"
 #include "FaceCheckDlg.h"
 
+#include "myGlobal.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+HANDLE g_hMonitorMutex;
 
 // CFaceCheckApp
 
@@ -39,6 +42,14 @@ CFaceCheckApp theApp;
 
 BOOL CFaceCheckApp::InitInstance()
 {
+	g_hMonitorMutex = OpenMutex(MUTEX_ALL_ACCESS, NULL, MONITOR_CLIENT_MUTEX);
+	if (g_hMonitorMutex != NULL)
+	{
+		MessageBox(NULL, _T("The program is already running!"), _T("Information"), MB_OK);
+		return FALSE;
+	}
+	g_hMonitorMutex = CreateMutex(NULL, NULL, MONITOR_CLIENT_MUTEX);
+
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
 	// visual styles.  Otherwise, any window creation will fail.
