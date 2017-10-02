@@ -281,6 +281,19 @@ BOOL CFaceCheckDlg::OnEraseBkgnd(CDC* pDC)
 
 void CFaceCheckDlg::OnBnClickedButton1()
 {
+	UpdateData(TRUE);
+
+	if (m_strUsername.IsEmpty() || m_strPassword.IsEmpty())
+	{
+		MessageBox(_T("Please type username or password."), _T("Message"));
+		return;
+	}
+
+	if (g_pDBManager->verifyPasswordAndBlocked(m_strUsername, m_strPassword) == FALSE)
+		return;
+
+	AfxGetApp()->WriteProfileString(_T("User"), _T("Username"), m_strUsername);
+
 	CDlgMain dlgMain;
 	dlgMain.DoModal();
 }
