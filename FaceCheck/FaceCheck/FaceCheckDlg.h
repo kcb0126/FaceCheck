@@ -40,11 +40,14 @@ private:
 	CBitmap m_bmpHome;
 public:
 	CBitmapButtonPlus m_btnPower;
-	CLabelTrans m_lblTodo;
 	CLabelTrans m_lblUsername;
 	CLabelTrans m_lblPassword;
 	CEdit m_edtUsername;
 	CEdit m_edtPassword;
 	CBitmapButtonPlus m_btnLogin;
 	afx_msg void OnBnClickedButton1();
+	CString m_strUsername;
+	CString m_strPassword;
+	virtual void OnOK();
+	virtual void OnCancel();
 };

@@ -51,6 +51,8 @@ END_MESSAGE_MAP()
 
 CFaceCheckDlg::CFaceCheckDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CFaceCheckDlg::IDD, pParent)
+	, m_strUsername(_T(""))
+	, m_strPassword(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -59,12 +61,13 @@ void CFaceCheckDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_BTN_POWER, m_btnPower);
-	DDX_Control(pDX, IDC_STATIC_TODO, m_lblTodo);
 	DDX_Control(pDX, IDC_STATIC_USERNAME, m_lblUsername);
 	DDX_Control(pDX, IDC_STATIC_PASSWORD, m_lblPassword);
 	DDX_Control(pDX, IDC_EDIT_USERNAME, m_edtUsername);
 	DDX_Control(pDX, IDC_EDIT_PASSWORD, m_edtPassword);
 	DDX_Control(pDX, IDC_BUTTON1, m_btnLogin);
+	DDX_Text(pDX, IDC_EDIT_USERNAME, m_strUsername);
+	DDX_Text(pDX, IDC_EDIT_PASSWORD, m_strPassword);
 }
 
 BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
@@ -116,12 +119,6 @@ BOOL CFaceCheckDlg::OnInitDialog()
 	m_btnPower.SetHoverBitmapID(IDB_POWERHOVER);
 	m_btnPower.SizeToContent();
 	m_btnPower.SetWindowPos(NULL, rect.Width() - 76, 0, 76, 85, SWP_NOZORDER);
-
-	m_lblTodo.SetTextColor(RGB(255, 255, 255));
-	m_lblTodo.SetFontSize(24);
-	m_lblTodo.SetFontName(L"Times New Roman");
-	m_lblTodo.SetText(L"All right reserved");
-	m_lblTodo.SetRedraw();
 
 	m_lblUsername.SetTextColor(RGB(255, 255, 255));
 	m_lblUsername.SetFontSize(32);
@@ -286,4 +283,20 @@ void CFaceCheckDlg::OnBnClickedButton1()
 {
 	CDlgMain dlgMain;
 	dlgMain.DoModal();
+}
+
+
+void CFaceCheckDlg::OnOK()
+{
+	// TODO: Add your specialized code here and/or call the base class
+
+//	CDialogEx::OnOK();
+}
+
+
+void CFaceCheckDlg::OnCancel()
+{
+	// TODO: Add your specialized code here and/or call the base class
+
+//	CDialogEx::OnCancel();
 }
