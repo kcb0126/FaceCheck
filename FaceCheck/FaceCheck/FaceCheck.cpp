@@ -100,7 +100,10 @@ BOOL CFaceCheckApp::InitInstance()
 
 
 	}
-
+	else
+	{
+		exit(1);
+	}
 	// Create the shell manager, in case the dialog contains
 	// any shell tree view or shell list view controls.
 	CShellManager *pShellManager = new CShellManager;
@@ -115,7 +118,6 @@ BOOL CFaceCheckApp::InitInstance()
 	// Change the registry key under which our settings are stored
 	// TODO: You should modify this string to be something appropriate
 	// such as the name of your company or organization
-	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
 	CFaceCheckDlg dlg;
 	m_pMainWnd = &dlg;
