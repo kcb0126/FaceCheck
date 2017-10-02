@@ -4,7 +4,7 @@
 #include "myDef.h"
 #include "ExecutablePathInfo.h"
 #include <ShlObj.h>
-//--#include "DlgOfSetServer.h"
+#include "DlgOfSetServer.h"
 
 CString			g_strUsername;
 int				g_nUserID;
@@ -26,7 +26,7 @@ CEmbeddedMySQL::~CEmbeddedMySQL(void)
 }
 
 bool CEmbeddedMySQL::connect_mysql_server(CString strServer, int nPort, CString strDBName, CString strUser, CString strPassword)
-{/*--
+{
 	close_mysql();
 
 	mysql = mysql_init(NULL);
@@ -98,7 +98,7 @@ bool CEmbeddedMySQL::connect_mysql_server(CString strServer, int nPort, CString 
 	MYSQL_ROW recordTemp = g_pDBManager->fetch_row(resultTemp);
 	int nIdx = recordTemp[0] == NULL ? 0 : atoi(recordTemp[0]);
 	m_nMaxIDinMonitorHistory = nIdx;
---*/
+
 	return true;
 }
 

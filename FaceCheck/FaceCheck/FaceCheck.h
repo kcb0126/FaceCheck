@@ -9,7 +9,7 @@
 #endif
 
 #include "resource.h"		// main symbols
-#include "EmbeddedMySQL.h"
+#include "myGlobal.h"
 
 // CFaceCheckApp:
 // See FaceCheck.cpp for the implementation of this class
@@ -21,6 +21,12 @@ public:
 	CFaceCheckApp();
 
 	ULONG_PTR m_gdiplusToken;
+
+public:
+	CPersonDB m_PersonDB;
+
+	static CString m_strAppPath;
+	static CString GetAppSubFilePath(LPCTSTR lpszFileName);
 
 // Overrides
 public:

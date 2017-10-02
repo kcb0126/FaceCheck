@@ -6,8 +6,6 @@
 #include "FaceCheck.h"
 #include "FaceCheckDlg.h"
 
-#include "myGlobal.h"
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -22,6 +20,8 @@ END_MESSAGE_MAP()
 
 
 // CFaceCheckApp construction
+
+CString CFaceCheckApp::m_strAppPath;
 
 CFaceCheckApp::CFaceCheckApp()
 {
@@ -65,8 +65,41 @@ BOOL CFaceCheckApp::InitInstance()
 
 	AfxEnableControlContainer();
 
+	TCHAR szPath[MAX_PATH];
+	GetModuleFileName(NULL, szPath, MAX_PATH);
+	TCHAR* pos = _tcsrchr(szPath, _T('\\'));
+	pos[1] = 0;
+	m_strAppPath = szPath;
+
 	GdiplusStartupInput gdiplusStartupInput;
 	GdiplusStartup(&m_gdiplusToken, &gdiplusStartupInput, NULL);
+
+	SetRegistryKey(_T("FaceCheckNew"));
+
+	//load Setting Values
+	CString strServerAddress, strDBName, strUsername, strPassword;
+	int nPort;
+/*	strServerAddress = AfxGetApp()->GetProfileString(_T("Setting"), _T("Address"), _T("85.214.18.79"));
+	nPort = AfxGetApp()->GetProfileInt(_T("Setting"), _T("Port"), 3306);
+	strDBName = AfxGetApp()->GetProfileString(_T("Setting"), _T("DBName"), _T("facecheck_db"));
+	strUsername = AfxGetApp()->GetProfileString(_T("Setting"), _T("UserName"), _T("facecheck_user"));
+	strPassword = AfxGetApp()->GetProfileString(_T("Setting"), _T("Password"), _T("facecheck@123"));
+*/
+	strServerAddress = AfxGetApp()->GetProfileString(_T("Setting"), _T("Address"), _T("server"));
+	nPort = AfxGetApp()->GetProfileInt(_T("Setting"), _T("Port"), 3306);
+	strDBName = AfxGetApp()->GetProfileString(_T("Setting"), _T("DBName"), _T("facecheck_db"));
+	strUsername = AfxGetApp()->GetProfileString(_T("Setting"), _T("UserName"), _T("super_user"));
+	strPassword = AfxGetApp()->GetProfileString(_T("Setting"), _T("Password"), _T("super"));
+
+	g_pDBManager = new CEmbeddedMySQL;
+	if (g_pDBManager->connect_mysql_server(strServerAddress, nPort, strDBName, strUsername, strPassword))
+	{
+		g_pDBManager->loadPersonBinaryData();
+
+		personDB().getThresholdValue(AfxGetApp()->GetProfileInt(_T("FaceOption"), _T("ThresholdLevel"), 3));
+
+
+	}
 
 	// Create the shell manager, in case the dialog contains
 	// any shell tree view or shell list view controls.
@@ -114,3 +147,7 @@ BOOL CFaceCheckApp::InitInstance()
 	return FALSE;
 }
 
+CString CFaceCheckApp::GetAppSubFilePath(LPCTSTR lpszFileName)
+{
+	return m_strAppPath + lpszFileName;
+}
