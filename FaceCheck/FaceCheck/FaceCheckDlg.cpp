@@ -76,6 +76,7 @@ BEGIN_MESSAGE_MAP(CFaceCheckDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_WM_ERASEBKGND()
 	ON_BN_CLICKED(IDC_BUTTON1, &CFaceCheckDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BTN_POWER, &CFaceCheckDlg::OnBnClickedBtnPower)
 END_MESSAGE_MAP()
 
 
@@ -312,4 +313,10 @@ void CFaceCheckDlg::OnCancel()
 	// TODO: Add your specialized code here and/or call the base class
 
 //	CDialogEx::OnCancel();
+}
+
+
+void CFaceCheckDlg::OnBnClickedBtnPower()
+{
+	CDialogEx::OnOK();
 }

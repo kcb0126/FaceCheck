@@ -43,6 +43,7 @@ BEGIN_MESSAGE_MAP(CDlgMain, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_USERMANGE, &CDlgMain::OnBnClickedBtnUsermange)
 	ON_BN_CLICKED(IDC_BTN_USERHISTORY, &CDlgMain::OnBnClickedBtnUserhistory)
 	ON_BN_CLICKED(IDC_BTN_SETTINGS, &CDlgMain::OnBnClickedBtnSettings)
+	ON_BN_CLICKED(IDC_BTN_POWER, &CDlgMain::OnBnClickedBtnPower)
 END_MESSAGE_MAP()
 
 
@@ -329,4 +330,10 @@ void CDlgMain::OnBnClickedBtnUserhistory()
 void CDlgMain::OnBnClickedBtnSettings()
 {
 	SetTab(TAB_SETTINGS);
+}
+
+
+void CDlgMain::OnBnClickedBtnPower()
+{
+	CDialogEx::OnOK();
 }
