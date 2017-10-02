@@ -1,5 +1,8 @@
 #pragma once
 #include "ListOfMonitorHistory.h"
+#include "BitmapButtonPlus.h"
+#include "LabelTrans.h"
+#include "afxwin.h"
 
 // CMonitorHistory dialog
 
@@ -24,4 +27,11 @@ public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	CBitmapButtonPlus m_btnFirst;
+	CBitmapButtonPlus m_btnPrev;
+	CBitmapButtonPlus m_btnNext;
+	CBitmapButtonPlus m_btnLast;
+	CEdit m_editPagenumber;
+	CLabelTrans m_lblTotalrecords;
+	CLabelTrans m_lblTotalpages;
 };

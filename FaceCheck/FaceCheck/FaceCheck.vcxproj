@@ -211,11 +211,18 @@
     <None Include="res\wave1.bin" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\bitmap4.bmp" />
     <Image Include="res\black.bmp" />
     <Image Include="res\bottom.bmp" />
     <Image Include="res\darkgray.bmp" />
     <Image Include="res\FaceCheck.ico" />
+    <Image Include="res\first.bmp" />
+    <Image Include="res\first_disabled.bmp" />
+    <Image Include="res\first_hover.bmp" />
     <Image Include="res\home.bmp" />
+    <Image Include="res\last.bmp" />
+    <Image Include="res\last_disabled.bmp" />
+    <Image Include="res\last_hover.bmp" />
     <Image Include="res\lightgray.bmp" />
     <Image Include="res\login.bmp" />
     <Image Include="res\login_down.bmp" />
@@ -223,6 +230,9 @@
     <Image Include="res\monitor.bmp" />
     <Image Include="res\monitor_disabled.bmp" />
     <Image Include="res\monitor_hover.bmp" />
+    <Image Include="res\next.bmp" />
+    <Image Include="res\next_disabled.bmp" />
+    <Image Include="res\next_hover.bmp" />
     <Image Include="res\personhistory.bmp" />
     <Image Include="res\personhistory_disabled.bmp" />
     <Image Include="res\personhistory_hover.bmp" />
@@ -235,6 +245,9 @@
     <Image Include="res\preferences.bmp" />
     <Image Include="res\preferences_down.bmp" />
     <Image Include="res\preferences_hover.bmp" />
+    <Image Include="res\prev.bmp" />
+    <Image Include="res\prev_disabled.bmp" />
+    <Image Include="res\prev_hover.bmp" />
     <Image Include="res\settings.bmp" />
     <Image Include="res\settings_disabled.bmp" />
     <Image Include="res\settings_hover.bmp" />

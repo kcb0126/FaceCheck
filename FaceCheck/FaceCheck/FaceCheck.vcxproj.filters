@@ -410,6 +410,45 @@
     <Image Include="res\bottom.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\bitmap4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\first.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\first_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\first_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\last.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\last_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\last_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\next.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\next_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\next_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\prev.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\prev_disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\prev_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\Warning.wav">
