@@ -449,6 +449,9 @@
     <Image Include="res\prev_hover.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\unregistered.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\Warning.wav">

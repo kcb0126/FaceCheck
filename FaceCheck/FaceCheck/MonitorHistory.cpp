@@ -38,6 +38,10 @@ void CMonitorHistory::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMonitorHistory, CPropertyPage)
 	ON_WM_SIZE()
 	ON_WM_CREATE()
+	ON_BN_CLICKED(IDC_BUTTON_FIRST, &CMonitorHistory::OnBnClickedButtonFirst)
+	ON_BN_CLICKED(IDC_BUTTON_PREV, &CMonitorHistory::OnBnClickedButtonPrev)
+	ON_BN_CLICKED(IDC_BUTTON_NEXT, &CMonitorHistory::OnBnClickedButtonNext)
+	ON_BN_CLICKED(IDC_BUTTON_LAST, &CMonitorHistory::OnBnClickedButtonLast)
 END_MESSAGE_MAP()
 
 
@@ -70,6 +74,8 @@ BOOL CMonitorHistory::OnInitDialog()
 	m_btnLast.LoadBitmaps(IDB_PAGING_LAST, IDB_PAGING_LAST, IDB_PAGING_LAST, IDB_PAGING_LAST_DISABLED);
 	m_btnLast.SetHoverBitmapID(IDB_PAGING_LAST_HOVER);
 	m_btnLast.SizeToContent();
+
+	RefreshList();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
@@ -172,4 +178,258 @@ int CMonitorHistory::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_pListOfMonitorHistory->UpdateWindow();
 
 	return 0;
+}
+
+void CMonitorHistory::ShowItems(int nBeginPos, int nCount)
+{
+	CString strQuery;
+	strQuery.Format(_T("SELECT * FROM monitor_history LIMIT %d, %d"), nBeginPos, nCount);
+
+	MYSQL_RES* result;
+	int count = 0;
+	result = g_pDBManager->runQuery(CW2A(strQuery.GetBuffer()));
+
+	if (result == NULL)
+	{
+		AfxMessageBox(_T("Error occured in refreshing monitor history."));
+		return;
+	}
+	else
+	{
+		int nRecordCount = 0;
+		m_pListOfMonitorHistory->m_cellsData.clear();
+		while (MYSQL_ROW record = mysql_fetch_row(result))
+		{
+			nRecordCount ++;
+			tagMonitorHistoryCell cellData;
+			FaceData data;
+			data.initialize(); // Added by Koo to prevent memoryleak
+			int nIdx, nView;
+			CString strComment, strCommentDate;
+			CString strTime;
+			CString strQuery;
+
+			nIdx = atoi(record[0]);
+
+			data.id = atoi(record[1]);
+			data.gender = atoi(record[2]);
+			data.age = atoi(record[3]);
+
+			int nbpp, nEffWidth, nHeight;
+			nbpp = atoi(record[5]);
+			nEffWidth = atoi(record[6]);
+			nHeight = atoi(record[7]);
+
+			BYTE* pbyBuf = new BYTE[nEffWidth * nHeight];
+			memcpy(pbyBuf, record[4], nEffWidth * nHeight);
+
+			CxImage * img = new CxImage();
+			img->CreateFromArray(pbyBuf, CUSTOMER_PHOTO_WIDTH, CUSTOMER_PHOTO_HEIGHT, nbpp, nEffWidth, FALSE);
+
+			data.imgCamera = img;
+
+			strTime = record[8];
+			nView = atoi(record[10]);
+			strComment = record[11];
+			strCommentDate = record[12];
+
+			{
+				HBITMAP hBmpCamera;
+				HBITMAP hBmpRegistered;
+				CBitmap bmp;
+				CBitmap BmpRegistered;
+				
+				CSingleLock _lock(&(m_secData), TRUE);
+				hBmpCamera = data.imgCamera->MakeBitmap();
+				cellData.hPhoto = hBmpCamera;
+//				DeleteObject(hBmpCamera);
+
+				person_info tInfo;
+
+				if (data.id != NON_EMPLOYEE)
+				{
+					CxImage* photo = personDB().CreatePhoto(personDB().IsExist(data.id));
+					hBmpRegistered = photo->MakeBitmap();
+
+					photo->~CxImage();		// Added by Koo to prevent memoryleak
+					free(photo);
+					photo = NULL;
+
+					cellData.hPhotoRegistered = hBmpRegistered;
+//					DeleteObject(hBmpRegistered);
+
+					tInfo = g_pDBManager->getPersonInfoWithSecurity(data.id);
+				}
+				else
+				{
+					BmpRegistered.LoadBitmap(IDB_UNREGISTERED);
+					hBmpRegistered = (HBITMAP)BmpRegistered.Detach();
+					cellData.hPhotoRegistered = hBmpRegistered;
+					tInfo.m_nBlocked = 0;
+				}
+
+				//	m_listHistory.SetRedraw(FALSE);
+
+				cellData.strName = data.id == NON_EMPLOYEE ? _T("Unknown") : g_pDBManager->getPersonName(data.id);
+				cellData.strAgeGender.Format(_T("%d %s"), data.age, (data.gender == 0 ? _T("Male") : _T("Female")));
+				cellData.strAccessedWhen = strTime;
+				cellData.strStatus = tInfo.m_nBlocked ? _T("Blocked") : _T("Not blocked");
+
+/*				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 2, data.id == NON_EMPLOYEE ? _T("Unknown") : g_pDBManager->getPersonName(data.id));
+				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 3, data.age);
+				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 4, data.gender == 0 ? _T("Male") : _T("Female"));
+				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 5, strTime);
+				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 6, nView);
+				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 7, strComment);
+				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 8, strCommentDate);
+*/
+//				if (data.id != NON_EMPLOYEE)
+//				{
+					//m_listCustomer.SetItemBkColor(idx, -1, RGB(255, 0, 0));
+//					g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemTextColor(idx, -1, RGB(0, 0, 255));
+//				}
+//				if (data.age < AGE_LIMIT)
+//				{
+					//m_listCustomer.SetItemBkColor(idx, -1, RGB(255, 0, 0));
+//					g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemTextColor(idx, -1, RGB(255, 0, 0));
+//					MessageBeep(MB_ICONERROR);
+
+					//					g_pMainDlg->m_pPageMonitor->SetDlgItemText(IDC_STATIC_CAMERA_WARNING, L"Forbidden age!!");
+					//					g_pMainDlg->m_pPageMonitor->GetDlgItem(IDC_STATIC_CAMERA_WARNING)->ShowWindow(SW_SHOW);
+					/*if (g_pMainDlg->m_pDlgOfWarning) delete g_pMainDlg->m_pDlgOfWarning;
+					g_pMainDlg->m_pDlgOfWarning = new CDlgOfWarning();
+					g_pMainDlg->m_pDlgOfWarning->Create(IDD_DLG_WARNING, this);
+
+					g_pMainDlg->m_pDlgOfWarning->ShowWindow(SW_SHOW);
+					g_pMainDlg->m_pDlgOfWarning->showWarning(L"WARNING!!", L"Forbidden age");
+					g_pMainDlg->m_pDlgOfWarning->UpdateWindow();
+					*/
+//				}
+//				if (tInfo.m_nBlocked)
+//				{
+					//m_listCustomer.SetItemBkColor(idx, -1, RGB(0, 255, 0));
+					//					MessageBeep(MB_ICONERROR);
+					//					g_pMainDlg->m_pPageMonitor->SetDlgItemText(IDC_STATIC_CAMERA_WARNING, L"Blocked person!!");
+					//					g_pMainDlg->m_pPageMonitor->GetDlgItem(IDC_STATIC_CAMERA_WARNING)->ShowWindow(SW_SHOW);
+					/*if (g_pMainDlg->m_pDlgOfWarning) delete g_pMainDlg->m_pDlgOfWarning;
+					g_pMainDlg->m_pDlgOfWarning = new CDlgOfWarning();
+					g_pMainDlg->m_pDlgOfWarning->Create(IDD_DLG_WARNING, this);
+
+					g_pMainDlg->m_pDlgOfWarning->ShowWindow(SW_SHOW);
+					g_pMainDlg->m_pDlgOfWarning->showWarning(L"WARNING!!", L"Blocked person");
+					g_pMainDlg->m_pDlgOfWarning->UpdateWindow();*/
+//					g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemTextColor(idx, -1, RGB(255, 0, 0));
+//				}
+				
+				data.cleanMemory();	// Added by Koo to prevent memoryleak
+
+				//	m_listHistory.SetRedraw(TRUE);
+			}
+
+			m_pListOfMonitorHistory->m_cellsData.push_back(cellData);
+
+			// Don't need clean data 'cause it was already cleaned in AddToList();
+			delete[] pbyBuf;
+		}
+		m_pListOfMonitorHistory->m_nCount = nRecordCount;
+		m_pListOfMonitorHistory->Refresh();
+//		g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetRedraw(TRUE);
+
+		if (result)
+			mysql_free_result(result);
+	}
+}
+
+void CMonitorHistory::ShowPage(int nPageNumber)
+{
+	if (nPageNumber > m_nPageCount || nPageNumber < 1)
+	{
+		return;
+	}
+	else
+	{
+		m_nCurrentPageNumber = nPageNumber;
+		ShowItems(m_nPageCapacity * (m_nCurrentPageNumber - 1), m_nPageCapacity);
+		
+		CString strPageNum;
+		strPageNum.Format(L"%d", m_nCurrentPageNumber);
+		m_editPagenumber.SetWindowText(strPageNum);
+		
+		m_btnFirst.EnableWindow(m_nCurrentPageNumber > 1);
+		m_btnPrev.EnableWindow(m_nCurrentPageNumber > 1);
+		m_btnNext.EnableWindow(m_nCurrentPageNumber < m_nPageCount);
+		m_btnLast.EnableWindow(m_nCurrentPageNumber < m_nPageCount);
+	}
+}
+
+void CMonitorHistory::ShowFirst()
+{
+	ShowPage(1);
+}
+
+void CMonitorHistory::ShowPrev()
+{
+	ShowPage(m_nCurrentPageNumber - 1);
+}
+
+void CMonitorHistory::ShowNext()
+{
+	ShowPage(m_nCurrentPageNumber + 1);
+}
+
+void CMonitorHistory::ShowLast()
+{
+	ShowPage(m_nPageCount);
+}
+
+void CMonitorHistory::RefreshList()
+{
+	CString strQuery4Count;
+	CString strQuery;
+
+	strQuery4Count.Format(_T("SELECT COUNT(*) FROM monitor_history"));
+
+	MYSQL_RES* result;
+	int count = 0;
+	result = 0;
+	result = g_pDBManager->runQuery(CW2A(strQuery4Count.GetBuffer()));
+
+	if (result == NULL)
+	{
+		MessageBox(_T("Error occured in refreshing person list"), _T("Error"));
+		return;
+	}
+
+	if (result->row_count > 0)
+	{
+		MYSQL_ROW record = g_pDBManager->fetch_row(result);
+		int nCount = atoi(record[0]);
+		m_nRecordCount = nCount;
+		m_nPageCount = (m_nRecordCount + m_nPageCapacity - 1) / m_nPageCapacity;
+		ShowLast();
+	}
+	g_pDBManager->freeSQLResult(result);
+}
+
+void CMonitorHistory::OnBnClickedButtonFirst()
+{
+	ShowFirst();
+}
+
+
+void CMonitorHistory::OnBnClickedButtonPrev()
+{
+	ShowPrev();
+}
+
+
+void CMonitorHistory::OnBnClickedButtonNext()
+{
+	ShowNext();
+}
+
+
+void CMonitorHistory::OnBnClickedButtonLast()
+{
+	ShowLast();
 }

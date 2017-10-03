@@ -37,7 +37,7 @@ void CCustomListView::OnInitialUpdate()
 {
 	CScrollView::OnInitialUpdate();
 
-	this->drawContents();
+	this->DrawContents();
 }
 
 void CCustomListView::OnDraw(CDC* pDC)
@@ -67,7 +67,7 @@ void CCustomListView::Dump(CDumpContext& dc) const
 #endif
 #endif //_DEBUG
 
-void CCustomListView::drawContents()
+void CCustomListView::DrawContents()
 {
 	this->SetScrollPos(SB_HORZ, 0);
 	this->SetScrollPos(SB_VERT, 0);
@@ -96,9 +96,9 @@ void CCustomListView::drawContents()
 	this->SetScrollSizes(MM_TEXT, sizeTotal);
 }
 
-void CCustomListView::refresh()
+void CCustomListView::Refresh()
 {
-	drawContents();
+	DrawContents();
 }
 
 // CCustomListView message handlers

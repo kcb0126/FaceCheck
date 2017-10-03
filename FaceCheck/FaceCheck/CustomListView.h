@@ -30,10 +30,10 @@ private:
 	std::vector<CWnd*> m_cells;
 
 private:
-	void drawContents();
+	void DrawContents();
 
 public:
-	void refresh();
+	void Refresh();
 
 public:
 	virtual int GetCellCount() { return 0; };

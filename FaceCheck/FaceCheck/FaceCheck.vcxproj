@@ -252,6 +252,7 @@
     <Image Include="res\settings_disabled.bmp" />
     <Image Include="res\settings_hover.bmp" />
     <Image Include="res\title.bmp" />
+    <Image Include="res\unregistered.bmp" />
     <Image Include="res\userhistory.bmp" />
     <Image Include="res\userhistory_disabled.bmp" />
     <Image Include="res\userhistory_hover.bmp" />

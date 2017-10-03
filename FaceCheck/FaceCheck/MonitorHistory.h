@@ -34,4 +34,26 @@ public:
 	CEdit m_editPagenumber;
 	CLabelTrans m_lblTotalrecords;
 	CLabelTrans m_lblTotalpages;
+
+public:
+	CCriticalSection m_secData;
+
+public:
+	int m_nRecordCount = 0;
+	int m_nPageCount = 0;
+	int m_nPageCapacity = 10;
+	int m_nCurrentPageNumber = 0;
+
+public:
+	void ShowItems(int nBeginPos, int nCount);
+	void ShowPage(int nPageNumber);
+	void ShowFirst();
+	void ShowPrev();
+	void ShowNext();
+	void ShowLast();
+	void RefreshList();
+	afx_msg void OnBnClickedButtonFirst();
+	afx_msg void OnBnClickedButtonPrev();
+	afx_msg void OnBnClickedButtonNext();
+	afx_msg void OnBnClickedButtonLast();
 };
