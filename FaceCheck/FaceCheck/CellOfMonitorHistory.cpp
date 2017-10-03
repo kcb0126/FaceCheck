@@ -38,7 +38,26 @@ void CCellOfMonitorHistory::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CCellOfMonitorHistory, CPropertyPage)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
 // CCellOfMonitorHistory message handlers
+
+
+BOOL CCellOfMonitorHistory::OnEraseBkgnd(CDC* pDC)
+{
+	CPropertyPage::OnEraseBkgnd(pDC);
+
+	CRect rect;
+	GetClientRect(&rect);
+	CDC dc;
+	dc.CreateCompatibleDC(pDC);
+	CBitmap* pOldBitmap;
+
+	CBitmap bmpLightGray;
+	bmpLightGray.LoadBitmap(IDB_LIGHTGRAY);
+	pOldBitmap = dc.SelectObject(&bmpLightGray);
+	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
+	return TRUE;
+}

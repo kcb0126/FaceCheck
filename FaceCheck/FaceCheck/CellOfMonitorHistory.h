@@ -26,4 +26,5 @@ public:
 	CString m_strAgeNGender;
 	CString m_strAccessedwhen;
 	CString m_strStatus;
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
