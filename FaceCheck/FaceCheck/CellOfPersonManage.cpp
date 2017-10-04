@@ -35,6 +35,7 @@ void CCellOfPersonManage::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_SAFETYTYPE1, m_lblSafetytype1);
 	DDX_Control(pDX, IDC_STATIC_SAFETYTYPE, m_lblSafetytype);
 	DDX_Control(pDX, IDC_STATIC_BLOCKED, m_lblBlocked);
+	DDX_Control(pDX, IDC_STATIC_PHOTO, m_staticPhoto);
 }
 
 

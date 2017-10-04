@@ -1,6 +1,7 @@
 #pragma once
 #include "resource.h"
 #include "LabelTrans.h"
+#include "afxwin.h"
 
 // CCellOfPersonManage dialog
 
@@ -33,4 +34,5 @@ public:
 	CLabelTrans m_lblBlocked;
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	virtual BOOL OnInitDialog();
+	CStatic m_staticPhoto;
 };

@@ -1,5 +1,11 @@
 #pragma once
 #include "CustomListView.h"
+
+struct tagPersonManageCell
+{
+
+};
+
 class CListOfPersonManage :
 	public CCustomListView
 {
@@ -10,7 +16,7 @@ public:
 	~CListOfPersonManage();
 
 public:
-	int m_nCount = 5;
+	int m_nCount = 0;
 	virtual int GetCellCount();
 	virtual CWnd* GetCellAt(int nIndex);
 };
