@@ -25,5 +25,7 @@ public:
 	virtual int GetCellCount();
 	virtual CWnd* GetCellAt(int nIndex);
 	std::vector<tagMonitorHistoryCell> m_cellsData;
+	DECLARE_MESSAGE_MAP()
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
 

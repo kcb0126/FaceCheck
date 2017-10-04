@@ -34,3 +34,24 @@ CWnd* CListOfMonitorHistory::GetCellAt(int nIndex)
 	pCell->ShowWindow(SW_SHOW);
 	return pCell;
 }
+BEGIN_MESSAGE_MAP(CListOfMonitorHistory, CCustomListView)
+	ON_WM_ERASEBKGND()
+END_MESSAGE_MAP()
+
+
+BOOL CListOfMonitorHistory::OnEraseBkgnd(CDC* pDC)
+{
+	CCustomListView::OnEraseBkgnd(pDC);
+
+	CRect rect;
+	GetClientRect(&rect);
+	CDC dc;
+	dc.CreateCompatibleDC(pDC);
+	CBitmap* pOldBitmap;
+
+	CBitmap bmpLightGray;
+	bmpLightGray.LoadBitmap(IDB_LIGHTGRAY);
+	pOldBitmap = dc.SelectObject(&bmpLightGray);
+	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
+	return TRUE;
+}
