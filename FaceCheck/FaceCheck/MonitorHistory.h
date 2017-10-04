@@ -56,4 +56,5 @@ public:
 	afx_msg void OnBnClickedButtonPrev();
 	afx_msg void OnBnClickedButtonNext();
 	afx_msg void OnBnClickedButtonLast();
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };

@@ -42,6 +42,7 @@ BEGIN_MESSAGE_MAP(CMonitorHistory, CPropertyPage)
 	ON_BN_CLICKED(IDC_BUTTON_PREV, &CMonitorHistory::OnBnClickedButtonPrev)
 	ON_BN_CLICKED(IDC_BUTTON_NEXT, &CMonitorHistory::OnBnClickedButtonNext)
 	ON_BN_CLICKED(IDC_BUTTON_LAST, &CMonitorHistory::OnBnClickedButtonLast)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -382,4 +383,22 @@ void CMonitorHistory::OnBnClickedButtonNext()
 void CMonitorHistory::OnBnClickedButtonLast()
 {
 	ShowLast();
+}
+
+
+BOOL CMonitorHistory::OnEraseBkgnd(CDC* pDC)
+{
+	CPropertyPage::OnEraseBkgnd(pDC);
+
+	CRect rect;
+	GetClientRect(&rect);
+	CDC dc;
+	dc.CreateCompatibleDC(pDC);
+	CBitmap* pOldBitmap;
+
+	CBitmap bmpLightGray;
+	bmpLightGray.LoadBitmap(IDB_LIGHTGRAY);
+	pOldBitmap = dc.SelectObject(&bmpLightGray);
+	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
+	return TRUE;
 }
