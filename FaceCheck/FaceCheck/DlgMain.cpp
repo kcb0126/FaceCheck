@@ -231,7 +231,7 @@ BOOL CDlgMain::OnEraseBkgnd(CDC* pDC)
 	pDC->StretchBlt(0, 85, rect.Width(), 65, &dc, 0, 0, 100, 100, SRCCOPY);
 
 	CBitmap bmpBottom;
-	bmpBottom.LoadBitmap(IDB_BOTTOM);
+	bmpBottom.LoadBitmap(IDB_BOTTOM);	
 	pOldBitmap = dc.SelectObject(&bmpBottom);
 	pDC->StretchBlt(rect.Width() / 2 - 400, rect.Height() - 85, 800, 85, &dc, 0, 0, 800, 85, SRCCOPY);
 

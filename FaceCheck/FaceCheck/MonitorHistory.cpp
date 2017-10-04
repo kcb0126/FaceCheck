@@ -268,62 +268,13 @@ void CMonitorHistory::ShowItems(int nBeginPos, int nCount)
 					tInfo.m_nBlocked = 0;
 				}
 
-				//	m_listHistory.SetRedraw(FALSE);
-
 				cellData.strName = data.id == NON_EMPLOYEE ? _T("Unknown") : g_pDBManager->getPersonName(data.id);
 				cellData.strAgeGender.Format(_T("%d %s"), data.age, (data.gender == 0 ? _T("Male") : _T("Female")));
 				cellData.strAccessedWhen = strTime;
 				cellData.strStatus = tInfo.m_nBlocked ? _T("Blocked") : _T("Not blocked");
-
-/*				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 2, data.id == NON_EMPLOYEE ? _T("Unknown") : g_pDBManager->getPersonName(data.id));
-				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 3, data.age);
-				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 4, data.gender == 0 ? _T("Male") : _T("Female"));
-				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 5, strTime);
-				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 6, nView);
-				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 7, strComment);
-				g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemText(idx, 8, strCommentDate);
-*/
-//				if (data.id != NON_EMPLOYEE)
-//				{
-					//m_listCustomer.SetItemBkColor(idx, -1, RGB(255, 0, 0));
-//					g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemTextColor(idx, -1, RGB(0, 0, 255));
-//				}
-//				if (data.age < AGE_LIMIT)
-//				{
-					//m_listCustomer.SetItemBkColor(idx, -1, RGB(255, 0, 0));
-//					g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemTextColor(idx, -1, RGB(255, 0, 0));
-//					MessageBeep(MB_ICONERROR);
-
-					//					g_pMainDlg->m_pPageMonitor->SetDlgItemText(IDC_STATIC_CAMERA_WARNING, L"Forbidden age!!");
-					//					g_pMainDlg->m_pPageMonitor->GetDlgItem(IDC_STATIC_CAMERA_WARNING)->ShowWindow(SW_SHOW);
-					/*if (g_pMainDlg->m_pDlgOfWarning) delete g_pMainDlg->m_pDlgOfWarning;
-					g_pMainDlg->m_pDlgOfWarning = new CDlgOfWarning();
-					g_pMainDlg->m_pDlgOfWarning->Create(IDD_DLG_WARNING, this);
-
-					g_pMainDlg->m_pDlgOfWarning->ShowWindow(SW_SHOW);
-					g_pMainDlg->m_pDlgOfWarning->showWarning(L"WARNING!!", L"Forbidden age");
-					g_pMainDlg->m_pDlgOfWarning->UpdateWindow();
-					*/
-//				}
-//				if (tInfo.m_nBlocked)
-//				{
-					//m_listCustomer.SetItemBkColor(idx, -1, RGB(0, 255, 0));
-					//					MessageBeep(MB_ICONERROR);
-					//					g_pMainDlg->m_pPageMonitor->SetDlgItemText(IDC_STATIC_CAMERA_WARNING, L"Blocked person!!");
-					//					g_pMainDlg->m_pPageMonitor->GetDlgItem(IDC_STATIC_CAMERA_WARNING)->ShowWindow(SW_SHOW);
-					/*if (g_pMainDlg->m_pDlgOfWarning) delete g_pMainDlg->m_pDlgOfWarning;
-					g_pMainDlg->m_pDlgOfWarning = new CDlgOfWarning();
-					g_pMainDlg->m_pDlgOfWarning->Create(IDD_DLG_WARNING, this);
-
-					g_pMainDlg->m_pDlgOfWarning->ShowWindow(SW_SHOW);
-					g_pMainDlg->m_pDlgOfWarning->showWarning(L"WARNING!!", L"Blocked person");
-					g_pMainDlg->m_pDlgOfWarning->UpdateWindow();*/
-//					g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetItemTextColor(idx, -1, RGB(255, 0, 0));
-//				}
 				
 				data.cleanMemory();	// Added by Koo to prevent memoryleak
 
-				//	m_listHistory.SetRedraw(TRUE);
 			}
 
 			m_pListOfMonitorHistory->m_cellsData.push_back(cellData);
@@ -333,7 +284,6 @@ void CMonitorHistory::ShowItems(int nBeginPos, int nCount)
 		}
 		m_pListOfMonitorHistory->m_nCount = nRecordCount;
 		m_pListOfMonitorHistory->Refresh();
-//		g_pMonitorHistoryForm->m_pListInformation->m_listInformation.SetRedraw(TRUE);
 
 		if (result)
 			mysql_free_result(result);
