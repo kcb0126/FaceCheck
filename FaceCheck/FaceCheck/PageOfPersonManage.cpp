@@ -61,7 +61,7 @@ void CPageOfPersonManage::OnSize(UINT nType, int cx, int cy)
 
 	if (m_personManageList.m_hWnd != NULL)
 	{
-		m_personManageList.SetWindowPos(NULL, 0, 0, rect.Width() / 2, rect.Height(), SWP_NOZORDER);
+		m_personManageList.SetWindowPos(NULL, rect.Width() / 2 - 553, 0, 553, rect.Height(), SWP_NOZORDER);
 		m_personManageList.UpdateWindow();
 	}
 
