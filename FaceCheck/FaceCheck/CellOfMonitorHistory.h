@@ -1,6 +1,7 @@
 #pragma once
 #include "Resource.h"
 #include "afxwin.h"
+#include "LabelTrans.h"
 
 // CCellOfMonitorHistory dialog
 
@@ -27,4 +28,10 @@ public:
 	CString m_strAccessedwhen;
 	CString m_strStatus;
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	CLabelTrans m_lblName;
+	CLabelTrans m_lblAgeGender;
+	CLabelTrans m_lblAccessed;
+	CLabelTrans m_lblAccessedWhen;
+	CLabelTrans m_lblStatus1;
+	CLabelTrans m_lblStatus;
 };

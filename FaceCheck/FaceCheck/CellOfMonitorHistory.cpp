@@ -34,6 +34,12 @@ void CCellOfMonitorHistory::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_AGEGENDER, m_strAgeNGender);
 	DDX_Text(pDX, IDC_STATIC_ACCESSEDWHEN, m_strAccessedwhen);
 	DDX_Text(pDX, IDC_STATIC_STATUS, m_strStatus);
+	DDX_Control(pDX, IDC_STATIC_NAME, m_lblName);
+	DDX_Control(pDX, IDC_STATIC_AGEGENDER, m_lblAgeGender);
+	DDX_Control(pDX, IDC_STATIC_ACCESSED, m_lblAccessed);
+	DDX_Control(pDX, IDC_STATIC_ACCESSEDWHEN, m_lblAccessedWhen);
+	DDX_Control(pDX, IDC_STATIC_STATUSLABEL, m_lblStatus1);
+	DDX_Control(pDX, IDC_STATIC_STATUS, m_lblStatus);
 }
 
 
