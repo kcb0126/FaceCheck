@@ -76,6 +76,14 @@ BOOL CMonitorHistory::OnInitDialog()
 	m_btnLast.SetHoverBitmapID(IDB_PAGING_LAST_HOVER);
 	m_btnLast.SizeToContent();
 
+	m_lblTotalpages.SetTextColor(RGB(255, 255, 255));
+	m_lblTotalpages.SetFontName(_T("Times New Roman"));
+	m_lblTotalpages.SetFontSize(20);
+
+	m_lblTotalrecords.SetTextColor(RGB(255, 255, 255));
+	m_lblTotalrecords.SetFontName(_T("Times New Roman"));
+	m_lblTotalrecords.SetFontSize(20);
+
 	RefreshList();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -357,6 +365,11 @@ void CMonitorHistory::RefreshList()
 		int nCount = atoi(record[0]);
 		m_nRecordCount = nCount;
 		m_nPageCount = (m_nRecordCount + m_nPageCapacity - 1) / m_nPageCapacity;
+		CString strTotalpages, strTotalrecords;
+		strTotalpages.Format(_T("%d pages"), m_nPageCount);
+		strTotalrecords.Format(_T("%d records"), m_nRecordCount);
+		m_lblTotalpages.SetWindowText(strTotalpages);
+		m_lblTotalrecords.SetWindowText(strTotalrecords);
 		ShowLast();
 	}
 	g_pDBManager->freeSQLResult(result);
