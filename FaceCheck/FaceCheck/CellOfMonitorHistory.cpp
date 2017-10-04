@@ -67,3 +67,19 @@ BOOL CCellOfMonitorHistory::OnEraseBkgnd(CDC* pDC)
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
 	return TRUE;
 }
+
+
+BOOL CCellOfMonitorHistory::OnInitDialog()
+{
+	CPropertyPage::OnInitDialog();
+
+	m_lblName.SetTextColor(RGB(255, 255, 255));
+	m_lblAgeGender.SetTextColor(RGB(255, 255, 255));
+	m_lblAccessed.SetTextColor(RGB(255, 255, 255));
+	m_lblAccessedWhen.SetTextColor(RGB(255, 255, 255));
+	m_lblStatus1.SetTextColor(RGB(255, 255, 255));
+	m_lblStatus.SetTextColor(RGB(255, 255, 255));
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// EXCEPTION: OCX Property Pages should return FALSE
+}

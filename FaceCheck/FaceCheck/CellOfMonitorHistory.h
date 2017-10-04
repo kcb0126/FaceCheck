@@ -34,4 +34,5 @@ public:
 	CLabelTrans m_lblAccessedWhen;
 	CLabelTrans m_lblStatus1;
 	CLabelTrans m_lblStatus;
+	virtual BOOL OnInitDialog();
 };
