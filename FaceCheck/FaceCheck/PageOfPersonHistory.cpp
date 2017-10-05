@@ -29,6 +29,7 @@ void CPageOfPersonHistory::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CPageOfPersonHistory, CPropertyPage)
 	ON_WM_SIZE()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -57,7 +58,25 @@ void CPageOfPersonHistory::OnSize(UINT nType, int cx, int cy)
 
 	if (m_personHistoryList.m_hWnd != NULL)
 	{
-		m_personHistoryList.SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height(), SWP_NOZORDER);
+		m_personHistoryList.SetWindowPos(NULL, rect.Width() / 2 - 290, 0, 580, rect.Height(), SWP_NOZORDER);
 		m_personHistoryList.UpdateWindow();
 	}
+}
+
+
+BOOL CPageOfPersonHistory::OnEraseBkgnd(CDC* pDC)
+{
+	CPropertyPage::OnEraseBkgnd(pDC);
+
+	CRect rect;
+	GetClientRect(&rect);
+	CDC dc;
+	dc.CreateCompatibleDC(pDC);
+	CBitmap* pOldBitmap;
+
+	CBitmap bmpLightGray;
+	bmpLightGray.LoadBitmap(IDB_LIGHTGRAY);
+	pOldBitmap = dc.SelectObject(&bmpLightGray);
+	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
+	return TRUE;
 }
