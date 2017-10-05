@@ -2,7 +2,6 @@
 #include "atltime.h"
 #include "afxwin.h"
 
-
 // CPersonInfo dialog
 
 class CPersonInfo : public CPropertyPage
@@ -20,6 +19,10 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+
+public:
+	
+
 public:
 	int m_nGender;
 	int m_nPlayerLevel;
