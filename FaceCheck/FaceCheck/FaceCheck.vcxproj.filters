@@ -168,6 +168,12 @@
     <ClInclude Include="ShowFace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Concentration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgOfTakePhoto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaceCheck.cpp">
@@ -294,6 +300,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShowFace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Concentration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgOfTakePhoto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

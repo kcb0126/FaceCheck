@@ -21,7 +21,19 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
-	
+	void InitializeMembers(void);
+	void RefreshThumbImage(void);
+	void GetChangedInfo(person_info t);
+	BOOL IsDataValid();
+	void CheckInput(CString &strField, int nID);
+
+public:
+	int m_nNo;
+	CPerson m_person;
+	CxImage m_imgPhoto;
+	BOOL m_bPhotoShow;
+	CString m_strChanged;
+	int m_nMode;
 
 public:
 	int m_nGender;
@@ -31,7 +43,7 @@ public:
 	CTime m_dateBlockedWhen;
 	CTime m_dateTo;
 	CString m_strFirstName;
-	CEdit m_strInformation;
+	CString m_strInformation;
 	CString m_strLastName;
 	CString m_strNickName;
 	CString m_strBlockedReason;
@@ -39,4 +51,12 @@ public:
 	int m_nBlockType;
 	int m_nBlocked;
 	CStatic m_staticPhoto;
+	afx_msg void OnBnClickedButtonOk();
+	afx_msg void OnStnClickedStaticPhoto();
+	afx_msg void OnBnClickedButtonFiles();
+	afx_msg void OnEnChangeEditFirstname();
+	afx_msg void OnEnChangeEditLastname();
+	afx_msg void OnEnChangeEditNickname();
+	afx_msg void OnBnClickedButtonCamera();
+	virtual BOOL OnInitDialog();
 };
