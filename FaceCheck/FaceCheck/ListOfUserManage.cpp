@@ -29,7 +29,7 @@ CWnd* CListOfUserManage::GetCellAt(int nIndex)
 	pCell->m_strCreator = m_cellsData[nIndex].strCreator;
 	pCell->m_strPhoneNo = m_cellsData[nIndex].strPhoneNo;
 	pCell->m_strBlocked = m_cellsData[nIndex].strBlocked;
-	pCell->UpdateData();
+	pCell->UpdateData(FALSE);
 	pCell->ShowWindow(SW_SHOW);
 	return pCell;
 }BEGIN_MESSAGE_MAP(CListOfUserManage, CCustomListView)
