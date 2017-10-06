@@ -58,7 +58,7 @@ void CPageOfUserHistory::OnSize(UINT nType, int cx, int cy)
 
 	if (m_userHistoryList.m_hWnd != NULL)
 	{
-		m_userHistoryList.SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height(), SWP_NOZORDER);
+		m_userHistoryList.SetWindowPos(NULL, rect.Width() / 2 - 570, 0, 1140, rect.Height(), SWP_NOZORDER);
 		m_userHistoryList.UpdateWindow();
 	}
 }
