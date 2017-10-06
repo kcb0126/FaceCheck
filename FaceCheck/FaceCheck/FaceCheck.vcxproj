@@ -121,6 +121,7 @@
     <ClInclude Include="DlgMain.h" />
     <ClInclude Include="DlgOfSetServer.h" />
     <ClInclude Include="DlgOfTakePhoto.h" />
+    <ClInclude Include="DlgOfWarning.h" />
     <ClInclude Include="EasySize.h" />
     <ClInclude Include="EmbeddedMySQL.h" />
     <ClInclude Include="ExecutablePathInfo.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="DlgMain.cpp" />
     <ClCompile Include="DlgOfSetServer.cpp" />
     <ClCompile Include="DlgOfTakePhoto.cpp" />
+    <ClCompile Include="DlgOfWarning.cpp" />
     <ClCompile Include="EmbeddedMySQL.cpp" />
     <ClCompile Include="ExecutablePathInfo.cpp" />
     <ClCompile Include="FaceCheck.cpp" />

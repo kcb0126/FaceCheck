@@ -52,9 +52,12 @@ public:
 	void ShowNext();
 	void ShowLast();
 	void RefreshList();
+	void AppendItem(tagMonitorHistoryCell cellData);
 	afx_msg void OnBnClickedButtonFirst();
 	afx_msg void OnBnClickedButtonPrev();
 	afx_msg void OnBnClickedButtonNext();
 	afx_msg void OnBnClickedButtonLast();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+
+	afx_msg LRESULT OnUmAddHistory(WPARAM wParam, LPARAM);
 };

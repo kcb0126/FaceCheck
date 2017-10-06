@@ -12,6 +12,9 @@ Date:		2017.02.23
 //#include "FaceCheckDlg.h"
 #include "EmbeddedMySQL.h"
 
+#include "MonitorHistory.h"
+#include "DlgOfWarning.h"
+
 /*--#include "MainFrm.h"
 
 #include "FormOfMonitorHistory.h"
@@ -32,6 +35,12 @@ extern int				g_nUserID;
 extern CString			g_strPlace;
 extern int				g_nMaxMugIndex;		//for binaryDatabase update
 extern HANDLE			g_hMonitorMutex;
+
+extern CMonitorHistory* g_pMonitorHistory;
+extern CDlgOfWarning* g_pWarningDialog;
+
+extern UINT DoInsert(void *pData);
+
 
 /*--extern CMainFrame* g_pMainFrame;
 

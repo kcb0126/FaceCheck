@@ -101,7 +101,7 @@ FaceList& FaceProcessor::GetFaceInfo()
 }
 
 void FaceProcessor::FindEmployee(FaceList&  people)
-{/*--
+{
 	vector<int> vec_ind; // Face Count including Employee per frame.
 
 	for (FaceList::iterator itr = people.begin(); itr != people.end(); itr++)
@@ -138,7 +138,7 @@ void FaceProcessor::FindEmployee(FaceList&  people)
 			itr->bIsEmployee = TRUE;
 			itr->fSimilar = fSimilar;
 		}
-	}--*/
+	}
 }
 
 void FaceProcessor::updateFaceData(time_t time, int &total, int &watching)
@@ -156,7 +156,7 @@ void FaceProcessor::updateFaceData(time_t time, int &total, int &watching)
 }
 
 void FaceProcessor::RefreshData(FaceData& errorData, FaceData& correctData)
-{/*--
+{
 	UINT nIndex = NON_EMPLOYEE;
 	float fSimilar = 0.f;//see robin
 
@@ -187,7 +187,7 @@ void FaceProcessor::RefreshData(FaceData& errorData, FaceData& correctData)
 		}
 	}
 	else
-		errorData.bIsEmployee = FALSE;--*/
+		errorData.bIsEmployee = FALSE;
 }
 
 void FaceProcessor::ReArrangeFaceData()
@@ -654,7 +654,7 @@ int FaceProcessor::PtInFace(const CPoint & pt)
 }
 
 void FaceProcessor::onDblClick(const CPoint & pt, const CRect & rc)
-{/*--
+{
 	CRect rcPhoto;
 	int i = 0;
 
@@ -676,7 +676,7 @@ void FaceProcessor::onDblClick(const CPoint & pt, const CRect & rc)
 
 	CxImage imgPhoto;
 	m_image.Crop(rcPhoto, &imgPhoto);
-
+	/*--
 	CDlgOfPersonInfo dlgMan;
 	dlgMan.m_nMode = MODE_CUSTOMER_ADD; //add from CameraView
 
@@ -702,7 +702,7 @@ void FaceProcessor::setFov(int nFov)
 }
 
 void FaceProcessor::updateOptions()
-{/*--
+{
 	CSingleLock _lock(&m_secOptions, TRUE);
 	m_nLimitAdult = AfxGetApp()->GetProfileInt(_T("Option"), _T("LimitAdult"), 18);
 	m_strManURL = AfxGetApp()->GetProfileString(_T("Option"), _T("ManURL"), CFaceCheckApp::GetAppSubFilePath(_T("man.html")));
@@ -754,11 +754,11 @@ void FaceProcessor::updateOptions()
 		}
 		m_strAlarmUnknown = strParam;
 	}
-#endif // PLAY_ALARM--*/
+#endif // PLAY_ALARM
 }
 
 void FaceProcessor::OutputLogData()
-{/*--
+{
 	CSingleLock lock(&m_secData, TRUE);
 	FaceList& list = GetFaceInfo();
 
@@ -796,8 +796,8 @@ void FaceProcessor::OutputLogData()
 		if (itr->bIsEmployee == TRUE && itr->nOutputData == 2)
 			continue;
 
-		if (g_pMonitorHistoryForm->GetSafeHwnd())
-			g_pMonitorHistoryForm->SendMessage(UM_ADD_HISTORY, (WPARAM)(&(*itr)), (LPARAM)(m_nProcessorID));
+		if (g_pMonitorHistory->GetSafeHwnd())
+			g_pMonitorHistory->SendMessage(UM_ADD_HISTORY, (WPARAM)(&(*itr)), (LPARAM)(m_nProcessorID));
 
 		itr->nOutputData = itr->bIsEmployee ? 2 : 1;
 		if (itr->bIsEmployee)
@@ -807,5 +807,5 @@ void FaceProcessor::OutputLogData()
 
 		itr->imgCamera = NULL;
 		itr->imgRegistered = NULL;
-	}--*/
+	}
 }

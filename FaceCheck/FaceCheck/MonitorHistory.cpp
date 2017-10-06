@@ -7,6 +7,10 @@
 #include "afxdialogex.h"
 
 
+
+CMonitorHistory* g_pMonitorHistory;
+CDlgOfWarning* g_pWarningDialog;
+
 // CMonitorHistory dialog
 
 IMPLEMENT_DYNAMIC(CMonitorHistory, CPropertyPage)
@@ -14,7 +18,7 @@ IMPLEMENT_DYNAMIC(CMonitorHistory, CPropertyPage)
 CMonitorHistory::CMonitorHistory()
 	: CPropertyPage(CMonitorHistory::IDD)
 {
-
+	g_pMonitorHistory = this;
 }
 
 CMonitorHistory::~CMonitorHistory()
@@ -43,6 +47,7 @@ BEGIN_MESSAGE_MAP(CMonitorHistory, CPropertyPage)
 	ON_BN_CLICKED(IDC_BUTTON_NEXT, &CMonitorHistory::OnBnClickedButtonNext)
 	ON_BN_CLICKED(IDC_BUTTON_LAST, &CMonitorHistory::OnBnClickedButtonLast)
 	ON_WM_ERASEBKGND()
+	ON_MESSAGE(UM_ADD_HISTORY, &CMonitorHistory::OnUmAddHistory)
 END_MESSAGE_MAP()
 
 
@@ -85,6 +90,10 @@ BOOL CMonitorHistory::OnInitDialog()
 	m_lblTotalrecords.SetFontSize(20);
 
 	RefreshList();
+
+	g_pWarningDialog = new CDlgOfWarning;
+	g_pWarningDialog->Create(CDlgOfWarning::IDD);
+	g_pWarningDialog->ShowWindow(SW_HIDE);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
@@ -375,6 +384,35 @@ void CMonitorHistory::RefreshList()
 	g_pDBManager->freeSQLResult(result);
 }
 
+void CMonitorHistory::AppendItem(tagMonitorHistoryCell cellData)
+{
+	m_nRecordCount++;
+	int nOldPageCount = m_nPageCount;
+	m_nPageCount = (m_nRecordCount + m_nPageCapacity - 1) / m_nPageCapacity;
+
+	CString strTotalpages, strTotalrecords;
+	strTotalpages.Format(_T("%d pages"), m_nPageCount);
+	strTotalrecords.Format(_T("%d records"), m_nRecordCount);
+	m_lblTotalpages.SetWindowText(strTotalpages);
+	m_lblTotalrecords.SetWindowText(strTotalrecords);
+	RedrawWindow();
+	UpdateData(FALSE);
+
+	if (m_nCurrentPageNumber == nOldPageCount)
+	{
+		if (nOldPageCount == m_nPageCount)
+		{
+			m_pListOfMonitorHistory->m_cellsData.push_back(cellData);
+			m_pListOfMonitorHistory->m_nCount++;
+			m_pListOfMonitorHistory->RefreshAfterAppend();
+		}
+		else
+		{
+			ShowLast();
+		}
+	}
+}
+
 void CMonitorHistory::OnBnClickedButtonFirst()
 {
 	ShowFirst();
@@ -414,4 +452,142 @@ BOOL CMonitorHistory::OnEraseBkgnd(CDC* pDC)
 	pOldBitmap = dc.SelectObject(&bmpLightGray);
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
 	return TRUE;
+}
+
+CString strQuery4Insert;
+
+afx_msg LRESULT CMonitorHistory::OnUmAddHistory(WPARAM wParam, LPARAM lParam)
+{
+	tagFaceData* facedata = (tagFaceData*)wParam;
+
+	int nView = (int)lParam;
+	{
+		CString strQuery;
+
+		int nAge, nGender;
+		//			if (facedata->bIsEmployee)
+		if (facedata->id != -1)
+		{
+			nAge = CTime::GetCurrentTime().GetYear() - StrToInt(g_pDBManager->getPersonInfoWithSecurity(facedata->id).m_strBirthday.Left(4));
+			nGender = g_pDBManager->getPersonInfoWithSecurity(facedata->id).m_nGender;
+
+			facedata->age = nAge;
+			facedata->gender = nGender;
+		}
+		else
+		{
+			nAge = facedata->age;
+			nGender = facedata->gender > 50 ? 0 : 1;
+		}
+
+		CString csPhoto, csFeature;
+		char* szPhoto;
+		int nPhotoRealSize, nPhotoSaveSize;
+
+		//change photo binary to string in order to save table
+		nPhotoRealSize = facedata->imgCamera->GetEffWidth() * facedata->imgCamera->GetHeight();
+		nPhotoSaveSize = nPhotoRealSize * 2 + 3; //+3 = '0','x',...'\0'
+		szPhoto = new char[nPhotoSaveSize];
+		strcpy(szPhoto, "0x");
+		mysql_hex_string(szPhoto + 2, (char *)(facedata->imgCamera->GetBits()), nPhotoRealSize);
+		csPhoto = szPhoto;
+
+		g_pDBManager->m_strLastInsertedTime = CTime::GetCurrentTime().Format(_T("%Y-%m-%d %H:%M:%S"));
+		g_pDBManager->m_nLastInsertedView = nView;
+
+		strQuery.Format(_T("INSERT INTO monitor_history (id, gender, age, photo_data, photo_bpp, photo_effwidth, photo_height, time, place, view) VALUES ( %d, %d, %d, %s, %d, %d, %d, '%s','%s', %d)")
+			, facedata->id
+			, nGender
+			, nAge
+			, csPhoto
+			, facedata->imgCamera->GetBpp()
+			, facedata->imgCamera->GetEffWidth()
+			, facedata->imgCamera->GetHeight()
+			, g_pDBManager->m_strLastInsertedTime
+			, g_strPlace
+			, nView);
+
+		strQuery4Insert = strQuery;
+
+		AfxBeginThread(DoInsert, NULL);
+		//			g_pDBManager->runQueryWithoutResult(CW2A(strQuery.GetBuffer()));
+
+		if (facedata->age < AGE_LIMIT)
+		{
+			MessageBeep(MB_ICONERROR);
+
+			g_pWarningDialog->SetDlgItemText(IDOK, L"Forbidden Age!");
+			g_pWarningDialog->m_nWarningType = 0;
+			g_pWarningDialog->ShowWindow(SW_SHOW);
+			g_pWarningDialog->StartWarning();
+		}
+		else if (facedata->age <= 25)
+		{
+			g_pWarningDialog->SetDlgItemText(IDOK, L"Check IDCard!");
+			g_pWarningDialog->m_nWarningType = 1;
+			g_pWarningDialog->ShowWindow(SW_SHOW);
+			g_pWarningDialog->StartWarning();
+		}
+		if (!facedata->bIsEmployee)
+		{
+			MessageBeep(MB_ICONERROR);
+
+			//				g_pWarningDialog->SetDlgItemText(IDOK, L"Person/Guest\nCheck ID Card!");
+			//				g_pWarningDialog->ShowWindow(SW_SHOW);
+		}
+
+		person_info tInfo = g_pDBManager->getPersonInfoWithSecurity(facedata->id);
+
+		if (tInfo.m_nBlocked && facedata->id != -1)
+		{
+			MessageBeep(MB_ICONERROR);
+
+			g_pWarningDialog->SetDlgItemText(IDOK, L"Blocked!");
+			g_pWarningDialog->ShowWindow(SW_SHOW);
+			g_pWarningDialog->StartWarning();
+		}
+
+		tagMonitorHistoryCell cellData;
+		cellData.hPhoto = facedata->imgCamera->MakeBitmap();
+		if (facedata->id != NON_EMPLOYEE)
+		{
+			CxImage* photo = personDB().CreatePhoto(personDB().IsExist(facedata->id));
+			cellData.hPhotoRegistered = photo->MakeBitmap();
+
+			photo->~CxImage();		// Added by Koo to prevent memoryleak
+			free(photo);
+			photo = NULL;
+
+			tInfo = g_pDBManager->getPersonInfoWithSecurity(facedata->id);
+		}
+		else
+		{
+			CBitmap bmpUnregistered;
+			bmpUnregistered.LoadBitmap(IDB_UNREGISTERED);
+			cellData.hPhotoRegistered = (HBITMAP)bmpUnregistered.m_hObject;
+			tInfo.m_nBlocked = 0;
+		}
+
+		cellData.strName = facedata->id == NON_EMPLOYEE ? _T("Unknown") : g_pDBManager->getPersonName(facedata->id);
+		cellData.strAgeGender.Format(L"%d %s", facedata->age, (facedata->gender >= 50 || facedata->gender == 0) ? _T("Male") : _T("Female"));
+		cellData.strAccessedWhen = g_pDBManager->m_strLastInsertedTime;
+		cellData.strStatus = tInfo.m_nBlocked ? "blocked" : "unblocked";
+		//			g_pDBManager->freeSQLResult(resultTemp);
+		this->AppendItem(cellData);
+	}
+
+	return 0;
+}
+
+UINT DoInsert(void *pData)
+{
+	CString strQuery = strQuery4Insert;
+	g_pDBManager->runQueryWithoutResult(CW2A(strQuery.GetBuffer()));
+
+	//	MYSQL_RES* resultTemp = g_pDBManager->runQuery(CW2A(L"SELECT MAX(id) from monitor_history"));
+	//	MYSQL_ROW recordTemp = g_pDBManager->fetch_row(resultTemp);
+	//	int nIdx = atoi(recordTemp[0]);
+	//	g_pDBManager->m_nMaxIDinMonitorHistory = nIdx;
+
+	return 0;
 }

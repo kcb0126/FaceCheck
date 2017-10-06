@@ -101,4 +101,30 @@ void CCustomListView::Refresh()
 	DrawContents();
 }
 
+void CCustomListView::RefreshAfterAppend()
+{
+	int nCount = this->GetCellCount();
+	int nWidth = 0, nHeight = 0;
+	CRect rect;
+	CWnd* pCell;
+	for (int i = 0; i < nCount - 1; i ++)
+	{
+		pCell = m_cells[i];
+		pCell->GetWindowRect(&rect);
+		pCell->SetWindowPos(NULL, 0, nHeight, rect.Width(), rect.Height(), SWP_NOZORDER);
+		nWidth = (nWidth > rect.Width()) ? nWidth : rect.Width();
+		nHeight += rect.Height();
+	}
+	pCell = this->GetCellAt(nCount - 1);
+	pCell->GetWindowRect(&rect);
+	pCell->SetWindowPos(NULL, 0, nHeight, rect.Width(), rect.Height(), SWP_NOZORDER);
+	nWidth = (nWidth > rect.Width()) ? nWidth : rect.Width();
+	nHeight += rect.Height();
+	m_cells.push_back(pCell);
+	SIZE sizeTotal;
+	sizeTotal.cx = nWidth;
+	sizeTotal.cy = nHeight;
+	this->SetScrollSizes(MM_TEXT, sizeTotal);
+}
+
 // CCustomListView message handlers

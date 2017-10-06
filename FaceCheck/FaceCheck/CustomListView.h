@@ -34,6 +34,7 @@ private:
 
 public:
 	void Refresh();
+	void RefreshAfterAppend();
 
 public:
 	virtual int GetCellCount() { return 0; };
