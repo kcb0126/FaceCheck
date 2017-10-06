@@ -23,4 +23,5 @@ public:
 	CUserHistoryList m_userHistoryList;
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
