@@ -46,6 +46,7 @@ BEGIN_MESSAGE_MAP(CUserManageList, CPropertyPage)
 	ON_BN_CLICKED(IDC_BUTTON_NEXT, &CUserManageList::OnBnClickedButtonNext)
 	ON_BN_CLICKED(IDC_BUTTON_LAST, &CUserManageList::OnBnClickedButtonLast)
 	ON_WM_ERASEBKGND()
+	ON_BN_CLICKED(IDC_BUTTON_ADD, &CUserManageList::OnBnClickedButtonAdd)
 END_MESSAGE_MAP()
 
 
@@ -357,4 +358,13 @@ BOOL CUserManageList::OnEraseBkgnd(CDC* pDC)
 	pOldBitmap = dc.SelectObject(&bmpLightGray);
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
 	return TRUE;
+}
+
+
+void CUserManageList::OnBnClickedButtonAdd()
+{
+	this->EnableWindow(FALSE);
+	g_pUserInfo->m_nMode = MODE_USER_ADD;
+	g_pUserInfo->InitializeMembers();
+	g_pUserInfo->ShowWindow(SW_SHOW);
 }

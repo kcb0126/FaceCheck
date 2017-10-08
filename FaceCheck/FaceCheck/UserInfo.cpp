@@ -150,6 +150,12 @@ void CUserInfo::InitializeMembers()
 	g_pDBManager->freeSQLResult(result);
 
 	m_comboUserGroup.SetCurSel(m_nPrivilege);
+
+	m_strUsername = L"";
+	m_strPassword = L"";
+	m_strConfirmPassword = L"";
+	m_strPhone = L"";
+	UpdateData(FALSE);
 }
 
 void CUserInfo::SetUserID(int nID)
