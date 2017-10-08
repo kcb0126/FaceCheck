@@ -39,4 +39,5 @@ public:
 
 public:
 	int m_nID;
+	afx_msg void OnBnClickedButtonDelete();
 };

@@ -43,6 +43,7 @@ void CCellOfPersonManage::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CCellOfPersonManage, CPropertyPage)
 	ON_WM_ERASEBKGND()
 	ON_BN_CLICKED(IDC_BUTTON_EDIT, &CCellOfPersonManage::OnBnClickedButtonEdit)
+	ON_BN_CLICKED(IDC_BUTTON_DELETE, &CCellOfPersonManage::OnBnClickedButtonDelete)
 END_MESSAGE_MAP()
 
 
@@ -93,4 +94,26 @@ void CCellOfPersonManage::OnBnClickedButtonEdit()
 	g_pPersonManageList->EnableWindow(FALSE);
 	g_pPersonInfo->SetPersonID(this->m_nID);
 	g_pPersonInfo->ShowWindow(SW_SHOW);
+}
+
+
+void CCellOfPersonManage::OnBnClickedButtonDelete()
+{
+	int nResult = MessageBox(_T("Are you sure you want to delete this person?"), _T("Delete a person"), MB_YESNO | MB_ICONWARNING);
+	
+	if (nResult == IDNO)
+		return;
+
+	CString strQuery;
+
+	personDB().DeletePerson(m_nID);
+
+	//		g_pDBManager->deletePerson(nIndex);                                          /////
+	//		g_pDBManager->updateUserId(nIndex, NON_EMPLOYEE);                            //////
+
+	strQuery.Format(_T("CALL DELETE_PERSON(%d)"), m_nID);
+
+	g_pDBManager->runQueryWithoutResult(CW2A(strQuery.GetBuffer()));
+
+	g_pPersonManageList->RefreshList();
 }
