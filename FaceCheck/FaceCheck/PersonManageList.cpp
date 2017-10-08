@@ -412,5 +412,8 @@ BOOL CPersonManageList::OnEraseBkgnd(CDC* pDC)
 
 void CPersonManageList::OnBnClickedButtonAdd()
 {
-	// TODO: Add your control notification handler code here
+	this->EnableWindow(FALSE);
+	g_pPersonInfo->m_nMode = MODE_CUSTOMER_ADD;
+	g_pPersonInfo->InitializeMembers();
+	g_pPersonInfo->ShowWindow(SW_SHOW);
 }
