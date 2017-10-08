@@ -5,7 +5,8 @@
 #include "FaceCheck.h"
 #include "CellOfPersonManage.h"
 #include "afxdialogex.h"
-
+#include "ListOfPersonManage.h"
+#include "myGlobal.h"
 
 // CCellOfPersonManage dialog
 
@@ -41,6 +42,7 @@ void CCellOfPersonManage::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CCellOfPersonManage, CPropertyPage)
 	ON_WM_ERASEBKGND()
+	ON_BN_CLICKED(IDC_BUTTON_EDIT, &CCellOfPersonManage::OnBnClickedButtonEdit)
 END_MESSAGE_MAP()
 
 
@@ -83,4 +85,11 @@ BOOL CCellOfPersonManage::OnInitDialog()
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
+}
+
+
+void CCellOfPersonManage::OnBnClickedButtonEdit()
+{
+	g_pPersonManageList->EnableWindow(FALSE);
+	g_pPersonInfo->SetPersonID(this->m_nID);
 }

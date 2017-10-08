@@ -6,6 +6,9 @@
 #include "PersonManageList.h"
 #include "afxdialogex.h"
 #include "PersonDB.h"
+#include "myGlobal.h"
+
+CPersonManageList* g_pPersonManageList;
 
 // CPersonManageList dialog
 
@@ -14,7 +17,7 @@ IMPLEMENT_DYNAMIC(CPersonManageList, CPropertyPage)
 CPersonManageList::CPersonManageList()
 	: CPropertyPage(CPersonManageList::IDD)
 {
-
+	g_pPersonManageList = this;
 }
 
 CPersonManageList::~CPersonManageList()
@@ -242,6 +245,7 @@ void CPersonManageList::ShowItems(int nBeginPos, int nCount)
 			cellData.strBlocked = (atoi(record[10]) == 0) ? _T("unblocked") : _T("blocked");
 
 			CPerson person;
+			cellData.nID = atoi(record[0]);
 			person = personDB()[atoi(record[0]) - 1];
 			person_info tInfo = g_pDBManager->getPersonInfoWithSecurity(atoi(record[0]));
 			int nPlayerLevel, nSecurityLevel;

@@ -9,6 +9,9 @@
 #include "FaceProcessor.h"
 #include "Concentration.h"
 #include "DlgOfTakePhoto.h"
+#include "myGlobal.h"
+
+CPersonInfo* g_pPersonInfo;
 
 // CPersonInfo dialog
 
@@ -30,7 +33,7 @@ CPersonInfo::CPersonInfo()
 	, m_nBlockType(0)
 	, m_nBlocked(0)
 {
-
+	g_pPersonInfo = this;
 }
 
 CPersonInfo::~CPersonInfo()
@@ -404,40 +407,6 @@ BOOL CPersonInfo::OnInitDialog()
 {
 	CPropertyPage::OnInitDialog();
 
-	//set photo image if exists
-	if (m_bPhotoShow == TRUE)
-	{
-		((CStatic*)GetDlgItem(IDC_STATIC_PHOTO))->SetBitmap(m_imgPhoto.MakeBitmap());
-	}
-
-	m_person.m_nID = personDB()[m_nNo].m_nID;
-	m_person = personDB()[m_nNo];
-
-	person_info tInfo = g_pDBManager->getPersonInfoWithSecurity(m_person.m_nID);
-	m_strFirstName = tInfo.m_strFirstname;
-	m_strLastName = tInfo.m_strLastname;
-	m_strNickName = tInfo.m_strNickname;
-	m_nGender = tInfo.m_nGender;
-	m_strInformation = tInfo.m_strInfo;
-	m_nPlayerLevel = tInfo.m_nPlayerLevel;
-	m_nSecurityLevel = tInfo.m_nSecurityLevel;
-	m_nBlocked = tInfo.m_nBlocked;
-	m_nBlockType = tInfo.m_nBlockedType;
-	m_strBlockedPlace = tInfo.m_strBlockedWhere;
-	m_strBlockedReason = tInfo.m_strBlockedWhy;
-
-	int year, month, day;
-	swscanf_s(tInfo.m_strBirthday.GetBuffer(), _T("%d-%d-%d"), &year, &month, &day);
-	m_dateBirthday = CTime(year, month, day, 0, 0, 0);
-
-	swscanf_s(tInfo.m_strBlockedWhen.GetBuffer(), _T("%d-%d-%d"), &year, &month, &day);
-	m_dateBlockedWhen = CTime(year, month, day, 0, 0, 0);
-
-	RefreshThumbImage();
-	UpdateData(FALSE);
-
-	m_strChanged = _T("");
-
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -577,4 +546,43 @@ void CPersonInfo::CheckInput(CString &strField, int nID)
 		}
 	}
 	//	AfxMessageBox(L"Name can't contain any of following characters:\n~ ` ! @ # $ % ^ & * _ + - = | \\ : ; \" ' < > /");
+}
+
+void CPersonInfo::SetPersonID(int nID)
+{
+	this->m_nNo = nID - 1;
+
+	//set photo image if exists
+	if (m_bPhotoShow == TRUE)
+	{
+		((CStatic*)GetDlgItem(IDC_STATIC_PHOTO))->SetBitmap(m_imgPhoto.MakeBitmap());
+	}
+
+	m_person.m_nID = personDB()[m_nNo].m_nID;
+	m_person = personDB()[m_nNo];
+
+	person_info tInfo = g_pDBManager->getPersonInfoWithSecurity(m_person.m_nID);
+	m_strFirstName = tInfo.m_strFirstname;
+	m_strLastName = tInfo.m_strLastname;
+	m_strNickName = tInfo.m_strNickname;
+	m_nGender = tInfo.m_nGender;
+	m_strInformation = tInfo.m_strInfo;
+	m_nPlayerLevel = tInfo.m_nPlayerLevel;
+	m_nSecurityLevel = tInfo.m_nSecurityLevel;
+	m_nBlocked = tInfo.m_nBlocked;
+	m_nBlockType = tInfo.m_nBlockedType;
+	m_strBlockedPlace = tInfo.m_strBlockedWhere;
+	m_strBlockedReason = tInfo.m_strBlockedWhy;
+
+	int year, month, day;
+	swscanf_s(tInfo.m_strBirthday.GetBuffer(), _T("%d-%d-%d"), &year, &month, &day);
+	m_dateBirthday = CTime(year, month, day, 0, 0, 0);
+
+	swscanf_s(tInfo.m_strBlockedWhen.GetBuffer(), _T("%d-%d-%d"), &year, &month, &day);
+	m_dateBlockedWhen = CTime(year, month, day, 0, 0, 0);
+
+	RefreshThumbImage();
+	UpdateData(FALSE);
+
+	m_strChanged = _T("");
 }

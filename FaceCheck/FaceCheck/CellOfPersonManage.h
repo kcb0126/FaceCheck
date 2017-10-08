@@ -35,4 +35,8 @@ public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	virtual BOOL OnInitDialog();
 	CStatic m_staticPhoto;
+	afx_msg void OnBnClickedButtonEdit();
+
+public:
+	int m_nID;
 };

@@ -32,6 +32,7 @@ CWnd* CListOfPersonManage::GetCellAt(int nIndex)
 	pCell->m_lblGuesttype.SetWindowText(m_cellsData[nIndex].strGuesttype);
 	pCell->m_lblSafetytype.SetWindowText(m_cellsData[nIndex].strSafetytype);
 	pCell->m_lblBlocked.SetWindowText(m_cellsData[nIndex].strBlocked);
+	pCell->m_nID = m_cellsData[nIndex].nID;
 	pCell->ShowWindow(SW_SHOW);
 	return pCell;
 }
