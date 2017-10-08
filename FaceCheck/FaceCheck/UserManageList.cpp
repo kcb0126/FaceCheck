@@ -5,7 +5,9 @@
 #include "FaceCheck.h"
 #include "UserManageList.h"
 #include "afxdialogex.h"
+#include "myGlobal.h"
 
+CUserManageList* g_pUserManageList;
 
 // CUserManageList dialog
 
@@ -14,7 +16,7 @@ IMPLEMENT_DYNAMIC(CUserManageList, CPropertyPage)
 CUserManageList::CUserManageList()
 	: CPropertyPage(CUserManageList::IDD)
 {
-
+	g_pUserManageList = this;
 }
 
 CUserManageList::~CUserManageList()

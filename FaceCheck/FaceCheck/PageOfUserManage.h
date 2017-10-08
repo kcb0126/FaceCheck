@@ -1,5 +1,6 @@
 #pragma once
 #include "UserManageList.h"
+#include "UserInfo.h"
 
 // CPageOfUserManage dialog
 
@@ -21,6 +22,7 @@ protected:
 
 public:
 	CUserManageList m_userManageList;
+	CUserInfo m_userInfo;
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);

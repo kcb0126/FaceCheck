@@ -7,6 +7,8 @@
 #include "DlgOfWarning.h"
 #include "PersonManageList.h"
 #include "PersonInfo.h"
+#include "UserManageList.h"
+#include "UserInfo.h"
 
 extern CEmbeddedMySQL*	g_pDBManager;
 extern CString			g_strUsername;
@@ -22,3 +24,7 @@ extern UINT DoInsert(void *pData);
 
 extern CPersonManageList*	g_pPersonManageList;
 extern CPersonInfo*			g_pPersonInfo;
+
+extern CUserManageList*		g_pUserManageList;
+extern CUserInfo*			g_pUserInfo;
+

@@ -34,5 +34,7 @@ public:
 	afx_msg void OnBnClickedCancel();
 
 	BOOL CheckData();
+	BOOL CheckDuplicate();
 	void InitializeMembers();
+	void SetUserID(int nID);
 };

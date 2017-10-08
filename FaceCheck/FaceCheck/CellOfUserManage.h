@@ -35,4 +35,8 @@ public:
 	CLabelTrans m_staticPhoneNo1;
 	CLabelTrans m_staticPhoneNo;
 	CLabelTrans m_staticBlocked;
+
+public:
+	int m_nIndex;
+	afx_msg void OnBnClickedButtonEdit();
 };

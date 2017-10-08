@@ -3,6 +3,7 @@
 
 struct tagUserManageCell
 {
+	int nIndex;
 	CString strUsername;
 	CString strPrivilege;
 	CString strCreator;

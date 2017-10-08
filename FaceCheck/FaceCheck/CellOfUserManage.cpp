@@ -46,6 +46,7 @@ void CCellOfUserManage::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CCellOfUserManage, CPropertyPage)
 	ON_WM_ERASEBKGND()
+	ON_BN_CLICKED(IDC_BUTTON_EDIT, &CCellOfUserManage::OnBnClickedButtonEdit)
 END_MESSAGE_MAP()
 
 
@@ -84,4 +85,18 @@ BOOL CCellOfUserManage::OnEraseBkgnd(CDC* pDC)
 	pOldBitmap = dc.SelectObject(&bmpLightGray);
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
 	return TRUE;
+}
+
+
+void CCellOfUserManage::OnBnClickedButtonEdit()
+{
+	g_pUserManageList->EnableWindow(FALSE);
+	g_pUserInfo->InitializeMembers();
+	g_pUserInfo->m_strUsername = m_strUsername;
+	g_pUserInfo->m_strOldname = m_strUsername;
+	g_pUserInfo->m_strPhone = m_strPhoneNo;
+	g_pUserInfo->m_nMode = MODE_USER_MODIFY;
+//	g_pUserInfo->SetUserID(this->m_nIndex);
+	g_pUserInfo->UpdateData(FALSE);
+	g_pUserInfo->EnableWindow(TRUE);
 }

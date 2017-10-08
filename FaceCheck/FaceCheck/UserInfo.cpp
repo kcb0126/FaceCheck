@@ -5,7 +5,9 @@
 #include "FaceCheck.h"
 #include "UserInfo.h"
 #include "afxdialogex.h"
+#include "myGlobal.h"
 
+CUserInfo* g_pUserInfo;
 
 // CUserInfo dialog
 
@@ -18,7 +20,7 @@ CUserInfo::CUserInfo()
 	, m_strConfirmPassword(_T(""))
 	, m_strPhone(_T(""))
 {
-
+	g_pUserInfo = this;
 }
 
 CUserInfo::~CUserInfo()
@@ -57,6 +59,9 @@ void CUserInfo::OnBnClickedOk()
 
 	if (m_nMode == MODE_USER_ADD)
 	{
+		if (CheckDuplicate() == FALSE)
+			return;
+
 		int nPriv = m_comboUserGroup.GetItemData(m_comboUserGroup.GetCurSel());
 		g_pDBManager->insertUser(m_strUsername, m_strPassword, nPriv, g_strUsername, m_strPhone);
 
@@ -69,6 +74,9 @@ void CUserInfo::OnBnClickedOk()
 
 		g_pDBManager->insertUserHistory(_T("modified a user"), m_strOldname + _T(" to ") + m_strUsername);
 	}
+	g_pUserManageList->RefreshList();
+	this->EnableWindow(FALSE);
+	g_pUserManageList->EnableWindow(TRUE);
 }
 
 
@@ -78,6 +86,22 @@ void CUserInfo::OnBnClickedCancel()
 }
 
 BOOL CUserInfo::CheckData()
+{
+	if (m_strPassword != m_strConfirmPassword)
+	{
+		MessageBox(_T("The password dismatches."), _T("Message"));
+		return FALSE;
+	}
+
+	if (m_comboUserGroup.GetCurSel() == CB_ERR)
+	{
+		MessageBox(_T("Please select the privilege."), _T("Message"));
+		return FALSE;
+	}
+	return TRUE;
+}
+
+BOOL CUserInfo::CheckDuplicate()
 {
 	CString strQuery;
 
@@ -99,17 +123,6 @@ BOOL CUserInfo::CheckData()
 
 	g_pDBManager->freeSQLResult(result);
 
-	if (m_strPassword != m_strConfirmPassword)
-	{
-		MessageBox(_T("The password dismatches."), _T("Message"));
-		return FALSE;
-	}
-
-	if (m_comboUserGroup.GetCurSel() == CB_ERR)
-	{
-		MessageBox(_T("Please select the privilege."), _T("Message"));
-		return FALSE;
-	}
 	return TRUE;
 }
 
@@ -135,4 +148,9 @@ void CUserInfo::InitializeMembers()
 	g_pDBManager->freeSQLResult(result);
 
 	m_comboUserGroup.SetCurSel(m_nPrivilege);
+}
+
+void CUserInfo::SetUserID(int nID)
+{
+
 }

@@ -44,6 +44,10 @@ BOOL CPageOfUserManage::OnInitDialog()
 	m_userManageList.ShowWindow(SW_SHOW);
 	m_userManageList.UpdateWindow();
 
+	m_userInfo.Create(CUserInfo::IDD, this);
+	m_userInfo.ShowWindow(SW_SHOW);
+	m_userInfo.UpdateWindow();
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -60,6 +64,12 @@ void CPageOfUserManage::OnSize(UINT nType, int cx, int cy)
 	{
 		m_userManageList.SetWindowPos(NULL, rect.Width() / 2 - 405, 0, 810, rect.Height(), SWP_NOZORDER);
 		m_userManageList.UpdateWindow();
+	}
+
+	if (m_userInfo.m_hWnd != NULL)
+	{
+		m_userInfo.SetWindowPos(NULL, rect.Width() / 2 + 405, 0, rect.Width() / 2 - 405, rect.Height(), SWP_NOZORDER);
+		m_userInfo.UpdateWindow();
 	}
 }
 
