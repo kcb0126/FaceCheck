@@ -69,6 +69,7 @@ BEGIN_MESSAGE_MAP(CPersonInfo, CPropertyPage)
 	ON_EN_CHANGE(IDC_EDIT_LASTNAME, &CPersonInfo::OnEnChangeEditLastname)
 	ON_EN_CHANGE(IDC_EDIT_NICKNAME, &CPersonInfo::OnEnChangeEditNickname)
 	ON_BN_CLICKED(IDC_BUTTON_CAMERA, &CPersonInfo::OnBnClickedButtonCamera)
+	ON_BN_CLICKED(IDC_BUTTON_CANCEL, &CPersonInfo::OnBnClickedButtonCancel)
 END_MESSAGE_MAP()
 
 
@@ -127,6 +128,9 @@ void CPersonInfo::OnBnClickedButtonOk()
 			g_pDBManager->insertPersonUpdateLog(nID, g_strUsername, _T("Modified"), CTime::GetCurrentTime().Format("%Y-%m-%d %H:%M:%S"), g_strPlace, m_strChanged);
 			g_pDBManager->insertUserHistory(_T("modified a guest"), m_strFirstName + m_strLastName + _T(":") + m_strChanged);
 		}
+		g_pPersonManageList->RefreshList();
+		g_pPersonManageList->EnableWindow(TRUE);
+		this/*or g_pPersonInfo*/->EnableWindow(FALSE);
 		break;
 	case MODE_CUSTOMER_MUGADD:
 		nDeltaItemCount = 0;
@@ -431,6 +435,8 @@ void CPersonInfo::InitializeMembers(void)
 	m_nBlockType = 0;
 	m_strBlockedReason = _T("");
 	m_strBlockedPlace = _T("");
+	m_staticPhoto.SetBitmap(NULL);
+	UpdateData(FALSE);
 }
 
 //test Person Data
@@ -551,6 +557,7 @@ void CPersonInfo::CheckInput(CString &strField, int nID)
 void CPersonInfo::SetPersonID(int nID)
 {
 	this->m_nNo = nID - 1;
+	this->m_nMode = MODE_CUSTOMER_MODIFY;
 
 	//set photo image if exists
 	if (m_bPhotoShow == TRUE)
@@ -585,4 +592,11 @@ void CPersonInfo::SetPersonID(int nID)
 	UpdateData(FALSE);
 
 	m_strChanged = _T("");
+}
+
+void CPersonInfo::OnBnClickedButtonCancel()
+{
+	this->InitializeMembers();
+	this->EnableWindow(FALSE);
+	g_pPersonManageList->EnableWindow(TRUE);
 }

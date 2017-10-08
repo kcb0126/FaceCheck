@@ -160,6 +160,7 @@
     <ClInclude Include="TrackingFace.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="UserHistoryList.h" />
+    <ClInclude Include="UserInfo.h" />
     <ClInclude Include="UserManageList.h" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +212,7 @@
     </ClCompile>
     <ClCompile Include="TrackingFace.cpp" />
     <ClCompile Include="UserHistoryList.cpp" />
+    <ClCompile Include="UserInfo.cpp" />
     <ClCompile Include="UserManageList.cpp" />
   </ItemGroup>
   <ItemGroup>

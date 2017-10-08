@@ -60,4 +60,5 @@ public:
 	afx_msg void OnEnChangeEditNickname();
 	afx_msg void OnBnClickedButtonCamera();
 	virtual BOOL OnInitDialog();
+	afx_msg void OnBnClickedButtonCancel();
 };
