@@ -128,9 +128,6 @@ void CPersonInfo::OnBnClickedButtonOk()
 			g_pDBManager->insertPersonUpdateLog(nID, g_strUsername, _T("Modified"), CTime::GetCurrentTime().Format("%Y-%m-%d %H:%M:%S"), g_strPlace, m_strChanged);
 			g_pDBManager->insertUserHistory(_T("modified a guest"), m_strFirstName + m_strLastName + _T(":") + m_strChanged);
 		}
-		g_pPersonManageList->RefreshList();
-		g_pPersonManageList->EnableWindow(TRUE);
-		this/*or g_pPersonInfo*/->EnableWindow(FALSE);
 		break;
 	case MODE_CUSTOMER_MUGADD:
 		nDeltaItemCount = 0;
@@ -181,7 +178,9 @@ void CPersonInfo::OnBnClickedButtonOk()
 //		COasisws::curl_request("https://oasis-tst-crt.hessen.de/oasisws/rest/oasis/anlegen/sperre/4.0", input_xml);
 	}
 
-//	CDialogEx::OnOK();
+	g_pPersonManageList->RefreshList();
+	g_pPersonManageList->EnableWindow(TRUE);
+	this/*or g_pPersonInfo*/->ShowWindow(SW_HIDE);
 }
 
 void CPersonInfo::OnStnClickedStaticPhoto()
@@ -597,6 +596,6 @@ void CPersonInfo::SetPersonID(int nID)
 void CPersonInfo::OnBnClickedButtonCancel()
 {
 	this->InitializeMembers();
-	this->EnableWindow(FALSE);
 	g_pPersonManageList->EnableWindow(TRUE);
+	this/*or g_pPersonInfo*/->ShowWindow(SW_HIDE);
 }

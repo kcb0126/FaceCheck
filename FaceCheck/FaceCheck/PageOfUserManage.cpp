@@ -45,7 +45,7 @@ BOOL CPageOfUserManage::OnInitDialog()
 	m_userManageList.UpdateWindow();
 
 	m_userInfo.Create(CUserInfo::IDD, this);
-	m_userInfo.ShowWindow(SW_SHOW);
+	m_userInfo.ShowWindow(SW_HIDE);
 	m_userInfo.UpdateWindow();
 
 	return TRUE;  // return TRUE unless you set the focus to a control

@@ -75,14 +75,16 @@ void CUserInfo::OnBnClickedOk()
 		g_pDBManager->insertUserHistory(_T("modified a user"), m_strOldname + _T(" to ") + m_strUsername);
 	}
 	g_pUserManageList->RefreshList();
-	this->EnableWindow(FALSE);
+	this->ShowWindow(SW_HIDE);
 	g_pUserManageList->EnableWindow(TRUE);
 }
 
 
 void CUserInfo::OnBnClickedCancel()
 {
-	// TODO: Add your control notification handler code here
+//	this->InitializeMembers();
+	this->ShowWindow(SW_HIDE);
+	g_pUserManageList->EnableWindow(TRUE);
 }
 
 BOOL CUserInfo::CheckData()

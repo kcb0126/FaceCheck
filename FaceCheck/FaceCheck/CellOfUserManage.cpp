@@ -98,5 +98,5 @@ void CCellOfUserManage::OnBnClickedButtonEdit()
 	g_pUserInfo->m_nMode = MODE_USER_MODIFY;
 //	g_pUserInfo->SetUserID(this->m_nIndex);
 	g_pUserInfo->UpdateData(FALSE);
-	g_pUserInfo->EnableWindow(TRUE);
+	g_pUserInfo->ShowWindow(SW_SHOW);
 }

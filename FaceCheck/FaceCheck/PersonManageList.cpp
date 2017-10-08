@@ -47,6 +47,7 @@ BEGIN_MESSAGE_MAP(CPersonManageList, CPropertyPage)
 	ON_BN_CLICKED(IDC_BUTTON_NEXT, &CPersonManageList::OnBnClickedButtonNext)
 	ON_BN_CLICKED(IDC_BUTTON_LAST, &CPersonManageList::OnBnClickedButtonLast)
 	ON_WM_ERASEBKGND()
+	ON_BN_CLICKED(IDC_BUTTON_ADD, &CPersonManageList::OnBnClickedButtonAdd)
 END_MESSAGE_MAP()
 
 
@@ -406,4 +407,10 @@ BOOL CPersonManageList::OnEraseBkgnd(CDC* pDC)
 	pOldBitmap = dc.SelectObject(&bmpLightGray);
 	pDC->StretchBlt(0, 0, rect.Width(), rect.Height(), &dc, 0, 0, 100, 100, SRCCOPY);
 	return TRUE;
+}
+
+
+void CPersonManageList::OnBnClickedButtonAdd()
+{
+	// TODO: Add your control notification handler code here
 }

@@ -45,7 +45,7 @@ BOOL CPageOfPersonManage::OnInitDialog()
 	m_personManageList.UpdateWindow();
 
 	m_personInfo.Create(CPersonInfo::IDD, this);
-	m_personInfo.ShowWindow(SW_SHOW);
+	m_personInfo.ShowWindow(SW_HIDE);
 	m_personInfo.UpdateWindow();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -62,13 +62,13 @@ void CPageOfPersonManage::OnSize(UINT nType, int cx, int cy)
 
 	if (m_personManageList.m_hWnd != NULL)
 	{
-		m_personManageList.SetWindowPos(NULL, rect.Width() / 2 - 553, 0, 553, rect.Height(), SWP_NOZORDER);
+		m_personManageList.SetWindowPos(NULL, rect.Width() / 2 - 277, 0, 553, rect.Height(), SWP_NOZORDER);
 		m_personManageList.UpdateWindow();
 	}
 
 	if (m_personInfo.m_hWnd != NULL)
 	{
-		m_personInfo.SetWindowPos(NULL, rect.Width() / 2, 0, rect.Width() / 2, rect.Height(), SWP_NOZORDER);
+		m_personInfo.SetWindowPos(NULL, rect.Width() / 2 + 277, 0, rect.Width() / 2, rect.Height(), SWP_NOZORDER);
 		m_personInfo.UpdateWindow();
 	}
 }

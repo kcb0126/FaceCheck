@@ -58,4 +58,5 @@ public:
 	afx_msg void OnBnClickedButtonLast();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	CBitmapButtonPlus m_btnAdd;
+	afx_msg void OnBnClickedButtonAdd();
 };

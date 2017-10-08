@@ -92,5 +92,5 @@ void CCellOfPersonManage::OnBnClickedButtonEdit()
 {
 	g_pPersonManageList->EnableWindow(FALSE);
 	g_pPersonInfo->SetPersonID(this->m_nID);
-	g_pPersonInfo->EnableWindow(TRUE);
+	g_pPersonInfo->ShowWindow(SW_SHOW);
 }
