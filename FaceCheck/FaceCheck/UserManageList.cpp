@@ -34,6 +34,7 @@ void CUserManageList::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_PAGE, m_editPagenumber);
 	DDX_Control(pDX, IDC_STATIC_TOTALRECORDS, m_lblTotalrecords);
 	DDX_Control(pDX, IDC_STATIC_TOTALPAGES, m_lblTotalpages);
+	DDX_Control(pDX, IDC_BUTTON_ADD, m_btnAdd);
 }
 
 
@@ -104,6 +105,15 @@ void CUserManageList::OnSize(UINT nType, int cx, int cy)
 	}
 
 	int buttonWidth = 51, buttonHeight = 30, interval = 5;
+
+	int addX, addY;
+
+	addX = rect.Width() - interval - buttonWidth;
+	addY = rect.Height() - 80;
+	if (m_btnAdd.m_hWnd != NULL)
+	{
+		m_btnAdd.SetWindowPos(NULL, addX, addY, buttonWidth, buttonHeight, SWP_NOZORDER);
+	}
 
 	int firstX, firstY;
 	firstX = rect.Width() / 2 - 25 - 2 * buttonWidth - 2 * interval;
