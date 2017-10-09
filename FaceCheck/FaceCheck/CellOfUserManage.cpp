@@ -47,6 +47,7 @@ void CCellOfUserManage::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CCellOfUserManage, CPropertyPage)
 	ON_WM_ERASEBKGND()
 	ON_BN_CLICKED(IDC_BUTTON_EDIT, &CCellOfUserManage::OnBnClickedButtonEdit)
+	ON_BN_CLICKED(IDC_BUTTON_DELETE, &CCellOfUserManage::OnBnClickedButtonDelete)
 END_MESSAGE_MAP()
 
 
@@ -99,4 +100,10 @@ void CCellOfUserManage::OnBnClickedButtonEdit()
 //	g_pUserInfo->SetUserID(this->m_nIndex);
 	g_pUserInfo->UpdateData(FALSE);
 	g_pUserInfo->ShowWindow(SW_SHOW);
+}
+
+
+void CCellOfUserManage::OnBnClickedButtonDelete()
+{
+	// TODO: Add your control notification handler code here
 }

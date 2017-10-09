@@ -39,4 +39,5 @@ public:
 public:
 	int m_nIndex;
 	afx_msg void OnBnClickedButtonEdit();
+	afx_msg void OnBnClickedButtonDelete();
 };

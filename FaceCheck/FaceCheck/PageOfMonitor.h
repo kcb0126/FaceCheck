@@ -1,6 +1,7 @@
 #pragma once
 #include "CameraViewContainer.h"
 #include "MonitorHistory.h"
+#include "afxwin.h"
 
 // CPageOfMonitor dialog
 
@@ -26,4 +27,7 @@ public:
 
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
+	CComboBox m_comboScreenMode;
+	afx_msg void OnCbnSelchangeComboScreenmode();
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
