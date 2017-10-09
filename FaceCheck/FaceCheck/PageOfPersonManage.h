@@ -22,7 +22,6 @@ protected:
 
 public:
 	CPersonManageList m_personManageList;
-	CPersonInfo m_personInfo;
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);

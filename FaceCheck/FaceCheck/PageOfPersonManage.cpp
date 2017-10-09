@@ -43,11 +43,6 @@ BOOL CPageOfPersonManage::OnInitDialog()
 	m_personManageList.Create(CPersonManageList::IDD, this);
 	m_personManageList.ShowWindow(SW_SHOW);
 	m_personManageList.UpdateWindow();
-
-	m_personInfo.Create(CPersonInfo::IDD, this);
-	m_personInfo.ShowWindow(SW_HIDE);
-	m_personInfo.UpdateWindow();
-
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -64,12 +59,6 @@ void CPageOfPersonManage::OnSize(UINT nType, int cx, int cy)
 	{
 		m_personManageList.SetWindowPos(NULL, rect.Width() / 2 - 277, 0, 553, rect.Height(), SWP_NOZORDER);
 		m_personManageList.UpdateWindow();
-	}
-
-	if (m_personInfo.m_hWnd != NULL)
-	{
-		m_personInfo.SetWindowPos(NULL, rect.Width() / 2 + 277, 0, rect.Width() / 2, rect.Height(), SWP_NOZORDER);
-		m_personInfo.UpdateWindow();
 	}
 }
 

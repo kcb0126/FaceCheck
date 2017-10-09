@@ -256,9 +256,7 @@ void CPersonManageList::ShowItems(int nBeginPos, int nCount)
 
 			cellData.strBlocked = (atoi(record[10]) == 0) ? _T("unblocked") : _T("blocked");
 
-			CPerson person;
 			cellData.nID = atoi(record[0]);
-			person = personDB()[atoi(record[0]) - 1];
 			person_info tInfo = g_pDBManager->getPersonInfoWithSecurity(atoi(record[0]));
 			int nPlayerLevel, nSecurityLevel;
 			nPlayerLevel = tInfo.m_nPlayerLevel;
@@ -413,8 +411,9 @@ BOOL CPersonManageList::OnEraseBkgnd(CDC* pDC)
 
 void CPersonManageList::OnBnClickedButtonAdd()
 {
-	this->EnableWindow(FALSE);
-	g_pPersonInfo->m_nMode = MODE_CUSTOMER_ADD;
-	g_pPersonInfo->InitializeMembers();
-	g_pPersonInfo->ShowWindow(SW_SHOW);
+//	this->EnableWindow(FALSE);
+	CPersonInfo dlgPersonInfo;
+//	dlgPersonInfo.Create(CPersonInfo::IDD, NULL);
+	dlgPersonInfo.m_nMode = MODE_CUSTOMER_ADD;
+	dlgPersonInfo.DoModal();
 }

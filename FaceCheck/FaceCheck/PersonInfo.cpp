@@ -15,10 +15,10 @@ CPersonInfo* g_pPersonInfo;
 
 // CPersonInfo dialog
 
-IMPLEMENT_DYNAMIC(CPersonInfo, CPropertyPage)
+IMPLEMENT_DYNAMIC(CPersonInfo, CDialogEx)
 
-CPersonInfo::CPersonInfo()
-	: CPropertyPage(CPersonInfo::IDD)
+CPersonInfo::CPersonInfo(CWnd* pParent /*=NULL*/)
+: CDialogEx(CPersonInfo::IDD, pParent)
 	, m_nGender(0)
 	, m_nPlayerLevel(0)
 	, m_nSecurityLevel(0)
@@ -33,7 +33,7 @@ CPersonInfo::CPersonInfo()
 	, m_nBlockType(0)
 	, m_nBlocked(0)
 {
-	g_pPersonInfo = this;
+//	g_pPersonInfo = this;
 }
 
 CPersonInfo::~CPersonInfo()
@@ -42,7 +42,7 @@ CPersonInfo::~CPersonInfo()
 
 void CPersonInfo::DoDataExchange(CDataExchange* pDX)
 {
-	CPropertyPage::DoDataExchange(pDX);
+	CDialogEx::DoDataExchange(pDX);
 	DDX_CBIndex(pDX, IDC_COMBO_GENDER, m_nGender);
 	DDX_CBIndex(pDX, IDC_COMBO_GUESTTYPE, m_nPlayerLevel);
 	DDX_CBIndex(pDX, IDC_COMBO_SAFETYTYPE, m_nSecurityLevel);
@@ -61,7 +61,7 @@ void CPersonInfo::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CPersonInfo, CPropertyPage)
+BEGIN_MESSAGE_MAP(CPersonInfo, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_OK, &CPersonInfo::OnBnClickedButtonOk)
 	ON_STN_CLICKED(IDC_STATIC_PHOTO, &CPersonInfo::OnStnClickedStaticPhoto)
 	ON_BN_CLICKED(IDC_BUTTON_FILES, &CPersonInfo::OnBnClickedButtonFiles)
@@ -179,8 +179,9 @@ void CPersonInfo::OnBnClickedButtonOk()
 	}
 
 	g_pPersonManageList->RefreshList();
-	g_pPersonManageList->EnableWindow(TRUE);
-	this/*or g_pPersonInfo*/->ShowWindow(SW_HIDE);
+//	g_pPersonManageList->EnableWindow(TRUE);
+//	this/*or g_pPersonInfo*/->ShowWindow(SW_HIDE);
+	CDialog::OnOK();
 }
 
 void CPersonInfo::OnStnClickedStaticPhoto()
@@ -408,7 +409,9 @@ void CPersonInfo::OnBnClickedButtonCamera()
 
 BOOL CPersonInfo::OnInitDialog()
 {
-	CPropertyPage::OnInitDialog();
+	CDialogEx::OnInitDialog();
+
+	InitializeMembers();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
@@ -595,7 +598,8 @@ void CPersonInfo::SetPersonID(int nID)
 
 void CPersonInfo::OnBnClickedButtonCancel()
 {
-	this->InitializeMembers();
-	g_pPersonManageList->EnableWindow(TRUE);
-	this/*or g_pPersonInfo*/->ShowWindow(SW_HIDE);
+//	this->InitializeMembers();
+//	g_pPersonManageList->EnableWindow(TRUE);
+//	this/*or g_pPersonInfo*/->ShowWindow(SW_HIDE);
+	CDialogEx::OnCancel();
 }

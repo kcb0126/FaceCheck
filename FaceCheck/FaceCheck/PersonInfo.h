@@ -1,15 +1,16 @@
 #pragma once
 #include "atltime.h"
 #include "afxwin.h"
+#include "atltime.h"
 
 // CPersonInfo dialog
 
-class CPersonInfo : public CPropertyPage
+class CPersonInfo : public CDialogEx
 {
 	DECLARE_DYNAMIC(CPersonInfo)
 
 public:
-	CPersonInfo();
+	CPersonInfo(CWnd* pParent = NULL);
 	virtual ~CPersonInfo();
 
 // Dialog Data
