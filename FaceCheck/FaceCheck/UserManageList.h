@@ -1,5 +1,6 @@
 #pragma once
 #include "ListOfUserManage.h"
+#include "CellOfUserManage.h"
 #include "BitmapButtonPlus.h"
 #include "LabelTrans.h"
 #include "afxwin.h"
@@ -24,6 +25,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
+	CCellOfUserManage m_ListHeader;
 	CListOfUserManage* m_pListOfUserManage = NULL;
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

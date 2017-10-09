@@ -100,9 +100,15 @@ void CUserManageList::OnSize(UINT nType, int cx, int cy)
 
 	CRect rect;
 	GetClientRect(&rect);
+
+	if (m_ListHeader.m_hWnd != NULL)
+	{
+		m_ListHeader.SetWindowPos(NULL, 0, 0, rect.Width(), 34, SWP_NOZORDER);
+	}
+
 	if (m_pListOfUserManage != NULL)
 	{
-		m_pListOfUserManage->SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height() - 100, SWP_NOZORDER);
+		m_pListOfUserManage->SetWindowPos(NULL, 0, 34, rect.Width(), rect.Height() - 134, SWP_NOZORDER);
 	}
 
 	int buttonWidth = 51, buttonHeight = 30, interval = 5;
@@ -193,6 +199,18 @@ int CUserManageList::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		TRACE0("Failed to create ListOfUserManage");
 		return -1;
 	}
+
+	m_ListHeader.Create(CCellOfUserManage::IDD, this);
+	m_ListHeader.m_lblNo.SetText(_T("No"));
+	m_ListHeader.m_strUsername = _T("Username");
+	m_ListHeader.m_strPrivilege = _T("Privilege");
+	m_ListHeader.m_strCreator = _T("Creator");
+	m_ListHeader.m_strPhoneNo = _T("Phone No.");
+	m_ListHeader.m_strBlocked = _T("Status");
+	m_ListHeader.m_btnEdit.ShowWindow(SW_HIDE);
+	m_ListHeader.m_btnDelete.ShowWindow(SW_HIDE);
+	m_ListHeader.UpdateData(FALSE);
+	m_ListHeader.ShowWindow(SW_SHOW);
 
 	m_pListOfUserManage->ShowWindow(SW_SHOW);
 	m_pListOfUserManage->UpdateWindow();

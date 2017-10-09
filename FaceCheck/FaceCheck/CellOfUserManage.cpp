@@ -18,7 +18,6 @@ CCellOfUserManage::CCellOfUserManage()
 	, m_strCreator(_T(""))
 	, m_strPhoneNo(_T(""))
 	, m_strBlocked(_T(""))
-	, m_nNo(0)
 {
 
 }
@@ -42,8 +41,9 @@ void CCellOfUserManage::DoDataExchange(CDataExchange* pDX)
 	//  DDX_Control(pDX, IDC_STATIC_PHONENO1, m_staticPhoneNo1);
 	DDX_Control(pDX, IDC_STATIC_PHONENO, m_staticPhoneNo);
 	DDX_Control(pDX, IDC_STATIC_BLOCKED, m_staticBlocked);
-	DDX_Text(pDX, IDC_STATIC_NO, m_nNo);
 	DDX_Control(pDX, IDC_STATIC_NO, m_lblNo);
+	DDX_Control(pDX, IDC_BUTTON_EDIT, m_btnEdit);
+	DDX_Control(pDX, IDC_BUTTON_DELETE, m_btnDelete);
 }
 
 
