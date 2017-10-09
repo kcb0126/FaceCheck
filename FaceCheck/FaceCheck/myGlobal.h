@@ -6,9 +6,12 @@
 #include "MonitorHistory.h"
 #include "DlgOfWarning.h"
 #include "PersonManageList.h"
+#include "PersonHistoryList.h"
+#include "UserHistoryList.h"
 #include "PersonInfo.h"
 #include "UserManageList.h"
 #include "UserInfo.h"
+#include "CameraViewContainer.h"
 
 extern CEmbeddedMySQL*	g_pDBManager;
 extern CString			g_strUsername;
@@ -28,3 +31,7 @@ extern CPersonInfo*			g_pPersonInfo;
 extern CUserManageList*		g_pUserManageList;
 extern CUserInfo*			g_pUserInfo;
 
+extern CCameraViewContainer* g_pCameraContainer;
+
+extern CPersonHistoryList*	g_pPersonHistory;
+extern CUserHistoryList*	g_pUserHistory;

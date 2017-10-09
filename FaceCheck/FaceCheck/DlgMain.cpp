@@ -5,7 +5,7 @@
 #include "FaceCheck.h"
 #include "DlgMain.h"
 #include "afxdialogex.h"
-
+#include "DlgOfSettings.h"
 
 // CDlgMain dialog
 
@@ -44,6 +44,7 @@ BEGIN_MESSAGE_MAP(CDlgMain, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_USERHISTORY, &CDlgMain::OnBnClickedBtnUserhistory)
 	ON_BN_CLICKED(IDC_BTN_SETTINGS, &CDlgMain::OnBnClickedBtnSettings)
 	ON_BN_CLICKED(IDC_BTN_POWER, &CDlgMain::OnBnClickedBtnPower)
+	ON_BN_CLICKED(IDC_BTN_PREFERENCES, &CDlgMain::OnBnClickedBtnPreferences)
 END_MESSAGE_MAP()
 
 
@@ -336,4 +337,11 @@ void CDlgMain::OnBnClickedBtnSettings()
 void CDlgMain::OnBnClickedBtnPower()
 {
 	CDialogEx::OnOK();
+}
+
+
+void CDlgMain::OnBnClickedBtnPreferences()
+{
+	CDlgOfSettings dlgSettings;
+	dlgSettings.DoModal();
 }

@@ -5,7 +5,9 @@
 #include "FaceCheck.h"
 #include "UserHistoryList.h"
 #include "afxdialogex.h"
+#include "UserHistoryList.h"
 
+CUserHistoryList* g_pUserHistory;
 
 // CUserHistoryList dialog
 
@@ -14,7 +16,7 @@ IMPLEMENT_DYNAMIC(CUserHistoryList, CPropertyPage)
 CUserHistoryList::CUserHistoryList()
 	: CPropertyPage(CUserHistoryList::IDD)
 {
-
+	g_pUserHistory = this;
 }
 
 CUserHistoryList::~CUserHistoryList()

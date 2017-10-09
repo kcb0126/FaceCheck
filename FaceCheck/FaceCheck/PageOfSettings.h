@@ -1,5 +1,5 @@
 #pragma once
-#include "PanelOfSettings.h"
+#include "DlgOfSettings.h"
 
 // CPageOfSettings dialog
 
@@ -24,5 +24,5 @@ public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 
 public:
-	CPanelOfSettings m_panelSettings;
+//	CDlgOfSettings m_panelSettings;
 };

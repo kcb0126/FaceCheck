@@ -5,6 +5,7 @@
 #include "FaceCheck.h"
 #include "CameraViewContainer.h"
 #include "afxdialogex.h"
+#include "myGlobal.h"
 
 
 #define		MESSAGE_OPEN_DEFAULT_CAMERA			WM_USER + 400
@@ -12,6 +13,8 @@
 
 int CCameraViewContainer::m_nBorderW = 1;
 int CCameraViewContainer::m_nBorderH = 1;
+
+CCameraViewContainer* g_pCameraContainer;
 // CCameraViewContainer dialog
 
 IMPLEMENT_DYNAMIC(CCameraViewContainer, CDialogEx)
@@ -22,6 +25,7 @@ CCameraViewContainer::CCameraViewContainer(CWnd* pParent /*=NULL*/)
 	m_nCurrentMode = 0;
 	m_bSingleView = FALSE;
 	m_nSelectedView = 0;
+	g_pCameraContainer = this;
 }
 
 CCameraViewContainer::~CCameraViewContainer()

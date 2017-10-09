@@ -60,4 +60,5 @@ public:
 	CBitmapButtonPlus m_btnPower;
 	CBitmapButtonPlus m_btnPreferences;
 	afx_msg void OnBnClickedBtnPower();
+	afx_msg void OnBnClickedBtnPreferences();
 };
