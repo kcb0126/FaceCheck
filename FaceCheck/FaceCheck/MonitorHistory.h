@@ -2,6 +2,7 @@
 #include "ListOfMonitorHistory.h"
 #include "BitmapButtonPlus.h"
 #include "LabelTrans.h"
+#include "DlgOfWarning.h"
 #include "afxwin.h"
 
 // CMonitorHistory dialog
@@ -34,7 +35,7 @@ public:
 	CEdit m_editPagenumber;
 	CLabelTrans m_lblTotalrecords;
 	CLabelTrans m_lblTotalpages;
-
+	CDlgOfWarning m_dlgOfWarning;
 public:
 	CCriticalSection m_secData;
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "afxwin.h"
 
 
 // CDlgOfWarning dialog
@@ -33,4 +34,5 @@ public:
 
 public:
 	void StartWarning();
+	CButton m_btnWarning;
 };

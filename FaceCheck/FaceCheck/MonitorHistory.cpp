@@ -9,7 +9,6 @@
 
 
 CMonitorHistory* g_pMonitorHistory;
-CDlgOfWarning* g_pWarningDialog;
 
 // CMonitorHistory dialog
 
@@ -91,9 +90,8 @@ BOOL CMonitorHistory::OnInitDialog()
 
 	RefreshList();
 
-	g_pWarningDialog = new CDlgOfWarning;
-	g_pWarningDialog->Create(CDlgOfWarning::IDD);
-	g_pWarningDialog->ShowWindow(SW_HIDE);
+	m_dlgOfWarning.Create(CDlgOfWarning::IDD);
+	m_dlgOfWarning.ShowWindow(SW_HIDE);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
@@ -516,17 +514,17 @@ afx_msg LRESULT CMonitorHistory::OnUmAddHistory(WPARAM wParam, LPARAM lParam)
 		{
 			MessageBeep(MB_ICONERROR);
 
-			g_pWarningDialog->SetDlgItemText(IDOK, L"Forbidden Age!");
-			g_pWarningDialog->m_nWarningType = 0;
-			g_pWarningDialog->ShowWindow(SW_SHOW);
-			g_pWarningDialog->StartWarning();
+			m_dlgOfWarning.SetDlgItemText(IDOK, L"Forbidden Age!");
+			m_dlgOfWarning.m_nWarningType = 0;
+			m_dlgOfWarning.ShowWindow(SW_SHOW);
+			m_dlgOfWarning.StartWarning();
 		}
 		else if (facedata->age <= 25)
 		{
-			g_pWarningDialog->SetDlgItemText(IDOK, L"Check IDCard!");
-			g_pWarningDialog->m_nWarningType = 1;
-			g_pWarningDialog->ShowWindow(SW_SHOW);
-			g_pWarningDialog->StartWarning();
+			m_dlgOfWarning.SetDlgItemText(IDOK, L"Check IDCard!");
+			m_dlgOfWarning.m_nWarningType = 1;
+			m_dlgOfWarning.ShowWindow(SW_SHOW);
+			m_dlgOfWarning.StartWarning();
 		}
 		if (!facedata->bIsEmployee)
 		{
@@ -542,9 +540,9 @@ afx_msg LRESULT CMonitorHistory::OnUmAddHistory(WPARAM wParam, LPARAM lParam)
 		{
 			MessageBeep(MB_ICONERROR);
 
-			g_pWarningDialog->SetDlgItemText(IDOK, L"Blocked!");
-			g_pWarningDialog->ShowWindow(SW_SHOW);
-			g_pWarningDialog->StartWarning();
+			m_dlgOfWarning.SetDlgItemText(IDOK, L"Blocked!");
+			m_dlgOfWarning.ShowWindow(SW_SHOW);
+			m_dlgOfWarning.StartWarning();
 		}
 
 		tagMonitorHistoryCell cellData;

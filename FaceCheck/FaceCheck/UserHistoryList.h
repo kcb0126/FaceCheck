@@ -43,7 +43,7 @@ public:
 public:
 	int m_nRecordCount = 0;
 	int m_nPageCount = 0;
-	int m_nPageCapacity = 10;
+	int m_nPageCapacity = 30;
 	int m_nCurrentPageNumber = 0;
 
 public:

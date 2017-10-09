@@ -25,6 +25,7 @@ CDlgOfWarning::~CDlgOfWarning()
 void CDlgOfWarning::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDOK, m_btnWarning);
 }
 
 
@@ -72,12 +73,15 @@ void CDlgOfWarning::OnSize(UINT nType, int cx, int cy)
 	CRect rect;
 	GetClientRect(&rect);
 
-	GetDlgItem(IDOK)->SetWindowPos(NULL
-		, -5
-		, -5
-		, rect.Width() + 10
-		, rect.Height() + 10
-		, SWP_NOZORDER);
+	if (m_btnWarning.m_hWnd != NULL)
+	{
+		m_btnWarning.SetWindowPos(NULL
+			, -5
+			, -5
+			, rect.Width() + 10
+			, rect.Height() + 10
+			, SWP_NOZORDER);
+	}
 }
 
 
