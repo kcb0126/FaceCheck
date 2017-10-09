@@ -4,12 +4,12 @@
 
 // CUserInfo dialog
 
-class CUserInfo : public CPropertyPage
+class CUserInfo : public CDialogEx
 {
 	DECLARE_DYNAMIC(CUserInfo)
 
 public:
-	CUserInfo();
+	CUserInfo(CWnd* pParent = NULL);
 	virtual ~CUserInfo();
 
 // Dialog Data
@@ -37,4 +37,5 @@ public:
 	BOOL CheckDuplicate();
 	void InitializeMembers();
 	void SetUserID(int nID);
+	virtual BOOL OnInitDialog();
 };

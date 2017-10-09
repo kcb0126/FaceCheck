@@ -382,8 +382,7 @@ BOOL CUserManageList::OnEraseBkgnd(CDC* pDC)
 
 void CUserManageList::OnBnClickedButtonAdd()
 {
-	this->EnableWindow(FALSE);
-	g_pUserInfo->m_nMode = MODE_USER_ADD;
-	g_pUserInfo->InitializeMembers();
-	g_pUserInfo->ShowWindow(SW_SHOW);
+	CUserInfo dlgUserInfo;
+	dlgUserInfo.m_nMode = MODE_USER_ADD;
+	dlgUserInfo.DoModal();
 }

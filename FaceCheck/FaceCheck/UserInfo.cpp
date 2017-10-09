@@ -11,16 +11,16 @@ CUserInfo* g_pUserInfo;
 
 // CUserInfo dialog
 
-IMPLEMENT_DYNAMIC(CUserInfo, CPropertyPage)
+IMPLEMENT_DYNAMIC(CUserInfo, CDialogEx)
 
-CUserInfo::CUserInfo()
-	: CPropertyPage(CUserInfo::IDD)
+CUserInfo::CUserInfo(CWnd* pParent /*=NULL*/)
+	: CDialogEx(CUserInfo::IDD, pParent)
 	, m_strUsername(_T(""))
 	, m_strPassword(_T(""))
 	, m_strConfirmPassword(_T(""))
 	, m_strPhone(_T(""))
 {
-	g_pUserInfo = this;
+
 }
 
 CUserInfo::~CUserInfo()
@@ -29,7 +29,7 @@ CUserInfo::~CUserInfo()
 
 void CUserInfo::DoDataExchange(CDataExchange* pDX)
 {
-	CPropertyPage::DoDataExchange(pDX);
+	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_EDIT_USERNAME, m_strUsername);
 	DDX_Text(pDX, IDC_EDIT_PASSWORD, m_strPassword);
 	DDX_Text(pDX, IDC_EDIT_CONFIRM, m_strConfirmPassword);
@@ -38,7 +38,7 @@ void CUserInfo::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CUserInfo, CPropertyPage)
+BEGIN_MESSAGE_MAP(CUserInfo, CDialogEx)
 	ON_BN_CLICKED(IDOK, &CUserInfo::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &CUserInfo::OnBnClickedCancel)
 END_MESSAGE_MAP()
@@ -75,16 +75,14 @@ void CUserInfo::OnBnClickedOk()
 		g_pDBManager->insertUserHistory(_T("modified a user"), m_strOldname + _T(" to ") + m_strUsername);
 	}
 	g_pUserManageList->RefreshList();
-	this->ShowWindow(SW_HIDE);
-	g_pUserManageList->EnableWindow(TRUE);
+
+	CDialogEx::OnOK();
 }
 
 
 void CUserInfo::OnBnClickedCancel()
 {
-//	this->InitializeMembers();
-	this->ShowWindow(SW_HIDE);
-	g_pUserManageList->EnableWindow(TRUE);
+	CDialogEx::OnCancel();
 }
 
 BOOL CUserInfo::CheckData()
@@ -161,4 +159,14 @@ void CUserInfo::InitializeMembers()
 void CUserInfo::SetUserID(int nID)
 {
 
+}
+
+BOOL CUserInfo::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	InitializeMembers();
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// EXCEPTION: OCX Property Pages should return FALSE
 }
