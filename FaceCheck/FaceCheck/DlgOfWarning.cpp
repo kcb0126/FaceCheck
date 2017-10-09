@@ -117,7 +117,7 @@ void CDlgOfWarning::OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct)
 	}
 
 
-	CDialogEx::OnDrawItem(nIDCtl, lpDrawItemStruct);
+//	CDialogEx::OnDrawItem(nIDCtl, lpDrawItemStruct);
 }
 
 

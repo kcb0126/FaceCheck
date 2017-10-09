@@ -103,6 +103,8 @@ void CCustomListView::Refresh()
 
 void CCustomListView::RefreshAfterAppend()
 {
+	this->SetScrollPos(SB_HORZ, 0);
+	this->SetScrollPos(SB_VERT, 0);
 	int nCount = this->GetCellCount();
 	int nWidth = 0, nHeight = 0;
 	CRect rect;

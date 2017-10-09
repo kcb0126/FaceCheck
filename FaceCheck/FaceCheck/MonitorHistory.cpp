@@ -562,7 +562,8 @@ afx_msg LRESULT CMonitorHistory::OnUmAddHistory(WPARAM wParam, LPARAM lParam)
 		{
 			CBitmap bmpUnregistered;
 			bmpUnregistered.LoadBitmap(IDB_UNREGISTERED);
-			cellData.hPhotoRegistered = (HBITMAP)bmpUnregistered.m_hObject;
+			cellData.hPhotoRegistered = (HBITMAP)bmpUnregistered.Detach();;
+//			cellData.hPhotoRegistered = (HBITMAP)bmpUnregistered.m_hObject;
 			tInfo.m_nBlocked = 0;
 		}
 
