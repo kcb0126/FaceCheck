@@ -3,6 +3,7 @@
 
 struct tagUserHistoryCell
 {
+	int nNo;
 	CString strUsername;
 	CString strAction;
 	CString strTime;

@@ -24,6 +24,7 @@ CWnd* CListOfUserHistory::GetCellAt(int nIndex)
 	CCellOfUserHistory* pCell;
 	pCell = new CCellOfUserHistory;
 	pCell->Create(CCellOfUserHistory::IDD, this);
+	pCell->m_nNo = m_cellsData[nIndex].nNo;
 	pCell->m_strUsername = m_cellsData[nIndex].strUsername;
 	pCell->m_strAction = m_cellsData[nIndex].strAction;
 	pCell->m_strTime = m_cellsData[nIndex].strTime;

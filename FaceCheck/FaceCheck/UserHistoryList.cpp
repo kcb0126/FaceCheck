@@ -208,6 +208,7 @@ void CUserHistoryList::ShowItems(int nBeginPos, int nCount)
 		{
 			nRecordCount++;
 			tagUserHistoryCell cellData;
+			cellData.nNo = nBeginPos + nRecordCount;
 			cellData.strUsername = g_pDBManager->getUserName(atoi(record[0]));
 			cellData.strAction = record[1];
 			cellData.strTime = record[2];
