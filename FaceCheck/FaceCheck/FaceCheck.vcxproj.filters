@@ -488,6 +488,33 @@
     <Image Include="res\unregistered.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\Add.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Add_down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Add_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Delete.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Delete_down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Delete_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Edit.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Edit_down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Edit_hover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\Warning.wav">

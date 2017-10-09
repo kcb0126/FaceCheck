@@ -223,10 +223,19 @@
     <None Include="res\wave1.bin" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\Add.bmp" />
+    <Image Include="res\Add_down.bmp" />
+    <Image Include="res\Add_hover.bmp" />
     <Image Include="res\bitmap4.bmp" />
     <Image Include="res\black.bmp" />
     <Image Include="res\bottom.bmp" />
     <Image Include="res\darkgray.bmp" />
+    <Image Include="res\Delete.bmp" />
+    <Image Include="res\Delete_down.bmp" />
+    <Image Include="res\Delete_hover.bmp" />
+    <Image Include="res\Edit.bmp" />
+    <Image Include="res\Edit_down.bmp" />
+    <Image Include="res\Edit_hover.bmp" />
     <Image Include="res\FaceCheck.ico" />
     <Image Include="res\first.bmp" />
     <Image Include="res\first_disabled.bmp" />
