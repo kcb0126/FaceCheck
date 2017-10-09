@@ -137,6 +137,7 @@ BOOL CDlgMain::OnInitDialog()
 	settingsW = userhistoryW;
 	settingsH = userhistoryH;
 	m_btnSettings.SetWindowPos(NULL, settingsX, settingsY, settingsW, settingsH, SWP_NOZORDER);
+	m_btnSettings.ShowWindow(SW_HIDE);
 
 	int pageMonitorX, pageMonitorY, pageMonitorW, pageMonitorH;
 	pageMonitorX = monitorX;
@@ -236,15 +237,17 @@ BOOL CDlgMain::OnEraseBkgnd(CDC* pDC)
 	pOldBitmap = dc.SelectObject(&bmpBottom);
 	pDC->StretchBlt(rect.Width() / 2 - 400, rect.Height() - 85, 800, 85, &dc, 0, 0, 800, 85, SRCCOPY);
 
-	CRect rcSettings;
-	m_btnSettings.GetWindowRect(&rcSettings);
+//	CRect rcSettings;
+//	m_btnSettings.GetWindowRect(&rcSettings);
+	CRect rcUserHistory;
+	m_btnUserhistory.GetWindowRect(&rcUserHistory);
 	
 	pOldBitmap = dc.SelectObject(&bmpDarkgray);
 	int restbarX, restbarY, restbarW, restbarH;
-	restbarX = rcSettings.right + 2;
-	restbarY = rcSettings.top;
-	restbarW = rect.right - rcSettings.right;
-	restbarH = rcSettings.Height();
+	restbarX = rcUserHistory.right + 2;
+	restbarY = rcUserHistory.top;
+	restbarW = rect.right - rcUserHistory.right;
+	restbarH = rcUserHistory.Height();
 	pDC->StretchBlt(restbarX, restbarY, restbarW, restbarH, &dc, 0, 0, 100, 100, SRCCOPY);
 
 	return true;
