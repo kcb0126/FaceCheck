@@ -24,7 +24,9 @@ CWnd* CListOfUserHistory::GetCellAt(int nIndex)
 	CCellOfUserHistory* pCell;
 	pCell = new CCellOfUserHistory;
 	pCell->Create(CCellOfUserHistory::IDD, this);
-	pCell->m_nNo = m_cellsData[nIndex].nNo;
+	CString strNo;
+	strNo.Format(_T("%d"), m_cellsData[nIndex].nNo);
+	pCell->m_lblNo.SetText(strNo);
 	pCell->m_strUsername = m_cellsData[nIndex].strUsername;
 	pCell->m_strAction = m_cellsData[nIndex].strAction;
 	pCell->m_strTime = m_cellsData[nIndex].strTime;

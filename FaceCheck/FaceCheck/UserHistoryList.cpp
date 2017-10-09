@@ -107,6 +107,15 @@ int CUserHistoryList::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_pListOfUserHistory->ShowWindow(SW_SHOW);
 	m_pListOfUserHistory->UpdateWindow();
 
+	m_listHeader.Create(CCellOfUserHistory::IDD, this);
+	m_listHeader.m_lblNo.SetText(_T("No"));
+	m_listHeader.m_strUsername = _T("Username");
+	m_listHeader.m_strAction = _T("Action");
+	m_listHeader.m_strTime = _T("Time");
+	m_listHeader.m_strContent = _T("Content");
+	m_listHeader.UpdateData(FALSE);
+	m_listHeader.ShowWindow(SW_SHOW);
+
 	return 0;
 }
 
@@ -117,9 +126,15 @@ void CUserHistoryList::OnSize(UINT nType, int cx, int cy)
 
 	CRect rect;
 	GetClientRect(&rect);
+
+	if (m_listHeader.m_hWnd != NULL)
+	{
+		m_listHeader.SetWindowPos(NULL, 0, 0, rect.Width(), 25, SWP_NOZORDER);
+	}
+
 	if (m_pListOfUserHistory != NULL)
 	{
-		m_pListOfUserHistory->SetWindowPos(NULL, 0, 0, rect.Width(), rect.Height() - 100, SWP_NOZORDER);
+		m_pListOfUserHistory->SetWindowPos(NULL, 0, 25, rect.Width(), rect.Height() - 125, SWP_NOZORDER);
 	}
 
 	int buttonWidth = 51, buttonHeight = 30, interval = 5;

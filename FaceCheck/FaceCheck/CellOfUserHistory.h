@@ -31,6 +31,5 @@ public:
 	CLabelTrans m_lblContent;
 	virtual BOOL OnInitDialog();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
-	int m_nNo;
 	CLabelTrans m_lblNo;
 };

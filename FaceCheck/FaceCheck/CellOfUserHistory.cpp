@@ -17,7 +17,6 @@ CCellOfUserHistory::CCellOfUserHistory()
 	, m_strAction(_T(""))
 	, m_strTime(_T(""))
 	, m_strContent(_T(""))
-	, m_nNo(0)
 {
 
 }
@@ -37,7 +36,6 @@ void CCellOfUserHistory::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_ACTION, m_lblAction);
 	DDX_Control(pDX, IDC_STATIC_TIME, m_lblTime);
 	DDX_Control(pDX, IDC_STATIC_CONTENT, m_lblContent);
-	DDX_Text(pDX, IDC_STATIC_NO, m_nNo);
 	DDX_Control(pDX, IDC_STATIC_NO, m_lblNo);
 }
 

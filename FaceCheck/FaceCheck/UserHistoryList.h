@@ -1,5 +1,6 @@
 #pragma once
 #include "ListOfUserHistory.h"
+#include "CellOfUserHistory.h"
 #include "BitmapButtonPlus.h"
 #include "LabelTrans.h"
 #include "afxwin.h"
@@ -24,6 +25,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
+	CCellOfUserHistory m_listHeader;
 	CListOfUserHistory* m_pListOfUserHistory = NULL;
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
