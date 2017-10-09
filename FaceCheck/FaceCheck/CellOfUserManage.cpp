@@ -93,15 +93,12 @@ BOOL CCellOfUserManage::OnEraseBkgnd(CDC* pDC)
 
 void CCellOfUserManage::OnBnClickedButtonEdit()
 {
-	g_pUserManageList->EnableWindow(FALSE);
-	g_pUserInfo->InitializeMembers();
-	g_pUserInfo->m_strUsername = m_strUsername;
-	g_pUserInfo->m_strOldname = m_strUsername;
-	g_pUserInfo->m_strPhone = m_strPhoneNo;
-	g_pUserInfo->m_nMode = MODE_USER_MODIFY;
-//	g_pUserInfo->SetUserID(this->m_nIndex);
-	g_pUserInfo->UpdateData(FALSE);
-	g_pUserInfo->ShowWindow(SW_SHOW);
+	CUserInfo dlgUserInfo;
+	dlgUserInfo.m_strUsername = m_strUsername;
+	dlgUserInfo.m_strOldname = m_strUsername;
+	dlgUserInfo.m_strPhone = m_strPhoneNo;
+	dlgUserInfo.m_nMode = MODE_USER_MODIFY;
+	dlgUserInfo.DoModal();
 }
 
 

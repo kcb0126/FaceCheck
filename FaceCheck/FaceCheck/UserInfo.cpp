@@ -149,6 +149,9 @@ void CUserInfo::InitializeMembers()
 
 	m_comboUserGroup.SetCurSel(m_nPrivilege);
 
+	if (m_nMode == MODE_USER_MODIFY)
+		return;
+
 	m_strUsername = L"";
 	m_strPassword = L"";
 	m_strConfirmPassword = L"";
