@@ -14,6 +14,7 @@ IMPLEMENT_DYNAMIC(CCellOfPersonManage, CPropertyPage)
 
 CCellOfPersonManage::CCellOfPersonManage()
 	: CPropertyPage(CCellOfPersonManage::IDD)
+	, m_nNo(0)
 {
 
 }
@@ -37,6 +38,8 @@ void CCellOfPersonManage::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_SAFETYTYPE, m_lblSafetytype);
 	DDX_Control(pDX, IDC_STATIC_BLOCKED, m_lblBlocked);
 	DDX_Control(pDX, IDC_STATIC_PHOTO, m_staticPhoto);
+	DDX_Text(pDX, IDC_STATIC_NO, m_nNo);
+	DDX_Control(pDX, IDC_STATIC_NO, m_lblNo);
 }
 
 
@@ -83,6 +86,7 @@ BOOL CCellOfPersonManage::OnInitDialog()
 	m_lblSafetytype1.SetTextColor(RGB(255, 255, 255));
 	m_lblSafetytype.SetTextColor(RGB(255, 255, 255));
 	m_lblBlocked.SetTextColor(RGB(255, 255, 255));
+	m_lblNo.SetTextColor(RGB(255, 255, 255));
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE

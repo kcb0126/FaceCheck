@@ -3,6 +3,7 @@
 
 struct tagPersonManageCell
 {
+	int nNo;
 	int nID;
 	HBITMAP hPhoto;
 	CString strName;

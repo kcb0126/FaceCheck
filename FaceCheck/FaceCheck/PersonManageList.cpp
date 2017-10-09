@@ -225,6 +225,7 @@ void CPersonManageList::ShowItems(int nBeginPos, int nCount)
 		{
 			nRecordCount ++;
 			tagPersonManageCell cellData;
+			cellData.nNo = nBeginPos + nRecordCount;
 			int nbpp, nEffWidth, nHeight;
 			nbpp = atoi(record[7]);
 			nEffWidth = atoi(record[8]);

@@ -40,4 +40,6 @@ public:
 public:
 	int m_nID;
 	afx_msg void OnBnClickedButtonDelete();
+	int m_nNo;
+	CLabelTrans m_lblNo;
 };
