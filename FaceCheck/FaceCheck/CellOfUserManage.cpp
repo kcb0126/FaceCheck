@@ -68,6 +68,14 @@ BOOL CCellOfUserManage::OnInitDialog()
 	m_staticBlocked.SetTextColor(RGB(255, 255, 255));
 	m_lblNo.SetTextColor(RGB(255, 255, 255));
 
+	m_btnEdit.OnSet();
+	m_btnEdit.LoadBitmaps(IDB_EDIT, IDB_EDITDOWN, IDB_EDIT, IDB_EDIT);
+	m_btnEdit.SetHoverBitmapID(IDB_EDITHOVER);
+
+	m_btnDelete.OnSet();
+	m_btnDelete.LoadBitmaps(IDB_DELETE, IDB_DELETEDOWN, IDB_DELETE, IDB_DELETE);
+	m_btnDelete.SetHoverBitmapID(IDB_DELETEHOVER);
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
 }

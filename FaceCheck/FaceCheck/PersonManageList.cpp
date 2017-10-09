@@ -69,11 +69,11 @@ void CPersonManageList::OnSize(UINT nType, int cx, int cy)
 
 	int addX, addY;
 
-	addX = rect.Width() - interval - buttonWidth;
+	addX = rect.Width() - interval - 80;
 	addY = rect.Height() - 80;
 	if (m_btnAdd.m_hWnd != NULL)
 	{
-		m_btnAdd.SetWindowPos(NULL, addX, addY, buttonWidth, buttonHeight, SWP_NOZORDER);
+		m_btnAdd.SetWindowPos(NULL, addX, addY, 80, 25, SWP_NOZORDER);
 	}
 
 	int firstX, firstY;
@@ -195,6 +195,10 @@ BOOL CPersonManageList::OnInitDialog()
 	m_lblTotalrecords.SetTextColor(RGB(255, 255, 255));
 	m_lblTotalrecords.SetFontName(_T("Times New Roman"));
 	m_lblTotalrecords.SetFontSize(20);
+
+	m_btnAdd.OnSet();
+	m_btnAdd.LoadBitmaps(IDB_ADD, IDB_ADDDOWN, IDB_ADD, IDB_ADD);
+	m_btnAdd.SetHoverBitmapID(IDB_ADDHOVER);
 
 	RefreshList();
 

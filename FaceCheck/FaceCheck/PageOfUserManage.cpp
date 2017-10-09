@@ -58,7 +58,7 @@ void CPageOfUserManage::OnSize(UINT nType, int cx, int cy)
 
 	if (m_userManageList.m_hWnd != NULL)
 	{
-		m_userManageList.SetWindowPos(NULL, rect.Width() / 2 - 405, 0, 810, rect.Height(), SWP_NOZORDER);
+		m_userManageList.SetWindowPos(NULL, rect.Width() / 2 - 430, 0, 860, rect.Height(), SWP_NOZORDER);
 		m_userManageList.UpdateWindow();
 	}
 }

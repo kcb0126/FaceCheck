@@ -40,6 +40,8 @@ void CCellOfPersonManage::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_PHOTO, m_staticPhoto);
 	DDX_Text(pDX, IDC_STATIC_NO, m_nNo);
 	DDX_Control(pDX, IDC_STATIC_NO, m_lblNo);
+	DDX_Control(pDX, IDC_BUTTON_EDIT, m_btnEdit);
+	DDX_Control(pDX, IDC_BUTTON_DELETE, m_btnDelete);
 }
 
 
@@ -87,6 +89,14 @@ BOOL CCellOfPersonManage::OnInitDialog()
 	m_lblSafetytype.SetTextColor(RGB(255, 255, 255));
 	m_lblBlocked.SetTextColor(RGB(255, 255, 255));
 	m_lblNo.SetTextColor(RGB(255, 255, 255));
+
+	m_btnEdit.OnSet();
+	m_btnEdit.LoadBitmaps(IDB_EDIT, IDB_EDITDOWN, IDB_EDIT, IDB_EDIT);
+	m_btnEdit.SetHoverBitmapID(IDB_EDITHOVER);
+
+	m_btnDelete.OnSet();
+	m_btnDelete.LoadBitmaps(IDB_DELETE, IDB_DELETEDOWN, IDB_DELETE, IDB_DELETE);
+	m_btnDelete.SetHoverBitmapID(IDB_DELETEHOVER);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE

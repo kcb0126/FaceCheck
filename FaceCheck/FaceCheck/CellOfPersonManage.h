@@ -2,6 +2,7 @@
 #include "resource.h"
 #include "LabelTrans.h"
 #include "afxwin.h"
+#include "BitmapButtonPlus.h"
 
 // CCellOfPersonManage dialog
 
@@ -42,4 +43,6 @@ public:
 	afx_msg void OnBnClickedButtonDelete();
 	int m_nNo;
 	CLabelTrans m_lblNo;
+	CBitmapButtonPlus m_btnEdit;
+	CBitmapButtonPlus m_btnDelete;
 };
