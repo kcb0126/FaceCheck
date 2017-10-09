@@ -74,7 +74,7 @@ BOOL CFaceCheckApp::InitInstance()
 	GdiplusStartupInput gdiplusStartupInput;
 	GdiplusStartup(&m_gdiplusToken, &gdiplusStartupInput, NULL);
 
-	SetRegistryKey(_T("FaceCheckNew"));
+	SetRegistryKey(_T("FaceCheck"));
 
 	//load Setting Values
 	CString strServerAddress, strDBName, strUsername, strPassword;
