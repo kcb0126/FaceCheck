@@ -24,6 +24,7 @@ CWnd* CListOfPersonHistory::GetCellAt(int nIndex)
 	CCellOfPersonHistory* pCell;
 	pCell = new CCellOfPersonHistory;
 	pCell->Create(CCellOfPersonHistory::IDD, this);
+	pCell->m_nNo = m_cellsData[nIndex].nNo;
 	pCell->m_staticPhoto.SetBitmap(m_cellsData[nIndex].hPhoto);
 	pCell->m_strTime = m_cellsData[nIndex].strTime;
 	pCell->m_strName = m_cellsData[nIndex].strName;

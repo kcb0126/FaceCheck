@@ -38,4 +38,8 @@ public:
 	CLabelTrans m_lblPlace;
 	CLabelTrans m_lblView;
 	CLabelTrans m_lblComment;
+	int m_nNo;
+	CLabelTrans m_lblNo;
+	CLabelTrans m_lblAge1;
+	CLabelTrans m_lblView1;
 };

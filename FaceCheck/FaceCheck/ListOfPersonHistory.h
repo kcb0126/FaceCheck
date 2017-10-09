@@ -3,6 +3,7 @@
 
 struct tagPersonHistoryCell
 {
+	int nNo;
 	HBITMAP hPhoto;
 	CString strTime;
 	CString strName;

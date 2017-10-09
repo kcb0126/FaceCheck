@@ -208,6 +208,7 @@ void CPersonHistoryList::ShowItems(int nBeginPos, int nCount)
 		{
 			nRecordCount++;
 			tagPersonHistoryCell cellData;
+			cellData.nNo = nBeginPos + nRecordCount;
 			int nbpp, nEffWidth, nHeight;
 			nbpp = atoi(record[5]);
 			nEffWidth = atoi(record[6]);
