@@ -411,9 +411,7 @@ BOOL CPersonManageList::OnEraseBkgnd(CDC* pDC)
 
 void CPersonManageList::OnBnClickedButtonAdd()
 {
-//	this->EnableWindow(FALSE);
 	CPersonInfo dlgPersonInfo;
-//	dlgPersonInfo.Create(CPersonInfo::IDD, NULL);
 	dlgPersonInfo.m_nMode = MODE_CUSTOMER_ADD;
 	dlgPersonInfo.DoModal();
 }

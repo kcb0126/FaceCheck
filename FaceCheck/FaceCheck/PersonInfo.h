@@ -22,7 +22,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
-	void SetPersonID(int nID);
+	void SetPersonNo(int nNo);
 	void InitializeMembers(void);
 	void RefreshThumbImage(void);
 	void GetChangedInfo(person_info t);

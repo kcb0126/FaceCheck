@@ -410,6 +410,7 @@ void CPersonInfo::OnBnClickedButtonCamera()
 BOOL CPersonInfo::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	RefreshThumbImage();
 
 	InitializeMembers();
 
@@ -420,6 +421,9 @@ BOOL CPersonInfo::OnInitDialog()
 // init members
 void CPersonInfo::InitializeMembers(void)
 {
+	if (m_nMode == MODE_CUSTOMER_MODIFY)
+		return;
+
 	m_person.Clear();
 	m_bPhotoShow = FALSE;
 	m_nGender = 0;
@@ -556,9 +560,9 @@ void CPersonInfo::CheckInput(CString &strField, int nID)
 	//	AfxMessageBox(L"Name can't contain any of following characters:\n~ ` ! @ # $ % ^ & * _ + - = | \\ : ; \" ' < > /");
 }
 
-void CPersonInfo::SetPersonID(int nID)
+void CPersonInfo::SetPersonNo(int nNo)
 {
-	this->m_nNo = nID - 1;
+	this->m_nNo = nNo;
 	this->m_nMode = MODE_CUSTOMER_MODIFY;
 
 	//set photo image if exists
@@ -566,9 +570,8 @@ void CPersonInfo::SetPersonID(int nID)
 	{
 		((CStatic*)GetDlgItem(IDC_STATIC_PHOTO))->SetBitmap(m_imgPhoto.MakeBitmap());
 	}
-
-	m_person.m_nID = personDB()[m_nNo].m_nID;
-	m_person = personDB()[m_nNo];
+	m_person.m_nID = personDB()[m_nNo - 1].m_nID;
+	m_person = personDB()[m_nNo - 1];
 
 	person_info tInfo = g_pDBManager->getPersonInfoWithSecurity(m_person.m_nID);
 	m_strFirstName = tInfo.m_strFirstname;
@@ -589,9 +592,6 @@ void CPersonInfo::SetPersonID(int nID)
 
 	swscanf_s(tInfo.m_strBlockedWhen.GetBuffer(), _T("%d-%d-%d"), &year, &month, &day);
 	m_dateBlockedWhen = CTime(year, month, day, 0, 0, 0);
-
-	RefreshThumbImage();
-	UpdateData(FALSE);
 
 	m_strChanged = _T("");
 }

@@ -95,9 +95,9 @@ BOOL CCellOfPersonManage::OnInitDialog()
 
 void CCellOfPersonManage::OnBnClickedButtonEdit()
 {
-	g_pPersonManageList->EnableWindow(FALSE);
-	g_pPersonInfo->SetPersonID(this->m_nID);
-	g_pPersonInfo->ShowWindow(SW_SHOW);
+	CPersonInfo dlgPersonInfo;
+	dlgPersonInfo.SetPersonNo(this->m_nNo);
+	dlgPersonInfo.DoModal();
 }
 
 
