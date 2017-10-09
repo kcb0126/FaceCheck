@@ -18,6 +18,7 @@ CCellOfUserManage::CCellOfUserManage()
 	, m_strCreator(_T(""))
 	, m_strPhoneNo(_T(""))
 	, m_strBlocked(_T(""))
+	, m_nNo(0)
 {
 
 }
@@ -36,11 +37,13 @@ void CCellOfUserManage::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_BLOCKED, m_strBlocked);
 	DDX_Control(pDX, IDC_STATIC_USERNAME, m_staticUsername);
 	DDX_Control(pDX, IDC_STATIC_PRIVILEGE, m_staticPrivilege);
-	DDX_Control(pDX, IDC_STATIC_CREATEDBY, m_staticCreatedBy);
+	//  DDX_Control(pDX, IDC_STATIC_CREATEDBY, m_staticCreatedBy);
 	DDX_Control(pDX, IDC_STATIC_CREATOR, m_staticCreator);
-	DDX_Control(pDX, IDC_STATIC_PHONENO1, m_staticPhoneNo1);
+	//  DDX_Control(pDX, IDC_STATIC_PHONENO1, m_staticPhoneNo1);
 	DDX_Control(pDX, IDC_STATIC_PHONENO, m_staticPhoneNo);
 	DDX_Control(pDX, IDC_STATIC_BLOCKED, m_staticBlocked);
+	DDX_Text(pDX, IDC_STATIC_NO, m_nNo);
+	DDX_Control(pDX, IDC_STATIC_NO, m_lblNo);
 }
 
 
@@ -60,11 +63,10 @@ BOOL CCellOfUserManage::OnInitDialog()
 
 	m_staticUsername.SetTextColor(RGB(255, 255, 255));
 	m_staticPrivilege.SetTextColor(RGB(255, 255, 255));
-	m_staticCreatedBy.SetTextColor(RGB(255, 255, 255));
 	m_staticCreator.SetTextColor(RGB(255, 255, 255));
-	m_staticPhoneNo1.SetTextColor(RGB(255, 255, 255));
 	m_staticPhoneNo.SetTextColor(RGB(255, 255, 255));
 	m_staticBlocked.SetTextColor(RGB(255, 255, 255));
+	m_lblNo.SetTextColor(RGB(255, 255, 255));
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE

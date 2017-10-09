@@ -30,9 +30,9 @@ public:
 	CString m_strBlocked;
 	CLabelTrans m_staticUsername;
 	CLabelTrans m_staticPrivilege;
-	CLabelTrans m_staticCreatedBy;
+//	CLabelTrans m_staticCreatedBy;
 	CLabelTrans m_staticCreator;
-	CLabelTrans m_staticPhoneNo1;
+//	CLabelTrans m_staticPhoneNo1;
 	CLabelTrans m_staticPhoneNo;
 	CLabelTrans m_staticBlocked;
 
@@ -40,4 +40,6 @@ public:
 	int m_nIndex;
 	afx_msg void OnBnClickedButtonEdit();
 	afx_msg void OnBnClickedButtonDelete();
+	int m_nNo;
+	CLabelTrans m_lblNo;
 };

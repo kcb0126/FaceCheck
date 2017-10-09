@@ -223,6 +223,7 @@ void CUserManageList::ShowItems(int nBeginPos, int nCount)
 		{
 			nRecordCount++;
 			tagUserManageCell cellData;
+			cellData.nNo = nBeginPos + nRecordCount;
 			CString strTemp;
 			strTemp = record[1];
 			cellData.strUsername = strTemp;

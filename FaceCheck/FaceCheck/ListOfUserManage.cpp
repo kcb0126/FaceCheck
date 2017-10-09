@@ -24,6 +24,7 @@ CWnd* CListOfUserManage::GetCellAt(int nIndex)
 	CCellOfUserManage* pCell;
 	pCell = new CCellOfUserManage;
 	pCell->Create(CCellOfUserManage::IDD, this);
+	pCell->m_nNo = m_cellsData[nIndex].nNo;
 	pCell->m_strUsername = m_cellsData[nIndex].strUsername;
 	pCell->m_strPrivilege = m_cellsData[nIndex].strPrivilege;
 	pCell->m_strCreator = m_cellsData[nIndex].strCreator;
