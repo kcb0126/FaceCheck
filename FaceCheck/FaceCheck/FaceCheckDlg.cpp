@@ -304,7 +304,7 @@ void CFaceCheckDlg::OnBnClickedButton1()
 
 void CFaceCheckDlg::OnOK()
 {
-	// TODO: Add your specialized code here and/or call the base class
+	OnBnClickedButton1();
 
 //	CDialogEx::OnOK();
 }
