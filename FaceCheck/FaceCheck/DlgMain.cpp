@@ -206,6 +206,8 @@ BOOL CDlgMain::OnEraseBkgnd(CDC* pDC)
 {
 	CDialogEx::OnEraseBkgnd(pDC);
 
+	if (!pDC)return FALSE;
+
 	CRect rect;
 	GetClientRect(&rect);
 	CDC dc;

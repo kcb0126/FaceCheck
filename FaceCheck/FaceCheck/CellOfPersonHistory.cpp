@@ -86,6 +86,8 @@ BOOL CCellOfPersonHistory::OnEraseBkgnd(CDC* pDC)
 {
 	CPropertyPage::OnEraseBkgnd(pDC);
 
+	if (!pDC)return FALSE;
+
 	CRect rect;
 	GetClientRect(&rect);
 	CDC dc;
