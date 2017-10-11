@@ -34,5 +34,7 @@ public:
 	CLabelTrans m_lblAccessedWhen;
 	CLabelTrans m_lblStatus1;
 	CLabelTrans m_lblStatus;
+	int m_nIDX;
 	virtual BOOL OnInitDialog();
+	afx_msg void OnStnClickedStaticPhoto();
 };

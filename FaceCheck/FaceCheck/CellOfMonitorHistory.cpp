@@ -5,7 +5,8 @@
 #include "FaceCheck.h"
 #include "CellOfMonitorHistory.h"
 #include "afxdialogex.h"
-
+#include "PersonInfo.h"
+#include "DlgOfAddComment.h"
 
 // CCellOfMonitorHistory dialog
 
@@ -45,6 +46,7 @@ void CCellOfMonitorHistory::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CCellOfMonitorHistory, CPropertyPage)
 	ON_WM_ERASEBKGND()
+	ON_STN_CLICKED(IDC_STATIC_PHOTO, &CCellOfMonitorHistory::OnStnClickedStaticPhoto)
 END_MESSAGE_MAP()
 
 
@@ -84,4 +86,66 @@ BOOL CCellOfMonitorHistory::OnInitDialog()
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
+}
+
+
+void CCellOfMonitorHistory::OnStnClickedStaticPhoto()
+{	
+	int nPersonID = g_pDBManager->getPersonIdFromIdx(m_nIDX);
+
+	if (nPersonID != NON_EMPLOYEE)
+		{
+			//dlgMan.m_nMode = MODE_CUSTOMER_MODIFY;
+			//int nIndex = personDB().IsExist(g_pDBManager->getPersonIdFromIdx(m_listHistory.GetItemData(pNMItemActivate->iItem)));
+			//dlgMan.m_strNo.Format(_T("%d"), nIndex + 1);
+			CDlgOfAddComment dlgComment(nPersonID);
+			dlgComment.DoModal();
+		}
+		else
+		{
+			CPersonInfo dlgMan;
+			dlgMan.m_nMode = MODE_CUSTOMER_ADD;
+
+			FaceProcessor* faceProcessor;
+			faceProcessor = new FaceProcessor;
+			KipEngineHandle hFaceDetector = faceProcessor->m_smartEngine->m_hFaceDetector;
+			CSingleLock _lock(&faceProcessor->m_smartEngine->m_section, TRUE);
+
+			CxImage imgPhoto;
+			imgPhoto = g_pDBManager->getHistoryImage(m_nIDX);
+			KipImageInfo pImageInfo;
+			pImageInfo.width = imgPhoto.GetWidth();
+			pImageInfo.height = imgPhoto.GetHeight();
+			pImageInfo.format = KipImageCodeBGR24u;
+			pImageInfo.step_bytes = imgPhoto.GetEffWidth();
+			pImageInfo.pixel_addr = imgPhoto.GetBits();
+
+			int nFace = KipFD_Detect(hFaceDetector, &pImageInfo);
+			if (nFace <= 0)
+				return;
+
+			KipFaceFeature pFaceFeature;
+			int nSuccess = KipFD_GetFeature(hFaceDetector, &pImageInfo, 0, &pFaceFeature);
+
+			CMugshot tMugshot;
+			tMugshot.m_pdwFeature = new DWORD[DATA_DIM / 4];
+			memcpy(tMugshot.m_pdwFeature, pFaceFeature.recogInfo, DATA_DIM);
+			tMugshot.m_photo.m_nBpp = imgPhoto.GetBpp();
+			tMugshot.m_photo.m_nHeight = imgPhoto.GetHeight();
+			tMugshot.m_photo.m_nEffWidth = imgPhoto.GetEffWidth();
+			tMugshot.m_photo.m_pbyBuf = new BYTE[imgPhoto.GetEffWidth() * imgPhoto.GetHeight()];
+			memcpy(tMugshot.m_photo.m_pbyBuf, imgPhoto.GetBits(), imgPhoto.GetEffWidth() * imgPhoto.GetHeight());
+
+			dlgMan.m_imgPhoto = imgPhoto;
+			dlgMan.m_person.Add(tMugshot);
+			dlgMan.m_person.m_nID = NON_EMPLOYEE;
+			dlgMan.m_bPhotoShow = TRUE;
+
+			_lock.Unlock();
+			delete faceProcessor;
+
+			if (dlgMan.DoModal() == IDCANCEL)
+				return;
+
+		}
 }

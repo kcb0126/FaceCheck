@@ -226,6 +226,7 @@ void CMonitorHistory::ShowItems(int nBeginPos, int nCount)
 			CString strQuery;
 
 			nIdx = atoi(record[0]);
+			cellData.nIDX = nIdx;
 
 			data.id = atoi(record[1]);
 			data.gender = atoi(record[2]);

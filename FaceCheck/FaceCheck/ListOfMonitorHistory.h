@@ -3,6 +3,7 @@
 
 struct tagMonitorHistoryCell
 {
+	int nIDX;
 	HBITMAP hPhoto;
 	HBITMAP hPhotoRegistered;
 	CString strName;

@@ -30,6 +30,7 @@ CWnd* CListOfMonitorHistory::GetCellAt(int nIndex)
 	pCell->m_strAgeNGender = m_cellsData[nIndex].strAgeGender;
 	pCell->m_strAccessedwhen = m_cellsData[nIndex].strAccessedWhen;
 	pCell->m_strStatus = m_cellsData[nIndex].strStatus;
+	pCell->m_nIDX = m_cellsData[nIndex].nIDX;
 	pCell->UpdateData(FALSE);
 	pCell->ShowWindow(SW_SHOW);
 	return pCell;

@@ -183,6 +183,9 @@
     <ClInclude Include="DlgOfSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DlgOfAddComment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FaceCheck.cpp">
@@ -324,6 +327,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DlgOfSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgOfAddComment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -441,7 +441,7 @@ void CPersonInfo::InitializeMembers(void)
 	m_nBlockType = 0;
 	m_strBlockedReason = _T("");
 	m_strBlockedPlace = _T("");
-	m_staticPhoto.SetBitmap(NULL);
+//	m_staticPhoto.SetBitmap(NULL);
 	UpdateData(FALSE);
 }
 

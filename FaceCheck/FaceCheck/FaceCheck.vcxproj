@@ -119,6 +119,7 @@
     <ClInclude Include="Concentration.h" />
     <ClInclude Include="CustomListView.h" />
     <ClInclude Include="DlgMain.h" />
+    <ClInclude Include="DlgOfAddComment.h" />
     <ClInclude Include="DlgOfSetServer.h" />
     <ClInclude Include="DlgOfTakePhoto.h" />
     <ClInclude Include="DlgOfWarning.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Concentration.cpp" />
     <ClCompile Include="CustomListView.cpp" />
     <ClCompile Include="DlgMain.cpp" />
+    <ClCompile Include="DlgOfAddComment.cpp" />
     <ClCompile Include="DlgOfSetServer.cpp" />
     <ClCompile Include="DlgOfTakePhoto.cpp" />
     <ClCompile Include="DlgOfWarning.cpp" />
